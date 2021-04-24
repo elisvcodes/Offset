@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:api_sustainability/data/my_colors.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 import '../widgets/app_drawer.dart';
+import 'package:icofont_flutter/icofont_flutter.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class MarketPlaceScreen extends StatefulWidget {
   // @override
@@ -11,6 +13,11 @@ class MarketPlaceScreen extends StatefulWidget {
   MarketPlaceScreenState createState() => new MarketPlaceScreenState();
 }
 
+enum FilterOptions {
+  Favorites,
+  All,
+}
+
 class MarketPlaceScreenState extends State<MarketPlaceScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
@@ -18,7 +25,7 @@ class MarketPlaceScreenState extends State<MarketPlaceScreen>
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
     _scrollController = ScrollController();
     super.initState();
   }
@@ -34,56 +41,80 @@ class MarketPlaceScreenState extends State<MarketPlaceScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: AppDrawer(),
+      appBar: AppBar(
+        title: Text('Market Place'),
+        actions: <Widget>[
+          PopupMenuButton(
+            onSelected: (FilterOptions selectedValue) {
+              setState(() {
+                switch (FilterOptions) {
+                }
+                // if (selectedValue == FilterOptions.Favorites) {
+                //   _showOnlyFavorites = true;
+                // } else {
+                //   _showOnlyFavorites = false;
+                // }
+              });
+            },
+            icon: Icon(
+              Icons.filter_alt_sharp,
+            ),
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                child: Text('CUP'),
+                value: FilterOptions.Favorites,
+              ),
+              PopupMenuItem(
+                child: Text('BOTTLE'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('BAG'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('CUTLERY'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('STRAW'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('CONTAINER'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('TOWEL'),
+                value: FilterOptions.All,
+              ),
+            ],
+          ),
+        ],
+        bottom: TabBar(
+          indicatorColor: Colors.white,
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicatorWeight: 4,
+          tabs: [
+            Tab(text: "ITEMS", icon: Icon(Icons.crop_square)),
+            Tab(text: "GREEN", icon: Icon(MdiIcons.flowerTulipOutline)),
+            Tab(text: "REUSABLE", icon: Icon(Icons.repeat)),
+            Tab(text: "ALL", icon: Icon(Icons.border_all)),
+          ],
+          controller: _tabController,
+        ),
+      ),
       body: NestedScrollView(
         controller: _scrollController,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScroller) {
-          return <Widget>[
-            SliverAppBar(
-              brightness: Brightness.dark,
-              title: Text('Basic'),
-              pinned: true,
-              floating: true,
-              backgroundColor: MyColors.primary,
-              forceElevated: innerBoxIsScroller,
-              // leading: IconButton(
-              //     icon: const Icon(Icons.menu),
-              //     onPressed: () {
-              //       Navigator.pop(context);
-              //     }),
-              actions: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: () {},
-                ), // overflow menu
-                PopupMenuButton<String>(
-                  onSelected: (String value) {},
-                  itemBuilder: (context) => [
-                    PopupMenuItem(
-                      value: "Settings",
-                      child: Text("Settings"),
-                    ),
-                  ],
-                )
-              ],
-              bottom: TabBar(
-                indicatorColor: Colors.white,
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicatorWeight: 4,
-                tabs: [
-                  Tab(icon: Text("ITEM ONE")),
-                  Tab(icon: Text("ITEM TWO")),
-                  Tab(icon: Text("ITEM THREE")),
-                ],
-                controller: _tabController,
-              ),
-            )
-          ];
+          return <Widget>[];
         },
         body: TabBarView(
           children: [
             Align(child: Text("Section : 1", style: MyText.display1(context))),
             Align(child: Text("Section : 2", style: MyText.display1(context))),
             Align(child: Text("Section : 3", style: MyText.display1(context))),
+            Align(child: Text("Section : 4", style: MyText.display1(context))),
           ],
           controller: _tabController,
         ),
