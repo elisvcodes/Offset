@@ -106,6 +106,10 @@ class Products with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isGreen).toList();
   }
 
+  List<Product> get reusableItems {
+    return _items.where((prodItem) => prodItem.isReusable).toList();
+  }
+
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
