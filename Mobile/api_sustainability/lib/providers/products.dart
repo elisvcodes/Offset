@@ -61,14 +61,15 @@ class Products with ChangeNotifier {
   }
 
   List<String> get trackedCategories {
-    List<String> trackedList;
+    List<String> trackedList = ["sample"];
     favoriteItems.forEach((prodItem) {
       // print(
       //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
-      trackedList.add(prodItem.itemCategory);
+      trackedList
+          .add(prodItem.itemCategory == null ? "{}" : prodItem.itemCategory);
     });
 
-    return trackedList.toList();
+    return trackedList;
   }
 
   Product findById(String id) {
@@ -108,6 +109,11 @@ class Products with ChangeNotifier {
           bioTime: prodData['bio_time'].toDouble(),
           brand: prodData['brand'],
           carbon: prodData['carbon'].toDouble(),
+          followers: int.parse(prodData['followers']),
+          isGeneric: prodData['isGeneric'].toBoolean(),
+          itemCategory: prodData['itemCategory'],
+          itemTags: prodData['itemTags'],
+          lifespam: prodData['lifespam'],
         ));
       });
       _items = loadedProducts;
