@@ -7,6 +7,7 @@ import '../widgets/badge.dart';
 import '../providers/cart.dart';
 import './cart_screen.dart';
 import '../providers/products.dart';
+import '../screens/edit_product_screen.dart';
 
 enum FilterOptions {
   Favorites,
@@ -100,6 +101,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               ),
             ],
           ),
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                Navigator.of(context).pushNamed(EditProductScreen.routeName);
+              })
         ],
       ),
       drawer: AppDrawer(),
