@@ -1,10 +1,9 @@
 import React from 'react';
-import WebsiteNavbar from '../WebsiteNavbar';
-
+import Navigation from '../Navbar';
 export default function Layout(props) {
   return (
     <>
-      <WebsiteNavbar />
+      <Navigation />
       {props.children}
     </>
   );
