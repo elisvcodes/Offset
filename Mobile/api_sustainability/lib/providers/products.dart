@@ -66,9 +66,9 @@ class Products with ChangeNotifier {
       // print(
       //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
       trackedList
-          .add(prodItem.itemCategory == null ? "{}" : prodItem.itemCategory);
+          .add(prodItem.itemCategory == null ? "" : prodItem.itemCategory);
     });
-
+    trackedList = Set.of(trackedList).toList();
     return trackedList;
   }
 
@@ -111,8 +111,6 @@ class Products with ChangeNotifier {
           carbon: prodData['carbon'].toDouble(),
           followers: prodData['followers'] == "" ? 0 : prodData['followers'],
           lifespam: prodData['lifespam'].toDouble(),
-
-          // Test
           isGeneric: prodData['is_generic'],
           itemCategory: prodData['item_category'],
         ));
