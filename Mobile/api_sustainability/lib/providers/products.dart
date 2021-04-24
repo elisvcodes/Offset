@@ -92,14 +92,24 @@ class Products with ChangeNotifier {
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
       final List<Product> loadedProducts = [];
+
       extractedData.forEach((prodId, prodData) {
+        print(prodData);
         loadedProducts.add(Product(
           id: prodId,
-          title: prodData['title'],
+          title: "${prodData['brand']} | ${prodData['item_category']}",
           price: prodData['price'].toDouble(),
           isFavorite:
               favoriteData == null ? false : favoriteData[prodId] ?? false,
-          imageUrl: prodData['imageUrl'],
+          imageUrl: prodData['image_url'],
+          bioTime: prodData['bio_time'].toDouble(),
+          brand: prodData['brand'],
+          carbon: prodData['carbon'].toDouble(),
+          followers: int.parse(prodData['followers']),
+          isGeneric: prodData['isGeneric'].toBoolean(),
+          itemCategory: prodData['itemCategory'],
+          itemTags: prodData['itemTags'],
+          lifespam: prodData['lifespam'],
         ));
       });
       _items = loadedProducts;

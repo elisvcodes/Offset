@@ -1,6 +1,6 @@
 {
     "items": {
-        "1": {
+        "1ID": {
            "brand": "A",
            "is_generic": true,
            "item_tags": "Plastic, Cup",
@@ -12,7 +12,7 @@
            "bio_time": -1,
            "image_url": "https://m.media-amazon.com/images/I/61tzyyhlbLL._AC_UL320_.jpg"
         },
-        "2": {
+        "2ID": {
            "brand": "B",
            "is_generic": false,
            "item_tags": "Paper, Cup",
@@ -24,7 +24,7 @@
            "bio_time": 0.1666666667,
            "image_url": "https://m.media-amazon.com/images/I/510S8QHDrXL._AC_UL320_.jpg"
         },
-        "3": {
+        "3ID": {
            "brand": "C",
            "is_generic": false,
            "item_tags": "Ceramic, Cup",
@@ -36,7 +36,7 @@
            "bio_time": 1000000,
            "image_url": "https://m.media-amazon.com/images/I/61VPwY98yWL._AC_UL320_.jpg"
         },
-        "4": {
+        "4ID": {
            "brand": "D",
            "is_generic": false,
            "item_tags": "Styrofoam, Cup",
@@ -48,7 +48,7 @@
            "bio_time": -1,
            "image_url": "https://m.media-amazon.com/images/I/61jU8kW92JL._AC_UL320_.jpg"
         },
-        "5": {
+        "5ID": {
            "brand": "A",
            "is_generic": true,
            "item_tags": "Plastic, Bottle",
@@ -60,7 +60,7 @@
            "bio_time": -1,
            "image_url": "https://cdn.shortpixel.ai/client/q_glossy,ret_img/https://www.innovationnaturally.org/wp-content/uploads/2021/01/BottlesBlend_2_RT.png"
         },
-        "6": {
+        "6ID": {
            "brand": "B",
            "is_generic": false,
            "item_tags": "Metal, Bottle",
@@ -72,7 +72,7 @@
            "bio_time": 500,
            "image_url": "https://m.media-amazon.com/images/I/71wFyZlg58L._AC_UL320_.jpg"
         },
-        "7": {
+        "7ID": {
            "brand": "C",
            "is_generic": false,
            "item_tags": "Glass, Bottle",
@@ -84,7 +84,7 @@
            "bio_time": 1000000,
            "image_url": "https://p2d7x8x2.stackpathcdn.com/content/uploads/2020/07/3qsmallfrugalpac-269x640.jpg"
         },
-        "8": {
+        "8ID": {
            "brand": "A",
            "is_generic": true,
            "item_tags": "Plastic, Bag",
@@ -96,7 +96,7 @@
            "bio_time": -1,
            "image_url": "https://m.media-amazon.com/images/I/816IHACLtKL._AC_UY218_.jpg"
         },
-        "9": {
+        "9ID": {
            "brand": "B",
            "is_generic": false,
            "item_tags": "Paper, Bag",
@@ -108,7 +108,7 @@
            "bio_time": 10,
            "image_url": "https://m.media-amazon.com/images/I/81p+wb8muaL._AC_UL320_.jpg"
         },
-        "10": {
+        "10ID": {
            "brand": "C",
            "is_generic": false,
            "item_tags": "Cotton, Bag",
@@ -120,7 +120,7 @@
            "bio_time": 0.5,
            "image_url": "https://m.media-amazon.com/images/I/613nnka+ELL._AC_UL320_.jpg"
         },
-        "11": {
+        "11ID": {
            "brand": "D",
            "is_generic": false,
            "item_tags": "Polyester, Bag",
@@ -132,7 +132,7 @@
            "bio_time": 150,
            "image_url": "https://images-na.ssl-images-amazon.com/images/I/61nJewVAH1L._AC_SL1200_.jpg"
         },
-        "12": {
+        "12ID": {
            "brand": "A",
            "is_generic": true,
            "item_tags": "Plastic, Cutlery",
@@ -144,7 +144,7 @@
            "bio_time": -1,
            "image_url": "https://m.media-amazon.com/images/I/61wuXfKOUIL._AC_UL320_.jpg"
         },
-        "13": {
+        "13ID": {
            "brand": "B",
            "is_generic": false,
            "item_tags": "Metal, Cutlery",
@@ -156,7 +156,7 @@
            "bio_time": 500,
            "image_url": "https://m.media-amazon.com/images/I/61QqLPZGONL._AC_UL320_.jpg"
         },
-        "14": {
+        "14ID": {
            "brand": "A",
            "is_generic": true,
            "item_tags": "Plastic, Straw",
@@ -168,7 +168,7 @@
            "bio_time": -1,
            "image_url": "https://m.media-amazon.com/images/I/61S02SUFL5L._AC_UL320_.jpg"
         },
-        "15": {
+        "15ID": {
            "brand": "B",
            "is_generic": false,
            "item_tags": "Metal, Straw",
@@ -180,7 +180,7 @@
            "bio_time": 500,
            "image_url": "https://m.media-amazon.com/images/I/61lvcPBJINL._AC_UL320_.jpg"
         },
-        "16": {
+        "16ID": {
            "brand": "C",
            "is_generic": false,
            "item_tags": "Paper, Straw",
@@ -192,7 +192,7 @@
            "bio_time": 0.1666666667,
            "image_url": "https://m.media-amazon.com/images/I/81ZtoT-xI1L._AC_UL320_.jpg"
         },
-        "17": {
+        "17ID": {
            "brand": "D",
            "is_generic": false,
            "item_tags": "Glass, Straw",
@@ -204,7 +204,7 @@
            "bio_time": 1000000,
            "image_url": "https://m.media-amazon.com/images/I/61WQ2g3tlJL._AC_UL320_.jpg"
         },
-        "18": {
+        "18ID": {
            "brand": "F",
            "is_generic": false,
            "item_tags": "Bamboo, Straw",
@@ -216,7 +216,7 @@
            "bio_time": 3,
            "image_url": "https://m.media-amazon.com/images/I/81LX-AvK4XL._AC_UL320_.jpg"
         },
-        "19": {
+        "19ID": {
            "brand": "A",
            "is_generic": true,
            "item_tags": "Styrofoam, Food Container",
@@ -228,7 +228,7 @@
            "bio_time": -1,
            "image_url": "https://m.media-amazon.com/images/I/61ta4mZOx3L._AC_UY218_.jpg"
         },
-        "20": {
+        "20ID": {
            "brand": "B",
            "is_generic": false,
            "item_tags": "Cardboard, Food Container",
@@ -240,7 +240,7 @@
            "bio_time": 0.25,
            "image_url": "https://m.media-amazon.com/images/I/71hVsRrvKKL._AC_UL320_.jpg"
         },
-        "21": {
+        "21ID": {
            "brand": "A",
            "is_generic": true,
            "item_tags": "Paper, Towel",
@@ -252,7 +252,7 @@
            "bio_time": 0.08,
            "image_url": "https://m.media-amazon.com/images/I/71sLQ5t8hsL._AC_UL320_.jpg"
         },
-        "22": {
+        "22ID": {
            "brand": "B",
            "is_generic": false,
            "item_tags": "Cloth, Towel",
