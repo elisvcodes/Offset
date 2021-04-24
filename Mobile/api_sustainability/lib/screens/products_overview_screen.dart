@@ -57,40 +57,48 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
               setState(() {
-                if (selectedValue == FilterOptions.Favorites) {
-                  _showOnlyFavorites = true;
-                } else {
-                  _showOnlyFavorites = false;
+                switch (FilterOptions) {
                 }
+                // if (selectedValue == FilterOptions.Favorites) {
+                //   _showOnlyFavorites = true;
+                // } else {
+                //   _showOnlyFavorites = false;
+                // }
               });
             },
             icon: Icon(
-              Icons.more_vert,
+              Icons.filter_alt_sharp,
             ),
             itemBuilder: (_) => [
               PopupMenuItem(
-                child: Text('Show Tracked Items'),
+                child: Text('CUP'),
                 value: FilterOptions.Favorites,
               ),
               PopupMenuItem(
-                child: Text('Show All'),
+                child: Text('BOTTLE'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('BAG'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('CUTLERY'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('STRAW'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('CONTAINER'),
+                value: FilterOptions.All,
+              ),
+              PopupMenuItem(
+                child: Text('TOWEL'),
                 value: FilterOptions.All,
               ),
             ],
-          ),
-          Consumer<Cart>(
-            builder: (_, cart, ch) => Badge(
-              child: ch,
-              value: cart.itemCount.toString(),
-            ),
-            child: IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-              ),
-              onPressed: () {
-                Navigator.of(context).pushNamed(CartScreen.routeName);
-              },
-            ),
           ),
         ],
       ),
