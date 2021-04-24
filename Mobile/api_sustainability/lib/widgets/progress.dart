@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:materialx_flutter/data/my_colors.dart';
+import 'package:api_sustainability/data/my_colors.dart';
 
 class Progress {
-
-  static Widget getFlatProgressAccent(int value, double height){
+  static Widget getFlatProgressAccent(int value, double height) {
     int rest = 100 - value;
     return Stack(
       children: <Widget>[
@@ -12,7 +11,10 @@ class Progress {
         Row(
           children: <Widget>[
             Expanded(
-              child: Container(height: height, color: MyColors.accentLight,),
+              child: Container(
+                height: height,
+                color: MyColors.accentLight,
+              ),
               flex: 100,
             ),
           ],
@@ -20,7 +22,11 @@ class Progress {
         Row(
           children: <Widget>[
             Expanded(
-              child: Container(width: 200, height: 20, color: MyColors.accent,),
+              child: Container(
+                width: 200,
+                height: 20,
+                color: MyColors.accent,
+              ),
               flex: value,
             ),
             Expanded(
