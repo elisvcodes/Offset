@@ -139,7 +139,8 @@ class Products with ChangeNotifier {
         // print(prodData);
         loadedProducts.add(Product(
           id: prodId,
-          title: "${prodData['brand']} | ${prodData['item_category']}",
+          // title: "${prodData['brand']} | ${prodData['item_category']}",
+          title: prodData['title'],
           price: prodData['price'].toDouble(),
           isFavorite:
               favoriteData == null ? false : favoriteData[prodId] ?? false,
