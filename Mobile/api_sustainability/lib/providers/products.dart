@@ -72,6 +72,10 @@ class Products with ChangeNotifier {
     return trackedList;
   }
 
+  List<Product> get genericItems {
+    return _items.where((prodItem) => prodItem.isGeneric).toList();
+  }
+
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
