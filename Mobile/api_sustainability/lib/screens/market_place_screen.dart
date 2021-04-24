@@ -146,11 +146,29 @@ class MarketPlaceScreenState extends State<MarketPlaceScreen>
                   ? Center(
                       child: CircularProgressIndicator(),
                     )
-                  : ProductsGrid(_showOnlyFavorites),
+                  : ProductsGrid(ShowOptions.ShowGeneric),
             ),
-            Align(child: Text("Section : 2", style: MyText.display1(context))),
-            Align(child: Text("Section : 3", style: MyText.display1(context))),
-            Align(child: Text("Section : 4", style: MyText.display1(context))),
+            Align(
+              child: _isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ProductsGrid(ShowOptions.ShowGreen),
+            ),
+            Align(
+              child: _isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ProductsGrid(ShowOptions.ShowReusable),
+            ),
+            Align(
+              child: _isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ProductsGrid(ShowOptions.ShowAll),
+            ),
           ],
           controller: _tabController,
         ),

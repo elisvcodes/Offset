@@ -186,11 +186,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   pointColor: Colors.amber,
                 ),
               ),
-              Text("Co2 Emissions",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  )),
             ]),
           ),
         ],

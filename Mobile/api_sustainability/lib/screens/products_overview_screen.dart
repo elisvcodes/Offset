@@ -104,7 +104,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ProductsGrid(_showOnlyFavorites),
+          : ProductsGrid(ShowOptions.ShowAll),
     );
   }
 }
