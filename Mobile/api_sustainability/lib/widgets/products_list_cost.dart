@@ -6,7 +6,7 @@ import './product_item.dart';
 
 class ProductsListCost extends StatelessWidget {
   final bool showFavs;
-
+  var _totalConsumptionCosts = 0;
   ProductsListCost(this.showFavs);
 
   @override
@@ -16,15 +16,13 @@ class ProductsListCost extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: products.length,
-      itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-        // builder: (c) => products[i],
-        value: products[i],
-        child: ProductItem(
-            // products[i].id,
-            // products[i].title,
-            // products[i].imageUrl,
-            ),
-      ),
+      itemBuilder: (ctx, i) {
+        return ChangeNotifierProvider.value(
+          // builder: (c) => products[i],
+          value: products[i],
+          child: ProductItem(),
+        );
+      },
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 3 / 2,

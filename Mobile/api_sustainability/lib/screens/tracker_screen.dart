@@ -15,6 +15,7 @@ enum FilterOptions {
 }
 
 class TrackerScreen extends StatefulWidget {
+  var _totalConsumptionCosts = 0;
   static const routeName = '/tracker';
   @override
   _TrackerScreenState createState() => _TrackerScreenState();
@@ -27,10 +28,6 @@ class _TrackerScreenState extends State<TrackerScreen> {
 
   @override
   void initState() {
-    // Provider.of<Products>(context).fetchAndSetProducts(); // WON'T WORK!
-    // Future.delayed(Duration.zero).then((_) {
-    //   Provider.of<Products>(context).fetchAndSetProducts();
-    // });
     super.initState();
   }
 
