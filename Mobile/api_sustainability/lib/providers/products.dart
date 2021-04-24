@@ -85,7 +85,7 @@ class Products with ChangeNotifier {
 
   double get trackedCategoriesGenericsEmissionPerYear {
     var total = 0.0;
-    favoriteItems.forEach((prodItem) {
+    trackedCategoriesGenerics.forEach((prodItem) {
       // print(
       //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
       total += prodItem.carbonPerYear;
