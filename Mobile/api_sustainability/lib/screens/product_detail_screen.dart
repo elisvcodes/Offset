@@ -129,7 +129,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   )),
               Slider(
                 value: _carbonUsage,
-                min: 1,
+                min: 0.001,
                 max: _initCarbonUsage * 10,
                 label: _carbonUsage.round().toString(),
                 onChanged: (double value) {
