@@ -21,6 +21,15 @@ class Products with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
+  double get trackedEmission {
+    var total = 0.0;
+    favoriteItems.forEach((prodItem) {
+      // print("Addint ${prodItem.carbon}");
+      total += prodItem.carbon;
+    });
+    return total;
+  }
+
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }

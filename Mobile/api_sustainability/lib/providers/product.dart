@@ -39,6 +39,18 @@ class Product with ChangeNotifier {
     notifyListeners();
   }
 
+  double get carbonPerMonth {
+    return this.carbon / this.lifespam;
+  }
+
+  double get carbonPerDay {
+    return carbonPerMonth / 30;
+  }
+
+  double get carbonPerYear {
+    return carbonPerMonth * 12;
+  }
+
 // optimistic approach
   void toggleFavoriteStatus(String authToken, String userId) async {
     final oldStatus = isFavorite;

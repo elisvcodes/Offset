@@ -14,21 +14,14 @@ class ProductsListCost extends StatefulWidget {
 }
 
 class _ProductsListCostState extends State<ProductsListCost> {
-  var _totalConsumptionCosts = 0.0;
-
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
+
     final products =
         widget.showFavs ? productsData.favoriteItems : productsData.items;
 
-    void initState() {
-      setState(() {
-        _totalConsumptionCosts == _totalConsumptionCosts;
-      });
-      super.initState();
-    }
-
+    var _totalConsumptionCosts = productsData.trackedEmission;
 // TODO: Untrack items and update the costs
     void untracker() {}
 
@@ -38,7 +31,7 @@ class _ProductsListCostState extends State<ProductsListCost> {
         padding: const EdgeInsets.all(10.0),
         itemCount: products.length,
         itemBuilder: (ctx, i) {
-          print(_totalConsumptionCosts);
+          // print(_totalConsumptionCosts);
 
           return ChangeNotifierProvider.value(
             value: products[i],
