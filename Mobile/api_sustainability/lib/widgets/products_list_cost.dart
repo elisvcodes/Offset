@@ -47,7 +47,9 @@ class _ProductsListCostState extends State<ProductsListCost> {
         ),
       ),
       Text(
-          'Tracked Items Total CO2 Per Year: ${_totalConsumptionCostsPerYear}'),
+          "Tracked Items Total CO2 Per Year: ${_totalConsumptionCostsPerYear}," +
+              "per month: ${productsData.trackedTotalEmissionPerMonth}" +
+              " per day: ${productsData.trackedTotalEmissionPerDay}"),
     ]);
   }
 }
