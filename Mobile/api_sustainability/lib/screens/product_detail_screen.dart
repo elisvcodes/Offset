@@ -44,6 +44,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // @override
+    // void initState() {
+
+    // }
+
     _estimatedPerYear = 12 / _lifeTimeValue;
     // final product = Provider.of<Product>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
@@ -58,6 +63,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       context,
       listen: false,
     ).findById(productId);
+
+    setState(() {
+      _carbonUsage = loadedProduct.carbon;
+      _lifeTimeValue = loadedProduct.lifespam;
+    });
     return Scaffold(
       // appBar: AppBar(
       //   title: Text(loadedProduct.title),
@@ -129,8 +139,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   )),
               Slider(
                 value: _carbonUsage,
-                min: 0.001,
-                max: _initCarbonUsage * 10,
+                min: 0.001 > _carbonUsage ? _carbonUsage * 0.1 : 0.01,
+                max: _initCarbonUsage * 10 < _carbonUsage
+                    ? _carbonUsage * 2
+                    : _initCarbonUsage * 10,
                 label: _carbonUsage.round().toString(),
                 onChanged: (double value) {
                   setState(() {
@@ -145,8 +157,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   )),
               Slider(
                 value: _lifeTimeValue,
-                min: 1,
-                max: 48,
+                min: 1 > _lifeTimeValue ? 0.1 * _lifeTimeValue : 1,
+                max: 48 <= _lifeTimeValue ? _lifeTimeValue * 2 : 48,
                 divisions: 48 * 2,
                 label: _lifeTimeValue.round().toString(),
                 onChanged: (double value) {
@@ -179,90 +191,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     color: Colors.black,
                     fontSize: 20,
                   )),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 22.0, bottom: 20),
-                  child: SizedBox(
-                    width: 300,
-                    height: 200,
-                    child: LineChart(
-                      LineChartData(
-                        lineTouchData: LineTouchData(
-                          touchTooltipData: LineTouchTooltipData(
-                              maxContentWidth: 100,
-                              tooltipBgColor: Colors.orange,
-                              getTooltipItems: (touchedSpots) {
-                                return touchedSpots
-                                    .map((LineBarSpot touchedSpot) {
-                                  final textStyle = TextStyle(
-                                    color: touchedSpot.bar.colors[0],
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
-                                  );
-                                  return LineTooltipItem(
-                                      '${touchedSpot.x}, ${touchedSpot.y.toStringAsFixed(2)}',
-                                      textStyle);
-                                }).toList();
-                              }),
-                          handleBuiltInTouches: true,
-                          getTouchLineStart: (data, index) => 0,
-                        ),
-                        lineBarsData: [
-                          LineChartBarData(
-                            colors: [
-                              Colors.black,
-                            ],
-                            spots: flSpotData,
-                            isCurved: true,
-                            isStrokeCapRound: true,
-                            barWidth: 3,
-                            belowBarData: BarAreaData(
-                              show: false,
-                            ),
-                            dotData: FlDotData(show: false),
-                          ),
-                        ],
-                        minY: 0,
-                        maxY: 90000,
-                        titlesData: FlTitlesData(
-                          leftTitles: SideTitles(
-                            // showTitles: true,
-                            getTextStyles: (value) => const TextStyle(
-                                color: Colors.blueGrey,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                            margin: 16,
-                          ),
-                          rightTitles: SideTitles(showTitles: false),
-                          bottomTitles: SideTitles(
-                            // showTitles: true,
-                            getTextStyles: (value) => const TextStyle(
-                                color: Colors.blueGrey,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                            margin: 16,
-                          ),
-                          topTitles: SideTitles(showTitles: false),
-                        ),
-                        gridData: FlGridData(
-                          show: true,
-                          drawHorizontalLine: true,
-                          drawVerticalLine: true,
-                          horizontalInterval: 1.5,
-                          verticalInterval: 5,
-                          checkToShowHorizontalLine: (value) {
-                            return value.toInt() == 0;
-                          },
-                          checkToShowVerticalLine: (value) {
-                            return value.toInt() == 0;
-                          },
-                        ),
-                        borderData: FlBorderData(show: false),
-                      ),
-                    ),
-                  ),
-                ),
-              )
             ]),
           ),
         ],
