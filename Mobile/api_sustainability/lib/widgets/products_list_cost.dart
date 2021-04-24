@@ -53,6 +53,10 @@ class _ProductsListCostState extends State<ProductsListCost> {
       Row(
           children: productsData.trackedCategories
               .map((item) => new Text(item))
+              .toList()),
+      Row(
+          children: productsData.trackedCategories
+              .map((item) => new Text(item))
               .toList())
     ]);
   }

@@ -73,9 +73,9 @@ class Products with ChangeNotifier {
     return trackedList;
   }
 
-  List<String> get trackedCategoriesGenerics {
-    List<String> trackedList = [];
-    genericItems
+  List<Product> get trackedCategoriesGenerics {
+    List<Product> trackedList = [];
+    trackedList = genericItems
         .where((genericItem) =>
             trackedCategories.contains(genericItem.itemCategory))
         .toList();
