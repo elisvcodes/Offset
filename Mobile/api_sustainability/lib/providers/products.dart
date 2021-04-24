@@ -61,7 +61,7 @@ class Products with ChangeNotifier {
   }
 
   List<String> get trackedCategories {
-    List<String> trackedList = ["sample"];
+    List<String> trackedList = [];
     favoriteItems.forEach((prodItem) {
       // print(
       //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
