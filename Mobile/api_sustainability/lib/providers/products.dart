@@ -110,9 +110,11 @@ class Products with ChangeNotifier {
           brand: prodData['brand'],
           carbon: prodData['carbon'].toDouble(),
           followers: prodData['followers'] == "" ? 0 : prodData['followers'],
+          lifespam: prodData['lifespam'].toDouble(),
+
+          // Test
           isGeneric: prodData['is_generic'].toBoolean(),
           itemCategory: prodData['item_category'],
-          lifespam: prodData['lifespam'].toDouble(),
         ));
       });
       _items = loadedProducts;
