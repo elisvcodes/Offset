@@ -113,7 +113,7 @@ class Products with ChangeNotifier {
           lifespam: prodData['lifespam'].toDouble(),
 
           // Test
-          isGeneric: prodData['is_generic'].toBoolean(),
+          isGeneric: prodData['is_generic'],
           itemCategory: prodData['item_category'],
         ));
       });
