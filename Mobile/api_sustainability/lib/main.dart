@@ -9,15 +9,16 @@ import './providers/cart.dart';
 import './providers/orders.dart';
 
 import './providers/auth.dart';
-import './screens/orders_screen.dart';
 
+import './helpers/custom_route.dart';
+
+import './screens/orders_screen.dart';
 import './screens/user_products_screen.dart';
 import './screens/edit_product_screen.dart';
 import './screens/splash_screen.dart';
 import './screens/auth_screen.dart';
-import './helpers/custom_route.dart';
-
 import './screens/tracker_screen.dart';
+import './screens/market_place_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
                     TargetPlatform.iOS: CustomPageTransitionBuilder(),
                   })),
               home: auth.isAuth
-                  ? ProductsOverviewScreen()
+                  ? MarketPlaceScreen()
                   : FutureBuilder(
                       future: auth.tryAutoLogin(),
                       builder: (ctx, authResultSnapshot) =>

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:api_sustainability/data/my_colors.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
+import '../widgets/app_drawer.dart';
 
-class TabsBasicRoute extends StatefulWidget {
-  TabsBasicRoute();
+class MarketPlaceScreen extends StatefulWidget {
+  // @override
+  // MarketPlaceScreen();
 
   @override
-  TabsBasicRouteState createState() => new TabsBasicRouteState();
+  MarketPlaceScreenState createState() => new MarketPlaceScreenState();
 }
 
-class TabsBasicRouteState extends State<TabsBasicRoute>
+class MarketPlaceScreenState extends State<MarketPlaceScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
   ScrollController _scrollController;
@@ -31,6 +33,7 @@ class TabsBasicRouteState extends State<TabsBasicRoute>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: AppDrawer(),
       body: NestedScrollView(
         controller: _scrollController,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScroller) {
@@ -42,11 +45,11 @@ class TabsBasicRouteState extends State<TabsBasicRoute>
               floating: true,
               backgroundColor: MyColors.primary,
               forceElevated: innerBoxIsScroller,
-              leading: IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
+              // leading: IconButton(
+              //     icon: const Icon(Icons.menu),
+              //     onPressed: () {
+              //       Navigator.pop(context);
+              //     }),
               actions: <Widget>[
                 IconButton(
                   icon: const Icon(Icons.search),
