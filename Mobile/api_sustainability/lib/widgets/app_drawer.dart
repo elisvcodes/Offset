@@ -1,3 +1,4 @@
+import 'package:api_sustainability/screens/tracker_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // import 'package:shop/helpers/custom_route.dart';
@@ -14,13 +15,13 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           AppBar(
-            title: Text('Hello Friend!'),
+            title: Text('My Co2'),
             automaticallyImplyLeading: false,
           ),
           Divider(),
           ListTile(
             leading: Icon(Icons.shop),
-            title: Text('Shop'),
+            title: Text('Market'),
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).pushReplacementNamed('/');
@@ -29,12 +30,12 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             leading: Icon(Icons.payment),
-            title: Text('Orders'),
+            title: Text('Tracker'),
             onTap: () {
               // Navigator.of(context)
               //     .pushReplacementNamed(OrdersScreen.routeName);
-              Navigator.of(context).pushReplacement(
-                  CustomRoute(builder: (ctx) => OrdersScreen()));
+              Navigator.of(context)
+                  .pushReplacementNamed(TrackerScreen.routeName);
             },
           ),
           Divider(),
