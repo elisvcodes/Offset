@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -68,6 +69,16 @@ class Products with ChangeNotifier {
       trackedList
           .add(prodItem.itemCategory == null ? "" : prodItem.itemCategory);
     });
+    trackedList = Set.of(trackedList).toList();
+    return trackedList;
+  }
+
+  List<String> get trackedCategoriesGenerics {
+    List<String> trackedList = [];
+    genericItems
+        .where((genericItem) =>
+            trackedCategories.contains(genericItem.itemCategory))
+        .toList();
     trackedList = Set.of(trackedList).toList();
     return trackedList;
   }
