@@ -42,6 +42,14 @@ class ProductDetailScreen extends StatelessWidget {
             delegate: SliverChildListDelegate([
               SizedBox(height: 10),
               Text(
+                '${loadedProduct.title}',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 40,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
                 '\$${loadedProduct.price}',
                 style: TextStyle(
                   color: Colors.grey,
@@ -50,6 +58,11 @@ class ProductDetailScreen extends StatelessWidget {
               ),
               SizedBox(
                 height: 10,
+              ),
+              FlatButton(
+                child: Text('Add Product to Tracking'),
+                onPressed: () {},
+                textColor: Theme.of(context).primaryColor,
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),
