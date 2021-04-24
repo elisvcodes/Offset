@@ -5,19 +5,34 @@ import 'package:http/http.dart' as http;
 class Product with ChangeNotifier {
   final String id;
   final String title;
-  final String description;
   final double price;
+
   final String imageUrl;
   bool isFavorite;
 
-  Product({
-    @required this.id,
-    @required this.title,
-    @required this.description,
-    @required this.price,
-    @required this.imageUrl,
-    this.isFavorite = false,
-  });
+  double bioTime;
+  String brand;
+  double carbon;
+  int followers;
+  bool isGeneric;
+  String itemCategory;
+  String itemTags;
+  double lifespam;
+
+  Product(
+      {@required this.id,
+      @required this.title,
+      @required this.price,
+      @required this.imageUrl,
+      this.isFavorite = false,
+      this.bioTime = 0,
+      this.brand = "Generic",
+      this.carbon = 0,
+      this.followers = 0,
+      this.isGeneric = false,
+      this.itemCategory = "UNDEFINED",
+      this.itemTags = "",
+      this.lifespam = 0});
 
   void _setFavValue(bool newValue) {
     isFavorite = newValue;

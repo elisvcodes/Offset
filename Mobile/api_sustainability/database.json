@@ -49,7 +49,7 @@
           "price": 0.07,
           "followers": "",
           "lifespam": 0.033333,
-          "bio_time": null,
+          "bio_time": -1,
           "image_url": "https://m.media-amazon.com/images/I/61jU8kW92JL._AC_UL320_.jpg"
         },
         {
@@ -62,7 +62,7 @@
           "price": 0.00001,
           "followers": "",
           "lifespam": 0.033333,
-          "bio_time": null,
+          "bio_time": -1,
           "image_url": "https://cdn.shortpixel.ai/client/q_glossy,ret_img/https://www.innovationnaturally.org/wp-content/uploads/2021/01/BottlesBlend_2_RT.png"
         },
         {
@@ -75,7 +75,7 @@
           "price": 15,
           "followers": "",
           "lifespam": 144,
-          "bio_time": null,
+          "bio_time": 500,
           "image_url": "https://m.media-amazon.com/images/I/71wFyZlg58L._AC_UL320_.jpg"
         },
         {
@@ -88,7 +88,7 @@
           "price": 20,
           "followers": "",
           "lifespam": 180,
-          "bio_time": null,
+          "bio_time": 1000000,
           "image_url": "https://p2d7x8x2.stackpathcdn.com/content/uploads/2020/07/3qsmallfrugalpac-269x640.jpg"
         },
         {
@@ -101,7 +101,7 @@
           "price": 0.04,
           "followers": "",
           "lifespam": 0.033333,
-          "bio_time": null,
+          "bio_time": -1,
           "image_url": "https://m.media-amazon.com/images/I/816IHACLtKL._AC_UY218_.jpg"
         },
         {
@@ -127,7 +127,7 @@
           "price": 12,
           "followers": "",
           "lifespam": 2,
-          "bio_time": null,
+          "bio_time": 0.5,
           "image_url": "https://m.media-amazon.com/images/I/613nnka+ELL._AC_UL320_.jpg"
         },
         {
@@ -153,7 +153,7 @@
           "price": 0.05,
           "followers": "",
           "lifespam": 0.03,
-          "bio_time": null,
+          "bio_time": -1,
           "image_url": "https://m.media-amazon.com/images/I/61wuXfKOUIL._AC_UL320_.jpg"
         },
         {
@@ -166,7 +166,7 @@
           "price": 0.76,
           "followers": "",
           "lifespam": 360,
-          "bio_time": null,
+          "bio_time": 500,
           "image_url": "https://m.media-amazon.com/images/I/61QqLPZGONL._AC_UL320_.jpg"
         },
         {
@@ -179,7 +179,7 @@
           "price": 0.03,
           "followers": "",
           "lifespam": 0.03,
-          "bio_time": null,
+          "bio_time": -1,
           "image_url": "https://m.media-amazon.com/images/I/61S02SUFL5L._AC_UL320_.jpg"
         },
         {
@@ -192,7 +192,7 @@
           "price": 7,
           "followers": "",
           "lifespam": 360,
-          "bio_time": null,
+          "bio_time": 500,
           "image_url": "https://m.media-amazon.com/images/I/61lvcPBJINL._AC_UL320_.jpg"
         },
         {
@@ -205,7 +205,7 @@
           "price": 0.03,
           "followers": "",
           "lifespam": 0.03,
-          "bio_time": null,
+          "bio_time": 0.1666666667,
           "image_url": "https://m.media-amazon.com/images/I/81ZtoT-xI1L._AC_UL320_.jpg"
         },
         {
@@ -218,7 +218,7 @@
           "price": 7,
           "followers": "",
           "lifespam": 360,
-          "bio_time": null,
+          "bio_time": 1000000,
           "image_url": "https://m.media-amazon.com/images/I/61WQ2g3tlJL._AC_UL320_.jpg"
         },
         {
@@ -231,7 +231,7 @@
           "price": 0.5,
           "followers": "",
           "lifespam": 24,
-          "bio_time": null,
+          "bio_time": 3,
           "image_url": "https://m.media-amazon.com/images/I/81LX-AvK4XL._AC_UL320_.jpg"
         },
         {
@@ -244,7 +244,7 @@
           "price": 0.5,
           "followers": "",
           "lifespam": 0.03,
-          "bio_time": null,
+          "bio_time": -1,
           "image_url": "https://m.media-amazon.com/images/I/61ta4mZOx3L._AC_UY218_.jpg"
         },
         {
@@ -257,7 +257,7 @@
           "price": 0.77,
           "followers": "",
           "lifespam": 0.03,
-          "bio_time": null,
+          "bio_time": 0.25,
           "image_url": "https://m.media-amazon.com/images/I/71hVsRrvKKL._AC_UL320_.jpg"
         },
         {
@@ -270,7 +270,7 @@
           "price": 0.0151,
           "followers": "",
           "lifespam": 0.003,
-          "bio_time": null,
+          "bio_time": 0.08,
           "image_url": "https://m.media-amazon.com/images/I/71sLQ5t8hsL._AC_UL320_.jpg"
         },
         {
@@ -283,7 +283,7 @@
           "price": 0.58,
           "followers": "",
           "lifespam": 36,
-          "bio_time": null,
+          "bio_time": 3,
           "image_url": "https://m.media-amazon.com/images/I/719rXGWE10L._AC_UL320_.jpg"
         }
        ],

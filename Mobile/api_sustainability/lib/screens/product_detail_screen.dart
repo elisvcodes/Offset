@@ -48,10 +48,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     // final product = Provider.of<Product>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
     var data = _generateCarbonData(10);
-    final flSpotData = List.generate(
-            101, (i) => _carbonUsage * (i / _lifeTimeValue).round() / 10000)
-        .map((x) => FlSpot(x / 3, (x)))
-        .toList();
+    final flSpotData =
+        List.generate(101, (i) => _carbonUsage * (i / _lifeTimeValue).round())
+            .map((x) => FlSpot(x / 3, (x)))
+            .toList();
     final productId =
         ModalRoute.of(context).settings.arguments as String; // is the id!
     final loadedProduct = Provider.of<Products>(
@@ -122,7 +122,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 },
                 textColor: Theme.of(context).primaryColor,
               ),
-              Text("Carbon cost per unit: ${_carbonUsage}",
+              Text("Carbon cost per unit: ${_carbonUsage.toStringAsFixed(3)}",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -138,7 +138,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   });
                 },
               ),
-              Text("Estimated lifespam of the product: ${_lifeTimeValue} month",
+              Text("Lifespam: ${_lifeTimeValue.toStringAsFixed(3)} (months)",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -147,7 +147,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 value: _lifeTimeValue,
                 min: 1,
                 max: 48,
-                divisions: 48,
+                divisions: 48 * 2,
                 label: _lifeTimeValue.round().toString(),
                 onChanged: (double value) {
                   setState(() {
@@ -155,7 +155,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   });
                 },
               ),
-              Text("Estimated purchase per year: ${_estimatedPerYear} times",
+              Text(
+                  "Estimated purchase per year: ${_estimatedPerYear.toStringAsFixed(3)} times",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -173,7 +174,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   pointColor: Colors.amber,
                 ),
               ),
-              Text("Emisions Graph",
+              Text("Co2 Emissions",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -221,11 +222,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             dotData: FlDotData(show: false),
                           ),
                         ],
-                        minY: -1.5,
-                        maxY: 4,
+                        minY: 0,
+                        maxY: 90000,
                         titlesData: FlTitlesData(
                           leftTitles: SideTitles(
-                            showTitles: true,
+                            // showTitles: true,
                             getTextStyles: (value) => const TextStyle(
                                 color: Colors.blueGrey,
                                 fontWeight: FontWeight.bold,
@@ -234,7 +235,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           ),
                           rightTitles: SideTitles(showTitles: false),
                           bottomTitles: SideTitles(
-                            showTitles: true,
+                            // showTitles: true,
                             getTextStyles: (value) => const TextStyle(
                                 color: Colors.blueGrey,
                                 fontWeight: FontWeight.bold,
