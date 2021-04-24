@@ -93,6 +93,11 @@ class Products with ChangeNotifier {
     return total;
   }
 
+  double get emissionSavedPerYear {
+    return trackedCategoriesGenericsEmissionPerYear -
+        trackedTotalEmissionPerYear;
+  }
+
   List<Product> get genericItems {
     return _items.where((prodItem) => prodItem.isGeneric).toList();
   }

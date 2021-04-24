@@ -60,7 +60,11 @@ class _ProductsListCostState extends State<ProductsListCost> {
                   "${genericItem.brand} | ${genericItem.itemTags} | ${genericItem.carbon} | ${genericItem.carbonPerYear}"))
               .toList()),
       Text(
-          "Generics are ${productsData.trackedCategoriesGenericsEmissionPerYear}")
+          "Generics are ${productsData.trackedCategoriesGenericsEmissionPerYear}"),
+      productsData.emissionSavedPerYear > 0
+          ? Text(
+              "Congratulations!, The earth thanks you for saving ${productsData.emissionSavedPerYear} every year!")
+          : {},
     ]);
   }
 }
