@@ -42,11 +42,28 @@ class ProductItem extends StatelessWidget {
           leading: Consumer<Product>(
             builder: (ctx, product, _) => IconButton(
               icon: Icon(
-                product.isFavorite ? Icons.favorite : Icons.favorite_border,
+                product.isFavorite
+                    ? Icons.assignment_turned_in
+                    : Icons.assignment_turned_in_outlined,
               ),
               color: Theme.of(context).accentColor,
               onPressed: () {
                 product.toggleFavoriteStatus(authData.token, authData.userId);
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Item is being Tracked!',
+                    ),
+                    duration: Duration(seconds: 2),
+                    action: SnackBarAction(
+                      label: 'UNDO',
+                      onPressed: () {
+                        product.toggleFavoriteStatus(
+                            authData.token, authData.userId);
+                      },
+                    ),
+                  ),
+                );
               },
             ),
           ),
@@ -56,7 +73,7 @@ class ProductItem extends StatelessWidget {
           ),
           trailing: IconButton(
             icon: Icon(
-              Icons.shopping_cart,
+              Icons.info_outline,
             ),
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
@@ -64,7 +81,7 @@ class ProductItem extends StatelessWidget {
               Scaffold.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
-                    'Added item to cart!',
+                    'Item is being Tracked!',
                   ),
                   duration: Duration(seconds: 2),
                   action: SnackBarAction(
