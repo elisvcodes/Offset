@@ -21,7 +21,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
     id: null,
     title: '',
     price: 0,
-    description: '',
     imageUrl: '',
   );
   var _initValues = {
@@ -48,7 +47,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
             Provider.of<Products>(context, listen: false).findById(productId);
         _initValues = {
           'title': _editedProduct.title,
-          'description': _editedProduct.description,
           'price': _editedProduct.price.toString(),
           // 'imageUrl': _editedProduct.imageUrl,
           'imageUrl': '',
@@ -103,17 +101,17 @@ class _EditProductScreenState extends State<EditProductScreen> {
         await showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
-                title: Text('An error occurred!'),
-                content: Text('Something went wrong.'),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text('Okay'),
-                    onPressed: () {
-                      Navigator.of(ctx).pop();
-                    },
-                  )
-                ],
-              ),
+            title: Text('An error occurred!'),
+            content: Text('Something went wrong.'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Okay'),
+                onPressed: () {
+                  Navigator.of(ctx).pop();
+                },
+              )
+            ],
+          ),
         );
       }
       // finally {
@@ -169,7 +167,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         _editedProduct = Product(
                             title: value,
                             price: _editedProduct.price,
-                            description: _editedProduct.description,
                             imageUrl: _editedProduct.imageUrl,
                             id: _editedProduct.id,
                             isFavorite: _editedProduct.isFavorite);
@@ -201,7 +198,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         _editedProduct = Product(
                             title: _editedProduct.title,
                             price: double.parse(value),
-                            description: _editedProduct.description,
                             imageUrl: _editedProduct.imageUrl,
                             id: _editedProduct.id,
                             isFavorite: _editedProduct.isFavorite);
@@ -226,7 +222,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         _editedProduct = Product(
                           title: _editedProduct.title,
                           price: _editedProduct.price,
-                          description: value,
                           imageUrl: _editedProduct.imageUrl,
                           id: _editedProduct.id,
                           isFavorite: _editedProduct.isFavorite,
@@ -287,7 +282,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
                               _editedProduct = Product(
                                 title: _editedProduct.title,
                                 price: _editedProduct.price,
-                                description: _editedProduct.description,
                                 imageUrl: value,
                                 id: _editedProduct.id,
                                 isFavorite: _editedProduct.isFavorite,

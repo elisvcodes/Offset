@@ -96,7 +96,6 @@ class Products with ChangeNotifier {
         loadedProducts.add(Product(
           id: prodId,
           title: prodData['title'],
-          description: prodData['description'],
           price: prodData['price'].toDouble(),
           isFavorite:
               favoriteData == null ? false : favoriteData[prodId] ?? false,
