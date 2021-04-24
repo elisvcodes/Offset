@@ -76,7 +76,7 @@ class Products with ChangeNotifier {
     final filterString =
         filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url = Uri.parse(
-        'https://descartable-server-default-rtdb.firebaseio.com/products.json?auth=$authToken&$filterString');
+        'https://descartable-server-default-rtdb.firebaseio.com/products.json?$filterString');
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -84,7 +84,7 @@ class Products with ChangeNotifier {
         return;
       }
       url = Uri.parse(
-          'https://descartable-server-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken');
+          'https://descartable-server-default-rtdb.firebaseio.com/userFavorites/$userId.json');
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
       final List<Product> loadedProducts = [];
