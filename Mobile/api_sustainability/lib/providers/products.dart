@@ -33,9 +33,29 @@ class Products with ChangeNotifier {
   double get trackedTotalEmissionPerYear {
     var total = 0.0;
     favoriteItems.forEach((prodItem) {
-      print(
-          "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
+      // print(
+      //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
       total += prodItem.carbonPerYear;
+    });
+    return total;
+  }
+
+  double get trackedTotalEmissionPerMonth {
+    var total = 0.0;
+    favoriteItems.forEach((prodItem) {
+      // print(
+      //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
+      total += prodItem.carbonPerMonth;
+    });
+    return total;
+  }
+
+  double get trackedTotalEmissionPerDay {
+    var total = 0.0;
+    favoriteItems.forEach((prodItem) {
+      // print(
+      //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
+      total += prodItem.carbonPerDay;
     });
     return total;
   }

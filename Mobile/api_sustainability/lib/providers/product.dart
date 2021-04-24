@@ -40,7 +40,7 @@ class Product with ChangeNotifier {
   }
 
   double get carbonPerMonth {
-    return this.carbon / this.lifespam >= 0 ? 0.00001 : this.lifespam;
+    return this.carbon >= 0 ? this.carbon : 0.001 / this.lifespam;
   }
 
   double get carbonPerDay {
