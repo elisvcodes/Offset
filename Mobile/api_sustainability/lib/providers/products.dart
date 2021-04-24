@@ -118,7 +118,6 @@ class Products with ChangeNotifier {
         url,
         body: json.encode({
           'title': product.title,
-          'description': product.description,
           'imageUrl': product.imageUrl,
           'price': product.price,
           'creatorId': userId,
@@ -126,7 +125,6 @@ class Products with ChangeNotifier {
       );
       final newProduct = Product(
         title: product.title,
-        description: product.description,
         price: product.price,
         imageUrl: product.imageUrl,
         id: json.decode(response.body)['name'],
@@ -148,7 +146,6 @@ class Products with ChangeNotifier {
       await http.patch(url,
           body: json.encode({
             'title': newProduct.title,
-            'description': newProduct.description,
             'imageUrl': newProduct.imageUrl,
             'price': newProduct.price
           }));
