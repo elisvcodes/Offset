@@ -4,23 +4,42 @@ import 'package:provider/provider.dart';
 import '../providers/products.dart';
 import './product_item.dart';
 
-class ProductsListCost extends StatelessWidget {
+class ProductsListCost extends StatefulWidget {
   final bool showFavs;
-  var _totalConsumptionCosts = 0.0;
+
   ProductsListCost(this.showFavs);
+
+  @override
+  _ProductsListCostState createState() => _ProductsListCostState();
+}
+
+class _ProductsListCostState extends State<ProductsListCost> {
+  var _totalConsumptionCosts = 0.0;
 
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
-    final products = showFavs ? productsData.favoriteItems : productsData.items;
+    final products =
+        widget.showFavs ? productsData.favoriteItems : productsData.items;
+
+    void initState() {
+      setState(() {
+        _totalConsumptionCosts == _totalConsumptionCosts;
+      });
+      super.initState();
+    }
+
+// TODO: Untrack items and update the costs
+    void untracker() {}
+
     return ListView(children: <Widget>[
-      Text('Section 1 Header'),
       GridView.builder(
         shrinkWrap: true,
         padding: const EdgeInsets.all(10.0),
         itemCount: products.length,
         itemBuilder: (ctx, i) {
-          _totalConsumptionCosts += products[i].carbon;
+          print(_totalConsumptionCosts);
+
           return ChangeNotifierProvider.value(
             value: products[i],
             child: ProductItem(),
@@ -32,7 +51,8 @@ class ProductsListCost extends StatelessWidget {
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
         ),
-      )
+      ),
+      Text('Total Tracked CO2 ${_totalConsumptionCosts}'),
     ]);
   }
 }

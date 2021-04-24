@@ -58,11 +58,6 @@ class Products with ChangeNotifier {
           bioTime: prodData['bio_time'].toDouble(),
           brand: prodData['brand'],
           carbon: prodData['carbon'].toDouble(),
-          followers: int.parse(prodData['followers']),
-          isGeneric: prodData['isGeneric'].toBoolean(),
-          itemCategory: prodData['itemCategory'],
-          itemTags: prodData['itemTags'],
-          lifespam: prodData['lifespam'],
         ));
       });
       _items = loadedProducts;
