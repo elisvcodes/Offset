@@ -15,24 +15,30 @@ class Product with ChangeNotifier {
   double carbon;
   int followers;
   bool isGeneric;
+  bool isReusable;
+  bool isGreen;
+
   String itemCategory;
   String itemTags;
   double lifespam;
 
-  Product(
-      {@required this.id,
-      @required this.title,
-      @required this.price,
-      @required this.imageUrl,
-      this.isFavorite = false,
-      this.bioTime = 0,
-      this.brand = "Generic",
-      this.carbon = 0,
-      this.followers = 0,
-      this.isGeneric = false,
-      this.itemCategory = "UNDEFINED",
-      this.itemTags = "",
-      this.lifespam = 0});
+  Product({
+    @required this.id,
+    @required this.title,
+    @required this.price,
+    @required this.imageUrl,
+    this.isFavorite = false,
+    this.bioTime = 0,
+    this.brand = "Generic",
+    this.carbon = 0,
+    this.followers = 0,
+    this.isGeneric = false,
+    this.itemCategory = "UNDEFINED",
+    this.itemTags = "",
+    this.lifespam = 0,
+    this.isGreen = false,
+    this.isReusable = false,
+  });
 
   void _setFavValue(bool newValue) {
     isFavorite = newValue;

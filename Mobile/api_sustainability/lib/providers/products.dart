@@ -102,6 +102,10 @@ class Products with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isGeneric).toList();
   }
 
+  List<Product> get greenItems {
+    return _items.where((prodItem) => prodItem.isGreen).toList();
+  }
+
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
@@ -142,6 +146,8 @@ class Products with ChangeNotifier {
           followers: prodData['followers'] == "" ? 0 : prodData['followers'],
           lifespam: prodData['lifespam'].toDouble(),
           isGeneric: prodData['is_generic'],
+          isGreen: prodData['is_green'],
+          isReusable: prodData['is_reusable'],
           itemCategory: prodData['item_category'],
         ));
       });

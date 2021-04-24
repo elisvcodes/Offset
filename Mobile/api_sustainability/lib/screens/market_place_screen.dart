@@ -5,6 +5,15 @@ import '../widgets/app_drawer.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../widgets/products_grid.dart';
+import '../widgets/badge.dart';
+import '../providers/cart.dart';
+import './cart_screen.dart';
+import '../providers/products.dart';
+
 class MarketPlaceScreen extends StatefulWidget {
   // @override
   // MarketPlaceScreen();
@@ -20,6 +29,10 @@ enum FilterOptions {
 
 class MarketPlaceScreenState extends State<MarketPlaceScreen>
     with SingleTickerProviderStateMixin {
+  var _showOnlyFavorites = false;
+  var _isInit = true;
+  var _isLoading = false;
+
   TabController _tabController;
   ScrollController _scrollController;
 
@@ -35,6 +48,23 @@ class MarketPlaceScreenState extends State<MarketPlaceScreen>
     _scrollController.dispose();
     _tabController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+      Provider.of<Products>(context).fetchAndSetProducts().then((_) {
+        setState(() {
+          // print("Loading is false");
+          _isLoading = false;
+        });
+      });
+    }
+    _isInit = false;
+    super.didChangeDependencies();
   }
 
   @override
@@ -111,7 +141,13 @@ class MarketPlaceScreenState extends State<MarketPlaceScreen>
         },
         body: TabBarView(
           children: [
-            Align(child: Text("Section : 1", style: MyText.display1(context))),
+            Align(
+              child: _isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ProductsGrid(_showOnlyFavorites),
+            ),
             Align(child: Text("Section : 2", style: MyText.display1(context))),
             Align(child: Text("Section : 3", style: MyText.display1(context))),
             Align(child: Text("Section : 4", style: MyText.display1(context))),
