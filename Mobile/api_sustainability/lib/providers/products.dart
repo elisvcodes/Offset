@@ -60,6 +60,17 @@ class Products with ChangeNotifier {
     return total;
   }
 
+  List<String> get trackedCategories {
+    List<String> trackedList;
+    favoriteItems.forEach((prodItem) {
+      // print(
+      //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
+      trackedList.add(prodItem.itemCategory);
+    });
+
+    return trackedList.toList();
+  }
+
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }

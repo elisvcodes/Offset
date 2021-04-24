@@ -50,6 +50,10 @@ class _ProductsListCostState extends State<ProductsListCost> {
           "Tracked Items Total CO2 Per Year: ${_totalConsumptionCostsPerYear}," +
               "per month: ${productsData.trackedTotalEmissionPerMonth}" +
               " per day: ${productsData.trackedTotalEmissionPerDay}"),
+      Row(
+          children: productsData.trackedCategories
+              .map((item) => new Text(item))
+              .toList())
     ]);
   }
 }
