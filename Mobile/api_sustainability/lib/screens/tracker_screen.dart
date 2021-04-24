@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/app_drawer.dart';
-import '../widgets/products_grid.dart';
+// import '../widgets/products_grid.dart';
+import '../widgets/products_list_cost.dart';
 import '../widgets/badge.dart';
 import '../providers/cart.dart';
 import './cart_screen.dart';
@@ -53,7 +54,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Market Place'),
+        title: Text('Tracker'),
         actions: <Widget>[],
       ),
       drawer: AppDrawer(),
@@ -61,7 +62,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ProductsGrid(_showOnlyFavorites),
+          : ProductsListCost(_showOnlyFavorites),
     );
   }
 }
