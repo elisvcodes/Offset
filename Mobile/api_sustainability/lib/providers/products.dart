@@ -30,6 +30,16 @@ class Products with ChangeNotifier {
     return total;
   }
 
+  double get trackedTotalEmissionPerYear {
+    var total = 0.0;
+    favoriteItems.forEach((prodItem) {
+      print(
+          "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
+      total += prodItem.carbonPerYear;
+    });
+    return total;
+  }
+
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }

@@ -21,7 +21,8 @@ class _ProductsListCostState extends State<ProductsListCost> {
     final products =
         widget.showFavs ? productsData.favoriteItems : productsData.items;
 
-    var _totalConsumptionCosts = productsData.trackedEmission;
+    var _totalConsumptionCostsPerYear =
+        productsData.trackedTotalEmissionPerYear;
 // TODO: Untrack items and update the costs
     void untracker() {}
 
@@ -31,7 +32,7 @@ class _ProductsListCostState extends State<ProductsListCost> {
         padding: const EdgeInsets.all(10.0),
         itemCount: products.length,
         itemBuilder: (ctx, i) {
-          // print(_totalConsumptionCosts);
+          // print(_totalConsumptionCostsPerYear);
 
           return ChangeNotifierProvider.value(
             value: products[i],
@@ -45,7 +46,8 @@ class _ProductsListCostState extends State<ProductsListCost> {
           mainAxisSpacing: 10,
         ),
       ),
-      Text('Total Tracked CO2 ${_totalConsumptionCosts}'),
+      Text(
+          'Tracked Items Total CO2 Per Year: ${_totalConsumptionCostsPerYear}'),
     ]);
   }
 }
