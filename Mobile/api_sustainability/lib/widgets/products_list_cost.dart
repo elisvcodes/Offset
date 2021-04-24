@@ -55,9 +55,12 @@ class _ProductsListCostState extends State<ProductsListCost> {
               .map((item) => new Text(item))
               .toList()),
       Row(
-          children: productsData.trackedCategories
-              .map((item) => new Text(item))
-              .toList())
+          children: productsData.trackedCategoriesGenerics
+              .map((genericItem) => new Text(
+                  "${genericItem.brand} | ${genericItem.itemTags} | ${genericItem.carbon} | ${genericItem.carbonPerYear}"))
+              .toList()),
+      Text(
+          "Generics are ${productsData.trackedCategoriesGenericsEmissionPerYear}")
     ]);
   }
 }

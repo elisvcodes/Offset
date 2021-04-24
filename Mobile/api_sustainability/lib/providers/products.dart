@@ -83,6 +83,16 @@ class Products with ChangeNotifier {
     return trackedList;
   }
 
+  double get trackedCategoriesGenericsEmissionPerYear {
+    var total = 0.0;
+    favoriteItems.forEach((prodItem) {
+      // print(
+      //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
+      total += prodItem.carbonPerYear;
+    });
+    return total;
+  }
+
   List<Product> get genericItems {
     return _items.where((prodItem) => prodItem.isGeneric).toList();
   }
@@ -98,9 +108,9 @@ class Products with ChangeNotifier {
         'https://descartable-server-default-rtdb.firebaseio.com/items.json');
     // 'https://descartable-server-default-rtdb.firebaseio.com/products.json?auth=$authToken&$filterString');
     //
-    print("pre filter by String User  in $url");
+    // print("pre filter by String User  in $url");
     try {
-      print("Searching filter by String User  in $url");
+      // print("Searching filter by String User  in $url");
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       if (extractedData == null) {
@@ -113,7 +123,7 @@ class Products with ChangeNotifier {
       final List<Product> loadedProducts = [];
 
       extractedData.forEach((prodId, prodData) {
-        print(prodData);
+        // print(prodData);
         loadedProducts.add(Product(
           id: prodId,
           title: "${prodData['brand']} | ${prodData['item_category']}",

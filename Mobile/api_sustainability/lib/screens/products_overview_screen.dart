@@ -40,7 +40,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       });
       Provider.of<Products>(context).fetchAndSetProducts().then((_) {
         setState(() {
-          print("Loading is false");
+          // print("Loading is false");
           _isLoading = false;
         });
       });
