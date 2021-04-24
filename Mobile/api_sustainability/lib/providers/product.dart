@@ -63,7 +63,7 @@ class Product with ChangeNotifier {
     isFavorite = !isFavorite;
     notifyListeners();
     final url = Uri.parse(
-        'https://descartable-server-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json');
+        'https://descartable-server-default-rtdb.firebaseio.com/userTracking/$userId/$id.json');
     try {
       final response = await http.put(
         url,

@@ -130,7 +130,7 @@ class Products with ChangeNotifier {
         return;
       }
       url = Uri.parse(
-          'https://descartable-server-default-rtdb.firebaseio.com/userFavorites/$userId.json');
+          'https://descartable-server-default-rtdb.firebaseio.com/userTracking/$userId.json');
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
       final List<Product> loadedProducts = [];
