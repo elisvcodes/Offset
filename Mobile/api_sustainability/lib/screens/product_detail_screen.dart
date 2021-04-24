@@ -1,21 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_sparkline/flutter_sparkline.dart';
+import 'dart:math' as math;
+import 'package:fl_chart/fl_chart.dart';
 import '../providers/products.dart';
 import '../providers/product.dart';
 import '../providers/auth.dart';
 
-class ProductDetailScreen extends StatelessWidget {
-  // final String title;
-  // final double price;
+math.Random random = new math.Random();
+final double _initCarbonUsage = 100, _initLifeTimeValue = 2;
 
-  // ProductDetailScreen(this.title, this.price);
+class ProductDetailScreen extends StatefulWidget {
+  // final String title;
   static const routeName = '/product-detail';
+
+  @override
+  _ProductDetailScreenState createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  double _lifeTimeValue = _initLifeTimeValue;
+  double _carbonUsage = _initCarbonUsage;
+  double _estimatedPerYear = 1;
+
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  List<double> _generateRandomData(int count) {
+    List<double> result = <double>[];
+    for (int i = 0; i < count; i++) {
+      result.add(random.nextDouble() * 100);
+    }
+    return result;
+  }
+
+  List<double> _generateCarbonData(int count) {
+    List<double> result = <double>[];
+    for (int i = 0; i < count; i++) {
+      result.add(_carbonUsage * (i / _lifeTimeValue).round());
+    }
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
+    _estimatedPerYear = 12 / _lifeTimeValue;
     // final product = Provider.of<Product>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
+    var data = _generateCarbonData(10);
     final productId =
         ModalRoute.of(context).settings.arguments as String; // is the id!
     final loadedProduct = Provider.of<Products>(
@@ -86,31 +116,57 @@ class ProductDetailScreen extends StatelessWidget {
                 },
                 textColor: Theme.of(context).primaryColor,
               ),
-              Text("Carbon usage",
+              Text("Carbon cost per unit: ${_carbonUsage}",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                   )),
-              Text("Estimated lifespam of the product: 3 years",
+              Slider(
+                value: _carbonUsage,
+                min: 1,
+                max: _initCarbonUsage * 10,
+                label: _carbonUsage.round().toString(),
+                onChanged: (double value) {
+                  setState(() {
+                    _carbonUsage = value;
+                  });
+                },
+              ),
+              Text("Estimated lifespam of the product: ${_lifeTimeValue} month",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                   )),
-              Text("Estimated purchase per year: 2 times",
+              Slider(
+                value: _lifeTimeValue,
+                min: 1,
+                max: 48,
+                divisions: 48,
+                label: _lifeTimeValue.round().toString(),
+                onChanged: (double value) {
+                  setState(() {
+                    _lifeTimeValue = value;
+                  });
+                },
+              ),
+              Text("Estimated purchase per year: ${_estimatedPerYear} times",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                   )),
-              // Container(
-              //   padding: EdgeInsets.symmetric(horizontal: 10),
-              //   height: 1000,
-              //   width: double.infinity,
-              //   child: Text(
-              //     loadedProduct.description,
-              //     textAlign: TextAlign.center,
-              //     softWrap: true,
-              //   ),
-              // )
+              Container(
+                width: 300.0,
+                height: 100.0,
+                child: new Sparkline(
+                  data: data,
+                  lineColor: Colors.lightGreen[500],
+                  fillMode: FillMode.below,
+                  fillColor: Colors.lightGreen[200],
+                  pointsMode: PointsMode.all,
+                  pointSize: 5.0,
+                  pointColor: Colors.amber,
+                ),
+              ),
             ]),
           ),
         ],
