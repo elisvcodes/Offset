@@ -32,7 +32,7 @@ class Orders with ChangeNotifier {
 
   Future<void> fetchAndSetOrders() async {
     final url = Uri.parse(
-        'https://descartable-server-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken');
+        'https://descartable-server-default-rtdb.firebaseio.com/orders/$userId.json');
 
     final response = await http.get(url);
     final List<OrderItem> loadedOrders = [];
@@ -65,7 +65,7 @@ class Orders with ChangeNotifier {
 
   void addOrder(List<CartItem> cartProducts, double total) async {
     final url = Uri.parse(
-        'https://descartable-server-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken');
+        'https://descartable-server-default-rtdb.firebaseio.com/orders/$userId.json');
     final timestamp = DateTime.now();
     final response = await http.post(
       url,

@@ -7,7 +7,6 @@ import '../widgets/badge.dart';
 import '../providers/cart.dart';
 import './cart_screen.dart';
 import '../providers/products.dart';
-import '../screens/edit_product_screen.dart';
 
 enum FilterOptions {
   Favorites,
@@ -41,6 +40,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       });
       Provider.of<Products>(context).fetchAndSetProducts().then((_) {
         setState(() {
+          print("Loading is false");
           _isLoading = false;
         });
       });
@@ -101,11 +101,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               ),
             ],
           ),
-          IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () {
-                Navigator.of(context).pushNamed(EditProductScreen.routeName);
-              })
         ],
       ),
       drawer: AppDrawer(),

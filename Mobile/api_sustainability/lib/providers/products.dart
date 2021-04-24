@@ -76,8 +76,12 @@ class Products with ChangeNotifier {
     final filterString =
         filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url = Uri.parse(
-        'https://descartable-server-default-rtdb.firebaseio.com/products.json?$filterString');
+        'https://descartable-server-default-rtdb.firebaseio.com/products.json');
+    // 'https://descartable-server-default-rtdb.firebaseio.com/products.json?auth=$authToken&$filterString');
+    //
+    print("pre filter by String User  in $url");
     try {
+      print("Searching filter by String User  in $url");
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       if (extractedData == null) {
@@ -93,7 +97,7 @@ class Products with ChangeNotifier {
           id: prodId,
           title: prodData['title'],
           description: prodData['description'],
-          price: prodData['price'],
+          price: prodData['price'].toDouble(),
           isFavorite:
               favoriteData == null ? false : favoriteData[prodId] ?? false,
           imageUrl: prodData['imageUrl'],
@@ -102,13 +106,14 @@ class Products with ChangeNotifier {
       _items = loadedProducts;
       notifyListeners();
     } catch (error) {
+      print("error");
       throw (error);
     }
   }
 
   Future<void> addProduct(Product product) async {
     final url = Uri.parse(
-        'https://descartable-server-default-rtdb.firebaseio.com/products.json?auth=$authToken');
+        'https://descartable-server-default-rtdb.firebaseio.com/products.json');
     try {
       final response = await http.post(
         url,
@@ -140,7 +145,7 @@ class Products with ChangeNotifier {
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
     if (prodIndex >= 0) {
       final url = Uri.parse(
-          'https://descartable-server-default-rtdb.firebaseio.comproducts/$id.json?auth=$authToken');
+          'https://descartable-server-default-rtdb.firebaseio.comproducts/$id.json');
       await http.patch(url,
           body: json.encode({
             'title': newProduct.title,
@@ -157,7 +162,7 @@ class Products with ChangeNotifier {
 
   Future<void> deleteProduct(String id) async {
     final url = Uri.parse(
-        'https://descartable-server-default-rtdb.firebaseio.com/products/$id.json?auth=$authToken');
+        'https://descartable-server-default-rtdb.firebaseio.com/products/$id.json');
     final existingProductIndex = _items.indexWhere((prod) => prod.id == id);
     var existingProduct = _items[existingProductIndex];
     _items.removeAt(existingProductIndex);

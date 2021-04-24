@@ -68,6 +68,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             expandedHeight: 300,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
+              title: Text(loadedProduct.title),
               background: Hero(
                 tag: loadedProduct.id,
                 child: Image.network(
