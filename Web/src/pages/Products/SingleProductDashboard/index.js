@@ -5,7 +5,7 @@ import SingleProduct from '../SingleProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
-
+import { Link } from 'react-router-dom';
 export default function SingleProductDashboard(props) {
   let id = props.match.params.id;
   const dispatch = useDispatch();
@@ -45,12 +45,12 @@ export default function SingleProductDashboard(props) {
         backgroundColor: 'rgb(255, 99, 132)',
       },
       {
-        label: 'Longevity',
+        label: 'Longevity (Months)',
         data: itemLifespan,
         backgroundColor: 'rgb(54, 162, 235)',
       },
       {
-        label: 'Carbon Release',
+        label: 'Carbon Release (Grams)',
         data: carbonReleased,
         backgroundColor: 'rgb(75, 192, 192)',
       },
@@ -72,6 +72,8 @@ export default function SingleProductDashboard(props) {
     <>
       <Layout>
         <Container className="mt-5">
+          <Link to={`/products`}> Go Back</Link>
+
           <Row>
             <Col sm={4} className="mr-5">
               {Object.keys(product).length > 0 ? (

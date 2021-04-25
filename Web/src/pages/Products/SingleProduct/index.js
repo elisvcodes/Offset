@@ -33,7 +33,11 @@ export default function SingleProduct({ product }) {
           <p>
             <GiLifeBar /> {`Life Span ~ ${product.lifespam} Months`}
           </p>
-          <Button text="Buy" /> <Button text="Track" />
+          {/* product.product_link */}
+          <Nav.Link bsPrefix href={product.product_link} target="_blank">
+            <Button text="Buy" />{' '}
+          </Nav.Link>{' '}
+          <Button text="Save" />
         </Card.Body>
       </Card>
     </>
