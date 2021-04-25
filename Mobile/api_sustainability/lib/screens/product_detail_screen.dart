@@ -15,6 +15,8 @@ import 'package:api_sustainability/data/my_colors.dart';
 import 'package:api_sustainability/models/shop_category.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
+import 'package:api_sustainability/widgets/badge.dart';
+
 math.Random random = new math.Random();
 final double _initCarbonUsage = 100, _initLifeTimeValue = 2;
 
@@ -81,10 +83,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            iconTheme: IconThemeData(
+              color: Theme.of(context).primaryColor,
+              size: 90,
+            ),
             expandedHeight: 300,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(loadedProduct.title),
               background: Hero(
                 tag: loadedProduct.id,
                 child: Image.network(

@@ -2,6 +2,8 @@ import 'package:api_sustainability/screens/tracker_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // import 'package:shop/helpers/custom_route.dart';
+//
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../screens/orders_screen.dart';
 import '../screens/user_products_screen.dart';
@@ -20,16 +22,15 @@ class AppDrawer extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.shop),
-            title: Text('Market'),
+            leading: Icon(MdiIcons.storefront),
+            title: Text('Marketplace'),
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
-          Divider(),
           ListTile(
-            leading: Icon(Icons.payment),
+            leading: Icon(Icons.assignment_turned_in),
             title: Text('Tracker'),
             onTap: () {
               // Navigator.of(context)
