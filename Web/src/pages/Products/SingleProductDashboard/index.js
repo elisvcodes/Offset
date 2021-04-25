@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Layout from '../../../components/Layout';
+import Layout from '../../components/Layout/index';
 import { getSingleProduct, getProducts } from '../../../_Actions/products';
 import SingleProduct from '../SingleProduct';
 import { useDispatch, useSelector } from 'react-redux';
