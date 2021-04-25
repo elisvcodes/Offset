@@ -57,8 +57,10 @@ class Product with ChangeNotifier {
     return carbonPerMonth * 12;
   }
 
-  double get categoriesAsList {
-    final split = this.itemCategory.split(',');
+  List<String> get categoriesAsList {
+    List<String> myList = this.itemTags.split(',').toList();
+    print(myList);
+    return myList;
   }
 
 // optimistic approach

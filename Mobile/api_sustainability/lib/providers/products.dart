@@ -157,23 +157,23 @@ class Products with ChangeNotifier {
       extractedData.forEach((prodId, prodData) {
         // print(prodData);
         loadedProducts.add(Product(
-          id: prodId,
-          // title: "${prodData['brand']} | ${prodData['item_category']}",
-          title: prodData['title'],
-          price: prodData['price'].toDouble(),
-          isFavorite:
-              favoriteData == null ? false : favoriteData[prodId] ?? false,
-          imageUrl: prodData['image_url'],
-          bioTime: prodData['bio_time'].toDouble(),
-          brand: prodData['brand'],
-          carbon: prodData['carbon'].toDouble(),
-          followers: prodData['followers'] == "" ? 0 : prodData['followers'],
-          lifespam: prodData['lifespam'].toDouble(),
-          isGeneric: prodData['is_generic'],
-          isGreen: prodData['is_green'],
-          isReusable: prodData['is_reusable'],
-          itemCategory: prodData['item_category'],
-        ));
+            id: prodId,
+            // title: "${prodData['brand']} | ${prodData['item_category']}",
+            title: prodData['title'],
+            price: prodData['price'].toDouble(),
+            isFavorite:
+                favoriteData == null ? false : favoriteData[prodId] ?? false,
+            imageUrl: prodData['image_url'],
+            bioTime: prodData['bio_time'].toDouble(),
+            brand: prodData['brand'],
+            carbon: prodData['carbon'].toDouble(),
+            followers: prodData['followers'] == "" ? 0 : prodData['followers'],
+            lifespam: prodData['lifespam'].toDouble(),
+            isGeneric: prodData['is_generic'],
+            isGreen: prodData['is_green'],
+            isReusable: prodData['is_reusable'],
+            itemCategory: prodData['item_category'],
+            itemTags: prodData["item_tags"]));
       });
       _items = loadedProducts;
       notifyListeners();

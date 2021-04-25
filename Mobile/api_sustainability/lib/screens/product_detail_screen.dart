@@ -160,6 +160,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           label: Text(loadedProduct.itemCategory),
           backgroundColor: Colors.amber[50],
         ));
+
+        // IS THING
+
+        loadedProduct.categoriesAsList.forEach((category) {
+          categoryTags.add(Chip(
+            label: Text(category),
+          ));
+        });
       });
     }
 
@@ -283,6 +291,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       child: Wrap(
                         spacing: 10,
                         children: isTags,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: Wrap(
+                        spacing: 10,
+                        children: categoryTags,
                       ),
                     ),
                   ],
