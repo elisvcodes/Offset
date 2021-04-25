@@ -32,7 +32,8 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  static var chartDisplay;
+  static var chartDisplayEmissions;
+  static var chartDisplayLifeSpan;
 
   // void initState() {
   //   updateGraph();
@@ -64,7 +65,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   var isProductLoaded = false;
   @override
   Widget build(BuildContext context) {
-    _estimatedPerYear = 12 / _lifeTimeValue;
+    _estimatedPerYear = 12 * _carbonUsage / _lifeTimeValue;
     // final product = Provider.of<Product>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
     final productsData = Provider.of<Products>(context);
@@ -81,31 +82,54 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     ).findById(productId);
 
     void updateGraph() {
-      List<addcharts> chartsCarbonoData = [];
+      List<addcharts> chartsEmissionsData = [];
+
+      List<addcharts> chartsLifeSpanData = [];
       productsData.getAlternatives(loadedProduct).toList().forEach((prod) {
         // print("added ${prod.title} ca: ${prod.carbon}");
-        chartsCarbonoData.add(addcharts(prod.title, prod.carbon.toInt()));
+        chartsEmissionsData.add(addcharts(prod.title, prod.carbon.toInt()));
+
+        chartsLifeSpanData.add(addcharts(prod.title, prod.lifespam.toInt()));
         // print("added ${prod.title} ca: ${prod.carbon}");
         // alternatives.add(prod);
       });
 
-      chartsCarbonoData
+      chartsEmissionsData
           .add(addcharts(loadedProduct.title, _carbonUsage.toInt()));
+      chartsLifeSpanData
+          .add(addcharts(loadedProduct.title, _lifeTimeValue.toInt()));
 
       // Now also add the normal one here depending on the current carbon usage indicated
-      print("Update Graph");
+      // print("Update Graph");
       setState(() {
-        var series = [
+        var seriesEmissions = [
           charts.Series(
             domainFn: (addcharts addcharts, _) => addcharts.label,
             measureFn: (addcharts addcharts, _) => addcharts.value,
+            colorFn: (_, __) => charts.MaterialPalette.gray.shadeDefault,
             id: 'addcharts',
-            data: chartsCarbonoData,
+            data: chartsEmissionsData,
           )
         ];
 
-        chartDisplay = charts.BarChart(
-          series,
+        chartDisplayEmissions = charts.BarChart(
+          seriesEmissions,
+          // animationDuration: Duration(microseconds: 5000),
+          animate: false,
+        );
+
+        var seriesLifeSpan = [
+          charts.Series(
+            domainFn: (addcharts addcharts, _) => addcharts.label,
+            measureFn: (addcharts addcharts, _) => addcharts.value,
+            colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
+            id: 'addcharts',
+            data: chartsLifeSpanData,
+          )
+        ];
+
+        chartDisplayLifeSpan = charts.BarChart(
+          seriesLifeSpan,
           // animationDuration: Duration(microseconds: 5000),
           animate: false,
         );
@@ -222,14 +246,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
-                    "Carbon cost per unit: ${_carbonUsage.toStringAsFixed(3)}",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                    )),
+                    "Carbon cost (unit) ${_carbonUsage.toStringAsFixed(3)}",
+                    style: MyText.body2(context)),
               ),
               Slider(
                 value: _carbonUsage,
+                activeColor: Colors.grey,
+                inactiveColor: Colors.grey[300],
                 min: 0.001 > _carbonUsage ? _carbonUsage * 0.1 : 0.01,
                 max: _initCarbonUsage * 10 < _carbonUsage
                     ? _carbonUsage * 2
@@ -265,7 +288,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
-                    "Estimated co2 emmited per year: ${_estimatedPerYear.toStringAsFixed(3)}",
+                    "Estimated CO2 emission by using this product (year) : ${_estimatedPerYear.toStringAsFixed(3)}",
                     style: MyText.body2(context)),
               ),
               Padding(
@@ -275,12 +298,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   height: 100.0,
                   child: new Sparkline(
                     data: data,
-                    lineColor: Colors.lightGreen[500],
+                    lineColor: Colors.grey[500],
                     fillMode: FillMode.below,
-                    fillColor: Colors.lightGreen[200],
+                    fillColor: Colors.grey[200],
                     pointsMode: PointsMode.all,
                     pointSize: 5.0,
-                    pointColor: Colors.amber,
+                    pointColor: Colors.grey,
                   ),
                 ),
               ),
@@ -288,16 +311,30 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
-                  "Co 2 Emissions Every Year",
+                  "Co2 Emissions (year)",
                   style: MyText.body2(context),
-                  textAlign: TextAlign.center,
                 ),
               ),
               Padding(
                 padding: marginLeftOnly,
                 child: SizedBox(
                   height: 150,
-                  child: chartDisplay,
+                  child: chartDisplayEmissions,
+                ),
+              ),
+              VerticalSpace(height: 40),
+              Padding(
+                padding: marginLeftOnly,
+                child: Text(
+                  "Products life span (Month)",
+                  style: MyText.body2(context),
+                ),
+              ),
+              Padding(
+                padding: marginLeftOnly,
+                child: SizedBox(
+                  height: 150,
+                  child: chartDisplayLifeSpan,
                 ),
               ),
               Padding(
