@@ -1,23 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:api_sustainability/data/img.dart';
+
 import 'package:api_sustainability/data/my_colors.dart';
-import 'package:api_sustainability/data/my_strings.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
 import '../widgets/app_drawer.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:provider/provider.dart';
-
-import '../widgets/products_grid.dart';
 import '../providers/products.dart';
 
 import '../providers/auth.dart';
 
 import '../providers/meta.dart';
 
-import '../data/rank.dart';
+import '../data/achievements.dart';
 
 import '../widgets/dialog.dart';
 
@@ -110,9 +106,11 @@ class ProfileScreenState extends State<ProfileScreen> {
                           showDialog(
                               context: context,
                               builder: (_) => AccomplishmentDialog(
-                                    title: "Title",
-                                    description: "Description",
-                                    condition: 'Condition',
+                                    title: achievements[0]["title"].toString(),
+                                    description: achievements[0]["description"]
+                                        .toString(),
+                                    condition:
+                                        achievements[0]["condition"].toString(),
                                   ));
                         },
                       ),

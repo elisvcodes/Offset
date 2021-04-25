@@ -1,44 +1,52 @@
-const achievements = {
-  "ID2": {
-    "0": 10,
-    "First Place!": "Getting Started",
-    "You are ranking First Place between your friends, congrats!.. I mean is not that your friends are using this app anyways xd":
-        "Starting your journey in a greener life!",
-    "Rank #1 between your friends": "Save a total of (grams of carbon) 10"
+const achievements = [
+  {
+    "FIELD1": "ID1",
+    "title": "First Place!",
+    "description":
+        "You are ranking First Place between your friends, congrats!.. I mean is not that your friends are using this app anyways xd",
+    "condition": "Rank #1 between your friends",
+    "carbon": 0
   },
-  "ID3": {
-    "0": 20,
-    "First Place!": "Learning!",
-    "You are ranking First Place between your friends, congrats!.. I mean is not that your friends are using this app anyways xd":
-        "Learning the steps towards a greener life!",
-    "Rank #1 between your friends": "Save a total of (grams of carbon) 11"
+  {
+    "FIELD1": "ID2",
+    "title": "Getting Started",
+    "description": "Starting your journey in a greener life!",
+    "condition": "Save a total of (grams of carbon) 10",
+    "carbon": 10
   },
-  "ID4": {
-    "0": 30,
-    "First Place!": "Repeating the basics!",
-    "You are ranking First Place between your friends, congrats!.. I mean is not that your friends are using this app anyways xd":
-        "Repeat and master ",
-    "Rank #1 between your friends": "Save a total of (grams of carbon) 12"
+  {
+    "FIELD1": "ID3",
+    "title": "Learning!",
+    "description": "Learning the steps towards a greener life!",
+    "condition": "Save a total of (grams of carbon) 11",
+    "carbon": 20
   },
-  "ID5": {
-    "0": 40,
-    "First Place!": "Greener Life",
-    "You are ranking First Place between your friends, congrats!.. I mean is not that your friends are using this app anyways xd":
-        "The start of a better life",
-    "Rank #1 between your friends": "Save a total of (grams of carbon) 13"
+  {
+    "FIELD1": "ID4",
+    "title": "Repeating the basics!",
+    "description": "Repeat and master ",
+    "condition": "Save a total of (grams of carbon) 12",
+    "carbon": 30
   },
-  "ID6": {
-    "0": 50,
-    "First Place!": "Here you go",
-    "You are ranking First Place between your friends, congrats!.. I mean is not that your friends are using this app anyways xd":
-        "Better choices! Good job",
-    "Rank #1 between your friends": "Save a total of (grams of carbon) 14"
+  {
+    "FIELD1": "ID5",
+    "title": "Greener Life",
+    "description": "The start of a better life",
+    "condition": "Save a total of (grams of carbon) 13",
+    "carbon": 40
   },
-  "ID7": {
-    "0": 60,
-    "First Place!": "Master of Greener Life",
-    "You are ranking First Place between your friends, congrats!.. I mean is not that your friends are using this app anyways xd":
-        "You are probably in the 99% percentile!",
-    "Rank #1 between your friends": "Save a total of (grams of carbon) 15"
+  {
+    "FIELD1": "ID6",
+    "title": "Here you go",
+    "description": "Better choices! Good job",
+    "condition": "Save a total of (grams of carbon) 14",
+    "carbon": 50
+  },
+  {
+    "FIELD1": "ID7",
+    "title": "Master of Greener Life",
+    "description": "You are probably in the 99% percentile!",
+    "condition": "Save a total of (grams of carbon) 15",
+    "carbon": 60
   }
-};
+];

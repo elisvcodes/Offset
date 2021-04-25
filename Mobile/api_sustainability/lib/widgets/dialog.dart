@@ -50,7 +50,7 @@ class AccomplishmentDialogState extends State<AccomplishmentDialog> {
                     Text("${widget.description}",
                         textAlign: TextAlign.center,
                         style: MyText.subhead(context)
-                            .copyWith(color: MyColors.grey_40)),
+                            .copyWith(color: Colors.black87)),
                     Container(height: 10),
                     Text("${widget.condition}",
                         textAlign: TextAlign.center,
