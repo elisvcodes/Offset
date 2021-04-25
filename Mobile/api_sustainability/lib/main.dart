@@ -8,8 +8,8 @@ import './providers/auth.dart';
 
 import './helpers/custom_route.dart';
 
-import './screens/user_products_screen.dart';
-import './screens/edit_product_screen.dart';
+import 'screens/admin_screen.dart';
+import 'screens/edit_item_screen.dart';
 import './screens/splash_screen.dart';
 import './screens/auth_screen.dart';
 import './screens/tracker_screen.dart';

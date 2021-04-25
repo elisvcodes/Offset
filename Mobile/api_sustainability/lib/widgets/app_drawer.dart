@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../screens/user_products_screen.dart';
+import '../screens/admin_screen.dart';
 import '../providers/auth.dart';
 
 class AppDrawer extends StatelessWidget {

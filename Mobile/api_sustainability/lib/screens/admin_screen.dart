@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../providers/products.dart';
 import '../widgets/admin_item.dart';
 import '../widgets/app_drawer.dart';
-import './edit_product_screen.dart';
+import 'edit_item_screen.dart';
 
 class UserProductsScreen extends StatelessWidget {
   static const routeName = '/user-products';
