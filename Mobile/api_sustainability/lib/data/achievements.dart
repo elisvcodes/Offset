@@ -19,34 +19,34 @@ const achievements = [
     "title": "Learning!",
     "description": "Learning the steps towards a greener life!",
     "condition": "Save a total of (grams of carbon) 11",
-    "carbon": 20
+    "carbon": 100
   },
   {
     "FIELD1": "ID4",
     "title": "Repeating the basics!",
     "description": "Repeat and master ",
     "condition": "Save a total of (grams of carbon) 12",
-    "carbon": 30
+    "carbon": 150
   },
   {
     "FIELD1": "ID5",
     "title": "Greener Life",
     "description": "The start of a better life",
     "condition": "Save a total of (grams of carbon) 13",
-    "carbon": 40
+    "carbon": 200
   },
   {
     "FIELD1": "ID6",
     "title": "Here you go",
     "description": "Better choices! Good job",
     "condition": "Save a total of (grams of carbon) 14",
-    "carbon": 50
+    "carbon": 250
   },
   {
     "FIELD1": "ID7",
     "title": "Master of Greener Life",
     "description": "You are probably in the 99% percentile!",
     "condition": "Save a total of (grams of carbon) 15",
-    "carbon": 60
+    "carbon": 300
   }
 ];

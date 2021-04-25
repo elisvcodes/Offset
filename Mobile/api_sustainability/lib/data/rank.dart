@@ -129,6 +129,6 @@ const rankData = [
     "FIELD1": "ID22",
     "name": "Protector of Earth",
     "file": "https://wngnelson.com/api/images/mature_tree.PNG",
-    "carbon": 1050
+    "carbon": 9999999999999999
   }
 ];
