@@ -89,41 +89,44 @@ class ProfileScreenState extends State<ProfileScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Container(width: 20, height: 90),
-                      AwardIcon(
-                        index: 0,
-                        totalSaved: _totalSaved,
-                      ),
-                      AwardIcon(
-                        index: 1,
-                        totalSaved: _totalSaved,
-                      ),
-                      AwardIcon(
-                        index: 2,
-                        totalSaved: _totalSaved,
-                      ),
-                      AwardIcon(
-                        index: 3,
-                        totalSaved: _totalSaved,
-                      ),
-                      AwardIcon(
-                        index: 4,
-                        totalSaved: _totalSaved,
-                      ),
-                      AwardIcon(
-                        index: 5,
-                        totalSaved: _totalSaved,
-                      ),
-                      AwardIcon(
-                        index: 6,
-                        totalSaved: _totalSaved,
-                      ),
-                    ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Container(width: 20, height: 90),
+                        AwardIcon(
+                          index: 0,
+                          totalSaved: _totalSaved,
+                        ),
+                        AwardIcon(
+                          index: 1,
+                          totalSaved: _totalSaved,
+                        ),
+                        AwardIcon(
+                          index: 2,
+                          totalSaved: _totalSaved,
+                        ),
+                        AwardIcon(
+                          index: 3,
+                          totalSaved: _totalSaved,
+                        ),
+                        AwardIcon(
+                          index: 4,
+                          totalSaved: _totalSaved,
+                        ),
+                        AwardIcon(
+                          index: 5,
+                          totalSaved: _totalSaved,
+                        ),
+                        AwardIcon(
+                          index: 6,
+                          totalSaved: _totalSaved,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
