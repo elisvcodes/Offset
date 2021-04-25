@@ -38,43 +38,37 @@ class ProductItem extends StatelessWidget {
           ),
         ),
         footer: GridTileBar(
-          backgroundColor: Colors.white70,
-          trailing: Consumer<Product>(
-            builder: (ctx, product, _) => Container(
-              color: Colors.white70,
-              child: IconButton(
-                icon: Icon(
-                  product.isFavorite
-                      ? Icons.assignment_turned_in
-                      : Icons.assignment_turned_in_outlined,
-                ),
-                color: Theme.of(context).accentColor,
-                onPressed: () {
-                  product.toggleFavoriteStatus(authData.token, authData.userId);
-                  Scaffold.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        'Item is being Tracked!',
-                      ),
-                      duration: Duration(seconds: 2),
-                      action: SnackBarAction(
-                        label: 'UNDO',
-                        onPressed: () {
-                          product.toggleFavoriteStatus(
-                              authData.token, authData.userId);
-                        },
-                      ),
-                    ),
-                  );
-                },
+          backgroundColor: Colors.black45,
+          leading: Consumer<Product>(
+            builder: (ctx, product, _) => IconButton(
+              icon: Icon(
+                product.isFavorite
+                    ? Icons.assignment_turned_in
+                    : Icons.assignment_turned_in_outlined,
               ),
+              color: Theme.of(context).accentColor,
+              onPressed: () {
+                product.toggleFavoriteStatus(authData.token, authData.userId);
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Item is being Tracked!',
+                    ),
+                    duration: Duration(seconds: 2),
+                    action: SnackBarAction(
+                      label: 'UNDO',
+                      onPressed: () {
+                        product.toggleFavoriteStatus(
+                            authData.token, authData.userId);
+                      },
+                    ),
+                  ),
+                );
+              },
             ),
           ),
           title: Text(
             product.title,
-            style: TextStyle(
-              color: Colors.black,
-            ),
             textAlign: TextAlign.center,
           ),
         ),
