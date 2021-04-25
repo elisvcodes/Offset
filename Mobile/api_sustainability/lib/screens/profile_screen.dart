@@ -14,6 +14,9 @@ import '../widgets/products_grid.dart';
 import '../providers/products.dart';
 
 import '../providers/auth.dart';
+
+import '../providers/meta.dart';
+
 import '../data/rank.dart';
 
 int dayCount = 0;
@@ -33,9 +36,9 @@ class ProfileScreenState extends State<ProfileScreen> {
     final authData = Provider.of<Auth>(context, listen: false);
     final productsData = Provider.of<Products>(context);
 
+    final metaData = Provider.of<Meta>(context);
     var _savedPerDay = productsData.emissionSavedPerDay;
-
-    var _totalSaved = _savedPerDay * dayCount;
+    var _totalSaved = metaData.totalCarbonSaved;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -53,7 +56,8 @@ class ProfileScreenState extends State<ProfileScreen> {
         ),
         onPressed: () {
           setState(() {
-            dayCount++;
+            metaData.addDay(_savedPerDay);
+            // dayCount++;
           });
         },
       ),
@@ -61,10 +65,10 @@ class ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           children: <Widget>[
             Container(height: 35),
-            Text("Rank ##",
+            Text("${metaData.rank}",
                 style: MyText.title(context).copyWith(color: MyColors.grey_90)),
             Container(height: 5),
-            Text("< Demo User >",
+            Text("< ${metaData.name} >",
                 style: MyText.body1(context).copyWith(color: MyColors.grey_60)),
             Container(height: 15),
             CircleAvatar(
@@ -72,14 +76,14 @@ class ProfileScreenState extends State<ProfileScreen> {
               backgroundColor: Theme.of(context).accentColor,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage(Img.get("photo_male_7.jpg")),
+                backgroundImage: NetworkImage(metaData.rankFile),
               ),
             ),
             Container(
               width: double.infinity,
               margin: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
             ),
-            Text("Achievement",
+            Text("Achievements",
                 style: MyText.subhead(context).copyWith(
                     color: MyColors.grey_90, fontWeight: FontWeight.bold)),
             Column(
@@ -93,7 +97,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                       Container(width: 20, height: 90),
                       FloatingActionButton(
                         heroTag: "fab1",
-                        backgroundColor: MyColors.primary,
+                        backgroundColor: Theme.of(context).accentColor,
                         elevation: 3,
                         child: Icon(
                           Icons.accessibility,
@@ -103,19 +107,19 @@ class ProfileScreenState extends State<ProfileScreen> {
                           print('Clicked');
                         },
                       ),
-                      Container(width: 20, height: 0),
+                      Container(width: 20, height: 90),
                       FloatingActionButton(
-                        heroTag: "fab2",
-                        backgroundColor: MyColors.primary,
+                        heroTag: "fab1",
+                        backgroundColor: false
+                            ? Theme.of(context).primaryColor
+                            : Colors.grey,
                         elevation: 3,
                         child: Icon(
-                          Icons.face,
+                          Icons.accessibility,
                           color: Colors.white,
                         ),
-                        onPressed: () {
-                          print('Clicked');
-                        },
-                      ),
+                        onPressed: null,
+                      )
                     ],
                   ),
                 ),
@@ -140,14 +144,15 @@ class ProfileScreenState extends State<ProfileScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("$_totalSaved grams of CO2 saved in total",
+                            Text(
+                                "${_totalSaved.toStringAsFixed(3)} grams of CO2 saved in total",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
                             Text(
                                 "${_savedPerDay.toStringAsFixed(3)} grams of CO2 saved per day",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
-                            Text("$dayCount days in the app",
+                            Text("${metaData.dayCount} days in the app",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
                           ],

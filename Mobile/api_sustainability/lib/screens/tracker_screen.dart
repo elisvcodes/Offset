@@ -5,6 +5,8 @@ import '../widgets/app_drawer.dart';
 import '../widgets/products_list_cost.dart';
 import '../providers/products.dart';
 
+import '../providers/meta.dart';
+
 enum FilterOptions {
   Favorites,
   All,
@@ -32,6 +34,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
       setState(() {
         _isLoading = true;
       });
+
       Provider.of<Products>(context).fetchAndSetProducts().then((_) {
         setState(() {
           _isLoading = false;

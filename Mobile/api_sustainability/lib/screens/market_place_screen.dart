@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../widgets/products_grid.dart';
 import '../providers/products.dart';
+import '../providers/meta.dart';
 
 class MarketPlaceScreen extends StatefulWidget {
   @override

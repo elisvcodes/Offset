@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import './screens/product_detail_screen.dart';
 import './providers/products.dart';
 import './providers/cart.dart';
+import './providers/meta.dart';
 
 import './providers/auth.dart';
 
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
             ),
           ),
           ChangeNotifierProvider.value(
-            value: Cart(),
+            // value: Cart(),
+            value: Meta(name: "Demo User", dayCount: 1),
           ),
         ],
         child: Consumer<Auth>(
