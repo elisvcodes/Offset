@@ -190,6 +190,7 @@ class Products with ChangeNotifier {
             isGeneric: prodData['is_generic'],
             isGreen: prodData['is_green'],
             isReusable: prodData['is_reusable'],
+            description: prodData['description'],
             itemCategory: prodData['item_category'],
             itemTags: prodData["item_tags"]));
       });

@@ -21,6 +21,7 @@ class Product with ChangeNotifier {
   String itemCategory;
   String itemTags;
   double lifespam;
+  String description;
 
   Product({
     @required this.id,
@@ -38,6 +39,7 @@ class Product with ChangeNotifier {
     this.lifespam = 0,
     this.isGreen = false,
     this.isReusable = false,
+    this.description = "",
   });
 
   void _setFavValue(bool newValue) {

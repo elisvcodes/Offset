@@ -49,6 +49,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
           'title': _editedProduct.title,
           'price': _editedProduct.price.toString(),
           // 'imageUrl': _editedProduct.imageUrl,
+          'description': _editedProduct.description,
           'imageUrl': '',
         };
         _imageUrlController.text = _editedProduct.imageUrl;
