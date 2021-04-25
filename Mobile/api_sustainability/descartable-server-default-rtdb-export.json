@@ -1,0 +1,212 @@
+{
+  "orders" : {
+    "-MY3FQVh4t_Vg1_dr3oM" : {
+      "amount" : 144.0,
+      "dateTime" : "2021-04-12T00:05:43.823913",
+      "products" : [ {
+        "id" : "2021-04-12 00:05:40.732216",
+        "price" : 99.0,
+        "quantity" : 1,
+        "title" : "Test Product Red"
+      }, {
+        "id" : "2021-04-12 00:05:41.446919",
+        "price" : 22.0,
+        "quantity" : 1,
+        "title" : "blue bottle 3 "
+      }, {
+        "id" : "2021-04-12 00:05:42.214477",
+        "price" : 23.0,
+        "quantity" : 1,
+        "title" : "test"
+      } ]
+    },
+    "-MY3KgF_KXe2o2n43fVf" : {
+      "amount" : 121.0,
+      "dateTime" : "2021-04-12T00:28:43.108319",
+      "products" : [ {
+        "id" : "2021-04-12 00:28:40.729722",
+        "price" : 99.0,
+        "quantity" : 1,
+        "title" : "Test Product Red"
+      }, {
+        "id" : "2021-04-12 00:28:41.516481",
+        "price" : 22.0,
+        "quantity" : 1,
+        "title" : "blue bottle 3 "
+      } ]
+    },
+    "-MY3LLCBsK1O4YKLP1kk" : {
+      "amount" : 45.0,
+      "dateTime" : "2021-04-12T00:31:34.601560",
+      "products" : [ {
+        "id" : "2021-04-12 00:31:32.507732",
+        "price" : 22.0,
+        "quantity" : 1,
+        "title" : "blue bottle 3 "
+      }, {
+        "id" : "2021-04-12 00:31:33.002645",
+        "price" : 23.0,
+        "quantity" : 1,
+        "title" : "test"
+      } ]
+    },
+    "-MY3LSyhSOJ839RP-SgP" : {
+      "amount" : 45.0,
+      "dateTime" : "2021-04-12T00:32:06.777735",
+      "products" : [ {
+        "id" : "2021-04-12 00:32:04.634447",
+        "price" : 22.0,
+        "quantity" : 1,
+        "title" : "blue bottle 3 "
+      }, {
+        "id" : "2021-04-12 00:32:05.251060",
+        "price" : 23.0,
+        "quantity" : 1,
+        "title" : "test"
+      } ]
+    },
+    "-MY3LbKJftVoKrEsD6JW" : {
+      "amount" : 121.0,
+      "dateTime" : "2021-04-12T00:32:45.114225",
+      "products" : [ {
+        "id" : "2021-04-12 00:32:41.914020",
+        "price" : 99.0,
+        "quantity" : 1,
+        "title" : "Test Product Red"
+      }, {
+        "id" : "2021-04-12 00:32:42.722537",
+        "price" : 22.0,
+        "quantity" : 1,
+        "title" : "blue bottle 3 "
+      } ]
+    },
+    "-MY3P1gMQr-2ofOREu1J" : {
+      "amount" : 145.0,
+      "dateTime" : "2021-04-12T00:47:43.596057",
+      "products" : [ {
+        "id" : "2021-04-12 00:47:39.628794",
+        "price" : 23.0,
+        "quantity" : 1,
+        "title" : "Test"
+      }, {
+        "id" : "2021-04-12 00:47:40.156038",
+        "price" : 99.0,
+        "quantity" : 1,
+        "title" : "Test Product Red"
+      }, {
+        "id" : "2021-04-12 00:47:40.772216",
+        "price" : 23.0,
+        "quantity" : 1,
+        "title" : "test cute "
+      } ]
+    },
+    "-MYXuAGym3S13NozwrYj" : {
+      "amount" : 45.0,
+      "dateTime" : "2021-04-17T22:56:43.146926",
+      "products" : [ {
+        "id" : "2021-04-17 22:56:40.489534",
+        "price" : 22.0,
+        "quantity" : 1,
+        "title" : "blue bottle 3 "
+      }, {
+        "id" : "2021-04-17 22:56:41.407179",
+        "price" : 23.0,
+        "quantity" : 1,
+        "title" : "test"
+      } ]
+    },
+    "nkXHP6MotWZ8JV3z9KqlABZzcZ23" : {
+      "-MYYwSnl67ZYc3Rx9i2K" : {
+        "amount" : 56.99,
+        "dateTime" : "2021-04-18T03:46:20.562296",
+        "products" : [ {
+          "id" : "2021-04-18 03:46:13.471739",
+          "price" : 22.0,
+          "quantity" : 1,
+          "title" : "blue bottle 3 "
+        }, {
+          "id" : "2021-04-18 03:46:14.130616",
+          "price" : 23.0,
+          "quantity" : 1,
+          "title" : "test"
+        }, {
+          "id" : "2021-04-18 03:46:14.890415",
+          "price" : 11.99,
+          "quantity" : 1,
+          "title" : "Book Some Book"
+        } ]
+      },
+      "-MYqLWEjg8UJeq-s24-l" : {
+        "amount" : 34.99,
+        "dateTime" : "2021-04-21T17:33:20.861313",
+        "products" : [ {
+          "id" : "2021-04-21 17:33:17.332199",
+          "price" : 23.0,
+          "quantity" : 1,
+          "title" : "test"
+        }, {
+          "id" : "2021-04-21 17:33:18.123641",
+          "price" : 11.99,
+          "quantity" : 1,
+          "title" : "Book Some Book"
+        } ]
+      }
+    }
+  },
+  "products" : {
+    "-MXwRZrFDY6aQKnzJtYz" : {
+      "creatorId" : "abdc",
+      "description" : "https://bluebottlecoffee.com/assets/fb-og-image-default-1c81ddb4bcb02ad6edba3bea1f198ae69821c8825a76f8fb98bddf66a2efc912.jpg",
+      "imageUrl" : "https://bluebottlecoffee.com/assets/fb-og-image-default-1c81ddb4bcb02ad6edba3bea1f198ae69821c8825a76f8fb98bddf66a2efc912.jpg",
+      "isFavorite" : true,
+      "price" : 22.0,
+      "title" : "blue bottle 3 "
+    },
+    "-MXwXRf5gYbfHUq30Upc" : {
+      "creatoriId" : "nkXHP6MotWZ8JV3z9KqlABZzcZ23",
+      "description" : "Description",
+      "imageUrl" : "https://www.apple.com/newsroom/images/product/ipad/standard/apple_ipados14_widgets_062220_big.jpg.large.jpg",
+      "isFavorite" : false,
+      "price" : 23.0,
+      "title" : "test"
+    },
+    "-MXwY44oueJFl2YIusUF" : {
+      "creatorId" : "nkXHP6MotWZ8JV3z9KqlABZzcZ23",
+      "description" : "test panda 232",
+      "imageUrl" : "https://ctl.s6img.com/society6/img/OgrLZArP9r4AFJMRdo_PoHOmc-E/w_1500/prints/~artwork/s6-original-art-uploads/society6/uploads/misc/d70c336b45d54fce96cda8723280d69e/~~/cute-kawaii-panda-with-heart-prints.jpg",
+      "isFavorite" : false,
+      "price" : 23.0,
+      "title" : "test cute "
+    },
+    "-MYXuVOC9gb8z69reLss" : {
+      "creatorId" : "nkXHP6MotWZ8JV3z9KqlABZzcZ23",
+      "description" : "Some random ancient book",
+      "imageUrl" : "https://ff-65a4.kxcdn.com/assets/uploads/OriginalDocs_old/342/codex-ixtlilxochitl-facsimile-edition-01.jpg",
+      "isFavorite" : false,
+      "price" : 11.99,
+      "title" : "Book Some Book"
+    },
+    "-MYYiT75BoD1U9916VIm" : {
+      "creatorId" : "nkXHP6MotWZ8JV3z9KqlABZzcZ23",
+      "description" : "Emergency food.",
+      "imageUrl" : "https://pbs.twimg.com/media/EopAv6TVEAgOxpY.jpg",
+      "price" : 1.99,
+      "title" : "Paimon"
+    }
+  },
+  "userFavorites" : {
+    "nkXHP6MotWZ8JV3z9KqlABZzcZ23" : {
+      "-MXwRZrFDY6aQKnzJtYz" : true,
+      "-MXwXRf5gYbfHUq30Upc" : false,
+      "-MYXuVOC9gb8z69reLss" : true
+    }
+  },
+  "usersFavorites" : {
+    "nkXHP6MotWZ8JV3z9KqlABZzcZ23" : {
+      "-MXwRZrFDY6aQKnzJtYz" : true,
+      "-MXwXRf5gYbfHUq30Upc" : false,
+      "-MXwY44oueJFl2YIusUF" : true,
+      "-MYXuVOC9gb8z69reLss" : true
+    }
+  }
+}
