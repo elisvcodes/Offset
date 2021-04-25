@@ -69,7 +69,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     // final product = Provider.of<Product>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
     final productsData = Provider.of<Products>(context);
-    var data = _generateCarbonData(10);
+    var co2EmissionData = _generateCarbonData(12);
     final flSpotData =
         List.generate(101, (i) => _carbonUsage * (i / _lifeTimeValue).round())
             .map((x) => FlSpot(x / 3, (x)))
@@ -166,7 +166,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               color: Colors.lightGreen,
               size: 100,
             ),
-            expandedHeight: 250,
+            expandedHeight: 150,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: Hero(
@@ -213,7 +213,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       children: [
                         TextSpan(
                             text: loadedProduct.isFavorite
-                                ? "I am using this "
+                                ? "You are using this"
                                 : 'Start using this ',
                             style: MyText.headline(context).copyWith(
                                 color: Theme.of(context).accentColor)),
@@ -246,7 +246,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
-                    "Carbon cost (unit) ${_carbonUsage.toStringAsFixed(3)}",
+                    "Carbon cost (g/unit) ${_carbonUsage.toStringAsFixed(3)}",
                     style: MyText.body2(context)),
               ),
               Slider(
@@ -288,7 +288,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
-                    "Estimated CO2 emission by using this product (year) : ${_estimatedPerYear.toStringAsFixed(3)}",
+                    "Estimated CO2 emission by using this product (g/year) : ${_estimatedPerYear.toStringAsFixed(3)}",
                     style: MyText.body2(context)),
               ),
               Padding(
@@ -297,7 +297,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   width: 300.0,
                   height: 100.0,
                   child: new Sparkline(
-                    data: data,
+                    data: co2EmissionData,
                     lineColor: Colors.grey[500],
                     fillMode: FillMode.below,
                     fillColor: Colors.grey[200],
@@ -311,7 +311,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
-                  "Co2 Emissions (year)",
+                  "Co2 Emissions (g/year)",
                   style: MyText.body2(context),
                 ),
               ),
@@ -326,7 +326,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
-                  "Products life span (Month)",
+                  "Products life span (month)",
                   style: MyText.body2(context),
                 ),
               ),

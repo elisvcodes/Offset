@@ -17,7 +17,7 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           AppBar(
-            title: Text('Offcet'),
+            title: Text('offset'),
             automaticallyImplyLeading: false,
           ),
           Divider(),
