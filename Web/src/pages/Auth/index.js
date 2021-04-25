@@ -28,7 +28,14 @@ export default function Auth(props) {
     <>
       <Layout>
         <Container>
-          <Form className="mt-5" onSubmit={onSubmit}>
+          <Form
+            className="mt-5"
+            onSubmit={onSubmit}
+            style={{
+              maxWidth: '600px',
+              margin: '0 auto',
+            }}
+          >
             {isJoin && (
               <Input
                 name="fullName"
