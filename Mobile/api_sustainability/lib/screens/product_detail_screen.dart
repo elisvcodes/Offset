@@ -51,13 +51,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     return result;
   }
 
+  var isProductLoaded = false;
   @override
   Widget build(BuildContext context) {
     _estimatedPerYear = 12 / _lifeTimeValue;
     // final product = Provider.of<Product>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
     final productsData = Provider.of<Products>(context);
-
     var data = _generateCarbonData(10);
     final flSpotData =
         List.generate(101, (i) => _carbonUsage * (i / _lifeTimeValue).round())
@@ -70,10 +70,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       listen: false,
     ).findById(productId);
 
-    setState(() {
-      _carbonUsage = loadedProduct.carbon;
-      _lifeTimeValue = loadedProduct.lifespam;
-    });
+    if (!isProductLoaded) {
+      setState(() {
+        isProductLoaded = true;
+        _carbonUsage = loadedProduct.carbon;
+        _lifeTimeValue = loadedProduct.lifespam;
+      });
+    }
+
     return Scaffold(
       // appBar: AppBar(
       //   title: Text(loadedProduct.title),
@@ -108,16 +112,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               SizedBox(height: 10),
               Text(
                 '\$${loadedProduct.price}',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 20,
-                ),
+                style: MyText.display1(context),
+                textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: 10,
               ),
               FlatButton(
-                child: Text('Add Product to Tracking'),
+                child: Text(
+                  'Add Product to Tracking',
+                  style: TextStyle(fontSize: 20),
+                ),
                 onPressed: () {
                   loadedProduct.toggleFavoriteStatus(
                       authData.token, authData.userId);
@@ -196,7 +201,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               SizedBox(
                 height: 80,
               ),
-              Text("Alternatives"),
+              Text(
+                "Alternatives",
+                style: MyText.display1(context),
+              ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
