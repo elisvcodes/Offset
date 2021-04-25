@@ -37,7 +37,7 @@ export default function SingleProduct({ product }) {
           <Nav.Link bsPrefix href={product.product_link} target="_blank">
             <Button text="Buy" />{' '}
           </Nav.Link>{' '}
-          <Button text="Using already" />
+          <Button text="Save" />
         </Card.Body>
       </Card>
     </>
