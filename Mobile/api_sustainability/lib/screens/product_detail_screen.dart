@@ -16,6 +16,7 @@ import 'package:api_sustainability/models/shop_category.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
 import 'package:api_sustainability/widgets/badge.dart';
+import 'package:api_sustainability/widgets/my_text.dart';
 
 math.Random random = new math.Random();
 final double _initCarbonUsage = 100, _initLifeTimeValue = 2;
@@ -52,14 +53,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // @override
-    // void initState() {
-
-    // }
-
     _estimatedPerYear = 12 / _lifeTimeValue;
     // final product = Provider.of<Product>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
+    final productsData = Provider.of<Products>(context);
+
     var data = _generateCarbonData(10);
     final flSpotData =
         List.generate(101, (i) => _carbonUsage * (i / _lifeTimeValue).round())
@@ -104,10 +102,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               SizedBox(height: 10),
               Text(
                 '${loadedProduct.title}',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 40,
-                ),
+                style: MyText.display3(context),
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 10),
               Text(
@@ -197,38 +193,52 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   pointColor: Colors.amber,
                 ),
               ),
+              SizedBox(
+                height: 80,
+              ),
+              Text("Alternatives"),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    Container(width: 20, height: 90),
-                    FloatingActionButton(
-                      heroTag: "fab1",
-                      backgroundColor: MyColors.primary,
-                      elevation: 3,
-                      child: Icon(
-                        Icons.accessibility,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        print('Clicked');
-                      },
-                    ),
-                    Container(width: 20, height: 0),
-                    FloatingActionButton(
-                      heroTag: "fab2",
-                      backgroundColor: MyColors.primary,
-                      elevation: 3,
-                      child: Icon(
-                        Icons.face,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        print('Clicked');
-                      },
-                    ),
-                    Container(width: 20, height: 0),
+                    Row(
+                        children: productsData
+                            .getAlternatives(loadedProduct)
+                            .map((item) {
+                      return Container(
+                        // height: 100,
+                        margin: const EdgeInsets.only(
+                            left: 20, right: 20, top: 20, bottom: 20),
+                        child: GestureDetector(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Container(
+                                  width: 120,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff7c94b6),
+
+                                    // color: Colors.black,
+                                    image: DecorationImage(
+                                        colorFilter: new ColorFilter.mode(
+                                            Colors.white.withOpacity(.84),
+                                            BlendMode.dstATop),
+                                        image: NetworkImage(item.imageUrl),
+                                        fit: BoxFit.cover),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      item.title,
+                                      style: MyText.body2(context),
+                                    ),
+                                  )),
+                            ),
+                            onTap: () {
+                              print("you clicked me");
+                            }),
+                      );
+                    }).toList()),
                   ],
                 ),
               ),

@@ -120,7 +120,9 @@ class Products with ChangeNotifier {
     List<Product> categoryProducts = _items
         .where((prodItem) => prodItem.itemCategory == productCategory)
         .toList();
-    return categoryProducts.where((prodItem) => prodItem.id != base.id);
+    return categoryProducts
+        .where((prodItem) => prodItem.id != base.id)
+        .toList();
   }
 
   Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
