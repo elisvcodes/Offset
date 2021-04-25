@@ -9,6 +9,12 @@ import '../providers/product.dart';
 import 'package:intl/intl.dart';
 import '../providers/auth.dart';
 
+import 'package:flutter/cupertino.dart';
+import 'package:api_sustainability/data/dummy.dart';
+import 'package:api_sustainability/data/my_colors.dart';
+import 'package:api_sustainability/models/shop_category.dart';
+import 'package:api_sustainability/widgets/my_text.dart';
+
 math.Random random = new math.Random();
 final double _initCarbonUsage = 100, _initLifeTimeValue = 2;
 
@@ -184,6 +190,41 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   pointsMode: PointsMode.all,
                   pointSize: 5.0,
                   pointColor: Colors.amber,
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Container(width: 20, height: 90),
+                    FloatingActionButton(
+                      heroTag: "fab1",
+                      backgroundColor: MyColors.primary,
+                      elevation: 3,
+                      child: Icon(
+                        Icons.accessibility,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        print('Clicked');
+                      },
+                    ),
+                    Container(width: 20, height: 0),
+                    FloatingActionButton(
+                      heroTag: "fab2",
+                      backgroundColor: MyColors.primary,
+                      elevation: 3,
+                      child: Icon(
+                        Icons.face,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        print('Clicked');
+                      },
+                    ),
+                    Container(width: 20, height: 0),
+                  ],
                 ),
               ),
             ]),

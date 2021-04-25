@@ -114,6 +114,15 @@ class Products with ChangeNotifier {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
+  List<Product> getAlternatives(Product base) {
+    final productCategory = base.itemCategory;
+    // Get all the items from this category
+    List<Product> categoryProducts = _items
+        .where((prodItem) => prodItem.itemCategory == productCategory)
+        .toList();
+    return categoryProducts.where((prodItem) => prodItem.id != base.id);
+  }
+
   Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
     final filterString =
         filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
