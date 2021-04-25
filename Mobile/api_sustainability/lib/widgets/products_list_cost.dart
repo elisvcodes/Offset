@@ -45,6 +45,25 @@ class _ProductsListCostState extends State<ProductsListCost> {
           mainAxisSpacing: 10,
         ),
       ),
+      Text(
+          "Tracked Items Total CO2 Per Year: ${_totalConsumptionCostsPerYear}," +
+              "per month: ${productsData.trackedTotalEmissionPerMonth}" +
+              " per day: ${productsData.trackedTotalEmissionPerDay}"),
+      Row(
+          children: productsData.trackedCategories
+              .map((item) => new Text(item))
+              .toList()),
+      Row(
+          children: productsData.trackedCategoriesGenerics
+              .map((genericItem) => new Text(
+                  "${genericItem.brand} | ${genericItem.itemTags} | ${genericItem.carbon} | ${genericItem.carbonPerYear}"))
+              .toList()),
+      Text(
+          "Generics are ${productsData.trackedCategoriesGenericsEmissionPerYear}"),
+      productsData.emissionSavedPerYear > 0
+          ? Text(
+              "Congratulations!, The earth thanks you for saving ${productsData.emissionSavedPerYear} every year!")
+          : Container(),
     ]);
   }
 }
