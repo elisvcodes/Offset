@@ -5,7 +5,7 @@ export default function Navigation() {
     <>
       <Navbar style={{ background: '#5DB075', color: '#fff' }}>
         <Container>
-          <Navbar.Brand href="/">MyCarbo</Navbar.Brand>
+          <Navbar.Brand href="/">Offset</Navbar.Brand>
           <Nav>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/signup">Sign Up</Nav.Link>
