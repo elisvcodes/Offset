@@ -61,7 +61,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   var isProductLoaded = false;
   @override
   Widget build(BuildContext context) {
-    _estimatedPerYear = 12 * _carbonUsage / _lifeTimeValue;
     // final product = Provider.of<Product>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
     final productsData = Provider.of<Products>(context);
@@ -186,7 +185,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         _lifeTimeValue = loadedProduct.lifespam;
       });
     }
-
+    _estimatedPerYear = 12 * _carbonUsage / _lifeTimeValue;
+    print(_estimatedPerYear);
     return Scaffold(
       // appBar: AppBar(
       //   title: Text(loadedProduct.title),
@@ -304,7 +304,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     Expanded(
                       child: Wrap(
                         spacing: 10,
-                        children: isTags,
+                        children: categoryTags,
                       ),
                     ),
                   ],

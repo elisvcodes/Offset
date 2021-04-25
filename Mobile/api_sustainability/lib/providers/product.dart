@@ -46,15 +46,20 @@ class Product with ChangeNotifier {
   }
 
   double get carbonPerMonth {
-    return this.carbon >= 0 ? this.carbon : 0.001 / this.lifespam;
+    return (this.carbon >= 0 ? this.carbon : 0.001) / this.lifespam;
   }
 
   double get carbonPerDay {
     return carbonPerMonth / 30;
   }
 
+// Based on carbon multipled times purchased = (12/lifespammonths)
+  double get estimatedPerYear {
+    return 12 * this.carbon / this.lifespam;
+  }
+
   double get carbonPerYear {
-    return carbonPerMonth * 12;
+    return estimatedPerYear;
   }
 
   List<String> get categoriesAsList {

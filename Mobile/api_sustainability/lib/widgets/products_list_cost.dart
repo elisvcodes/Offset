@@ -46,6 +46,8 @@ class _ProductsListCostState extends State<ProductsListCost> {
     super.initState();
   }
 
+  double _estimatedPerYear = 1;
+
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
@@ -192,19 +194,19 @@ class _ProductsListCostState extends State<ProductsListCost> {
             Padding(
               padding: marginLeftDouble,
               child: Text(
-                  "Per year: ${_totalConsumptionCostsPerYear.toStringAsFixed(2)},",
+                  "Per year: ${productsData.estimatedTotalPerYear.toStringAsFixed(2)},",
                   style: MyText.body1(context)),
             ),
             Padding(
               padding: marginLeftDouble,
               child: Text(
-                  "Per month: ${productsData.trackedTotalEmissionPerMonth.toStringAsFixed(2)}",
+                  "Per month: ${productsData.estimatedTotalPerMonth.toStringAsFixed(2)}",
                   style: MyText.body1(context)),
             ),
             Padding(
               padding: marginLeftDouble,
               child: Text(
-                  "Per day: ${productsData.trackedTotalEmissionPerDay.toStringAsFixed(2)}",
+                  "Per day: ${productsData.estimatedTotalPerDay.toStringAsFixed(2)}",
                   style: MyText.body1(context)),
             ),
             Padding(
@@ -233,13 +235,6 @@ class _ProductsListCostState extends State<ProductsListCost> {
             ),
             VerticalSpace(
               height: 5,
-            ),
-            Padding(
-              padding: marginLeftOnly,
-              child: Text(
-                "CO2 (g/year)",
-                style: MyText.body1(context),
-              ),
             ),
             Padding(
               padding: marginLeftDouble,

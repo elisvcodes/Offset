@@ -106,6 +106,24 @@ class Products with ChangeNotifier {
     return emissionSavedPerMonth / 12;
   }
 
+// Estimageted based on adding all products being tracked estiimations per year
+  double get estimatedTotalPerYear {
+    double total = 0;
+    this.trackedItems.forEach((element) {
+      print("estimated+: ${element.estimatedPerYear}");
+      total += element.estimatedPerYear;
+    });
+    return total;
+  }
+
+  double get estimatedTotalPerMonth {
+    return estimatedTotalPerYear / 12;
+  }
+
+  double get estimatedTotalPerDay {
+    return estimatedTotalPerMonth / 30;
+  }
+
   List<Product> get genericItems {
     return _items.where((prodItem) => prodItem.isGeneric).toList();
   }
