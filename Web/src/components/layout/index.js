@@ -1,4 +1,4 @@
-import React, { react, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '../Navbar';
 export default function Layout(props) {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -12,7 +12,7 @@ export default function Layout(props) {
   return (
     <>
       <Navigation user={user} setUser={setUser} />
-      {props.children}
+      {React.cloneElement(props.children, { user: user })}
     </>
   );
 }

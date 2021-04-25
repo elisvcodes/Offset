@@ -5,7 +5,7 @@ import Input from '../../components/UI/Forms/Inputs/index';
 import Button from '../../components/UI/Buttons/index';
 import { useHistory } from 'react-router-dom';
 import { signUp, login } from '../../_Actions/auth';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export default function Auth(props) {
   const { setUser, match } = props;

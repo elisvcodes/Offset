@@ -3,11 +3,9 @@ import { Card, Nav } from 'react-bootstrap';
 import Button from '../../../components/UI/Buttons';
 import { ImPriceTags } from 'react-icons/im';
 import { GiGasMask, GiLifeBar } from 'react-icons/gi';
-import { Link, NavLink, useHistory } from 'react-router-dom';
 
 export default function SingleProduct({ product }) {
   let title = product.item_tags.split(',');
-  const history = useHistory();
   return (
     <>
       <Card className="mb-5">
@@ -33,7 +31,6 @@ export default function SingleProduct({ product }) {
           <p>
             <GiLifeBar /> {`Life Span ~ ${product.lifespam} Months`}
           </p>
-          {/* product.product_link */}
           <Nav.Link bsPrefix href={product.product_link} target="_blank">
             <Button text="Buy" />{' '}
           </Nav.Link>{' '}

@@ -3,16 +3,16 @@ import Layout from '../../../components/Layout';
 import { getSingleProduct, getProducts } from '../../../_Actions/products';
 import SingleProduct from '../SingleProduct';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
 export default function SingleProductDashboard(props) {
-  let id = props.match.params.id;
+  let { id } = props.match.params;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getSingleProduct(id));
     dispatch(getProducts());
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const product = useSelector((state) => state.product);
   const products = useSelector((state) => state.products);
