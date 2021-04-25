@@ -73,9 +73,17 @@ class _AuthCardState extends State<AuthCard>
   };
   var _isLoading = false;
   final _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
   AnimationController _controller;
   Animation<Offset> _slideAnimation;
   Animation<double> _opacityAnimation;
+
+  void setDemo() {
+    setState(() {
+      _emailController.text = "test@gmail.com";
+      _passwordController.text = "test123";
+    });
+  }
 
   @override
   void initState() {
@@ -139,13 +147,11 @@ class _AuthCardState extends State<AuthCard>
     });
     try {
       if (_authMode == AuthMode.Login) {
-        // Log user in
         await Provider.of<Auth>(context, listen: false).login(
           _authData['email'],
           _authData['password'],
         );
       } else {
-        // Sign user up
         await Provider.of<Auth>(context, listen: false).signup(
           _authData['email'],
           _authData['password'],
@@ -212,8 +218,9 @@ class _AuthCardState extends State<AuthCard>
             child: Column(
               children: <Widget>[
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'E-Mail'),
+                  decoration: InputDecoration(labelText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
+                  controller: _emailController,
                   validator: (value) {
                     if (value.isEmpty || !value.contains('@')) {
                       return 'Invalid email!';
@@ -228,7 +235,7 @@ class _AuthCardState extends State<AuthCard>
                   obscureText: true,
                   controller: _passwordController,
                   validator: (value) {
-                    if (value.isEmpty || value.length < 5) {
+                    if (value.isEmpty) {
                       return 'Password is too short!';
                     }
                   },
@@ -269,21 +276,47 @@ class _AuthCardState extends State<AuthCard>
                 if (_isLoading)
                   CircularProgressIndicator()
                 else
-                  RaisedButton(
-                    child:
-                        Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
-                    onPressed: _submit,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 30.0, vertical: 8.0),
-                    color: Theme.of(context).primaryColor,
-                    textColor: Theme.of(context).primaryTextTheme.button.color,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      RaisedButton(
+                        child: Text(
+                            _authMode == AuthMode.Login ? 'LOGIN' : 'SIGNUP'),
+                        onPressed: _submit,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 30.0, vertical: 8.0),
+                        color: Theme.of(context).primaryColor,
+                        textColor:
+                            Theme.of(context).primaryTextTheme.button.color,
+                      ),
+                      _authMode == AuthMode.Login
+                          ? Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: RaisedButton(
+                                child: Text('DEMO'),
+                                onPressed: setDemo,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 30.0, vertical: 8.0),
+                                color: Theme.of(context).primaryColor,
+                                textColor: Theme.of(context)
+                                    .primaryTextTheme
+                                    .button
+                                    .color,
+                              ),
+                            )
+                          : Container(),
+                    ],
                   ),
                 FlatButton(
                   child: Text(
-                      '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'}'),
+                      'GO TO ${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'}'),
                   onPressed: _switchAuthMode,
                   padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

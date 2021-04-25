@@ -304,7 +304,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     Expanded(
                       child: Wrap(
                         spacing: 10,
-                        children: categoryTags,
+                        children: isTags,
                       ),
                     ),
                   ],
