@@ -17,6 +17,8 @@ import '../data/achievements.dart';
 
 import '../widgets/dialog.dart';
 
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
 int dayCount = 0;
 
 class ProfileScreen extends StatefulWidget {
@@ -93,40 +95,34 @@ class ProfileScreenState extends State<ProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       Container(width: 20, height: 90),
-                      FloatingActionButton(
-                        heroTag: "fab1",
-                        backgroundColor: Theme.of(context).accentColor,
-                        elevation: 3,
-                        child: Icon(
-                          Icons.accessibility,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          // This should bring you to open the menus thing
-                          showDialog(
-                              context: context,
-                              builder: (_) => AccomplishmentDialog(
-                                    title: achievements[0]["title"].toString(),
-                                    description: achievements[0]["description"]
-                                        .toString(),
-                                    condition:
-                                        achievements[0]["condition"].toString(),
-                                  ));
-                        },
+                      AwardIcon(
+                        index: 0,
+                        totalSaved: _totalSaved,
                       ),
-                      Container(width: 20, height: 90),
-                      FloatingActionButton(
-                        heroTag: "fab1",
-                        backgroundColor: false
-                            ? Theme.of(context).primaryColor
-                            : Colors.grey,
-                        elevation: 3,
-                        child: Icon(
-                          Icons.accessibility,
-                          color: Colors.white,
-                        ),
-                        onPressed: null,
-                      )
+                      AwardIcon(
+                        index: 1,
+                        totalSaved: _totalSaved,
+                      ),
+                      AwardIcon(
+                        index: 2,
+                        totalSaved: _totalSaved,
+                      ),
+                      AwardIcon(
+                        index: 3,
+                        totalSaved: _totalSaved,
+                      ),
+                      AwardIcon(
+                        index: 4,
+                        totalSaved: _totalSaved,
+                      ),
+                      AwardIcon(
+                        index: 5,
+                        totalSaved: _totalSaved,
+                      ),
+                      AwardIcon(
+                        index: 6,
+                        totalSaved: _totalSaved,
+                      ),
                     ],
                   ),
                 ),
@@ -172,6 +168,50 @@ class ProfileScreenState extends State<ProfileScreen> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class AwardIcon extends StatelessWidget {
+  final double totalSaved;
+  final int index;
+  AwardIcon({
+    Key key,
+    @required this.totalSaved,
+    @required this.index,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 5, right: 5),
+      child: FloatingActionButton(
+        heroTag: "fab1",
+        backgroundColor:
+            int.parse(achievements[index]["carbon"].toString()) <= totalSaved
+                ? Theme.of(context).accentColor
+                : Colors.grey,
+        elevation: 3,
+        child: Icon(
+          MdiIcons.trophy,
+          color: Colors.white,
+        ),
+        onPressed:
+            (int.parse(achievements[index]["carbon"].toString()) <= totalSaved)
+                ? () {
+                    // This should bring you to open the menus thing
+                    showDialog(
+                        context: context,
+                        builder: (_) => AccomplishmentDialog(
+                              title: achievements[index]["title"].toString(),
+                              description:
+                                  achievements[index]["description"].toString(),
+                              condition:
+                                  achievements[index]["condition"].toString(),
+                            ));
+                  }
+                : null,
       ),
     );
   }
