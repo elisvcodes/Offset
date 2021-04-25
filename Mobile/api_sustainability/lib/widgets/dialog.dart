@@ -7,7 +7,8 @@ import 'package:api_sustainability/widgets/my_text.dart';
 class AccomplishmentDialog extends StatefulWidget {
   String title;
   String description;
-  AccomplishmentDialog({Key key, this.title, this.description})
+  String condition;
+  AccomplishmentDialog({Key key, this.title, this.description, this.condition})
       : super(key: key);
 
   @override
@@ -51,6 +52,10 @@ class AccomplishmentDialogState extends State<AccomplishmentDialog> {
                         style: MyText.subhead(context)
                             .copyWith(color: MyColors.grey_40)),
                     Container(height: 10),
+                    Text("${widget.condition}",
+                        textAlign: TextAlign.center,
+                        style: MyText.body1(context)
+                            .copyWith(color: MyColors.grey_40)),
                   ],
                 ),
               ),

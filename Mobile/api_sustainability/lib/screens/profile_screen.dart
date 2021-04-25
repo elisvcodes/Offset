@@ -112,6 +112,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               builder: (_) => AccomplishmentDialog(
                                     title: "Title",
                                     description: "Description",
+                                    condition: 'Condition',
                                   ));
                         },
                       ),
