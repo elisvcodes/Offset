@@ -68,7 +68,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               width: double.infinity,
               margin: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
             ),
-            Text("Recent Activity",
+            Text("Achievement",
                 style: MyText.subhead(context).copyWith(
                     color: MyColors.grey_90, fontWeight: FontWeight.bold)),
             Column(
