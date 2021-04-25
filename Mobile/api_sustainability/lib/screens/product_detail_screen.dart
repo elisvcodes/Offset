@@ -34,30 +34,11 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   static var chartDisplay;
 
-  void initState() {
-    setState(() {
-      var data = [
-        addcharts("val 1", 10),
-        addcharts("val 2", 50),
-        addcharts("val 3", 40),
-        addcharts("val 4", 30),
-        addcharts("val 5", 20),
-      ];
-      var series = [
-        charts.Series(
-          domainFn: (addcharts addcharts, _) => addcharts.label,
-          measureFn: (addcharts addcharts, _) => addcharts.value,
-          id: 'addcharts',
-          data: data,
-        )
-      ];
+  // void initState() {
+  //   updateGraph();
+  // }
 
-      chartDisplay = charts.BarChart(
-        series,
-        animate: false,
-      );
-    });
-  }
+  var chartsCarbonoData = [];
 
   double _lifeTimeValue = _initLifeTimeValue;
   double _carbonUsage = _initCarbonUsage;
@@ -99,8 +80,41 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       listen: false,
     ).findById(productId);
 
+    void updateGraph() {
+      List<addcharts> chartsCarbonoData = [];
+      productsData.getAlternatives(loadedProduct).toList().forEach((prod) {
+        // print("added ${prod.title} ca: ${prod.carbon}");
+        chartsCarbonoData.add(addcharts(prod.title, prod.carbon.toInt()));
+        // print("added ${prod.title} ca: ${prod.carbon}");
+        // alternatives.add(prod);
+      });
+
+      chartsCarbonoData
+          .add(addcharts(loadedProduct.title, _carbonUsage.toInt()));
+
+      // Now also add the normal one here depending on the current carbon usage indicated
+      print("Update Graph");
+      setState(() {
+        var series = [
+          charts.Series(
+            domainFn: (addcharts addcharts, _) => addcharts.label,
+            measureFn: (addcharts addcharts, _) => addcharts.value,
+            id: 'addcharts',
+            data: chartsCarbonoData,
+          )
+        ];
+
+        chartDisplay = charts.BarChart(
+          series,
+          // animationDuration: Duration(microseconds: 5000),
+          animate: false,
+        );
+      });
+    }
+
     if (!isProductLoaded) {
       setState(() {
+        updateGraph();
         isProductLoaded = true;
         _carbonUsage = loadedProduct.carbon;
         _lifeTimeValue = loadedProduct.lifespam;
@@ -171,7 +185,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 child: FlatButton(
                   child: RichText(
                     text: TextSpan(
-                      style: Theme.of(context).textTheme.body1,
+                      style: Theme.of(context).textTheme.body2,
                       children: [
                         TextSpan(
                             text: loadedProduct.isFavorite
@@ -194,6 +208,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                   ),
                   onPressed: () {
+                    updateGraph();
                     loadedProduct.toggleFavoriteStatus(
                         authData.token, authData.userId);
                     setState(() {});
@@ -221,6 +236,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     : _initCarbonUsage * 10,
                 label: _carbonUsage.round().toString(),
                 onChanged: (double value) {
+                  updateGraph();
                   setState(() {
                     _carbonUsage = value;
                   });
@@ -231,10 +247,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 padding: marginLeftOnly,
                 child: Text(
                     "Lifespan: ${_lifeTimeValue.toStringAsFixed(3)} (months)",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                    )),
+                    style: MyText.body2(context)),
               ),
               Slider(
                 value: _lifeTimeValue,
@@ -252,11 +265,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
-                    "Estimated purchase per year: ${_estimatedPerYear.toStringAsFixed(3)} times",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                    )),
+                    "Estimated co2 emmited per year: ${_estimatedPerYear.toStringAsFixed(3)}",
+                    style: MyText.body2(context)),
               ),
               Padding(
                 padding: marginLeftOnly,
@@ -278,8 +288,24 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
+                  "Co 2 Emissions Every Year",
+                  style: MyText.body2(context),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Padding(
+                padding: marginLeftOnly,
+                child: SizedBox(
+                  height: 150,
+                  child: chartDisplay,
+                ),
+              ),
+              Padding(
+                padding: marginLeftOnly,
+                child: Text(
                   "Alternatives",
                   style: MyText.display1(context),
+                  textAlign: TextAlign.center,
                 ),
               ),
               Padding(
@@ -333,10 +359,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 400,
-                child: chartDisplay,
-              )
             ]),
           ),
         ],
