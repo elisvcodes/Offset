@@ -1,0 +1,508 @@
+{
+    "items": {
+        "1": {
+           "brand": "A",
+           "is_generic": true,
+           "item_tags": "Plastic, Cup",
+           "item_category": "CUP",
+           "carbon": 0.4524,
+           "price": 0.08,
+           "followers": "",
+           "lifespam": 0.033333,
+           "bio_time": -1,
+           "image_url": "https://m.media-amazon.com/images/I/61tzyyhlbLL._AC_UL320_.jpg"
+        },
+        "2": {
+           "brand": "B",
+           "is_generic": false,
+           "item_tags": "Paper, Cup",
+           "item_category": "CUP",
+           "carbon": 0.0014,
+           "price": 0.12,
+           "followers": "",
+           "lifespam": 0.033333,
+           "bio_time": 0.1666666667,
+           "image_url": "https://m.media-amazon.com/images/I/510S8QHDrXL._AC_UL320_.jpg"
+        },
+        "3": {
+           "brand": "C",
+           "is_generic": false,
+           "item_tags": "Ceramic, Cup",
+           "item_category": "CUP",
+           "carbon": 1.22,
+           "price": 4.5,
+           "followers": "",
+           "lifespam": 240,
+           "bio_time": 1000000,
+           "image_url": "https://m.media-amazon.com/images/I/61VPwY98yWL._AC_UL320_.jpg"
+        },
+        "4": {
+           "brand": "D",
+           "is_generic": false,
+           "item_tags": "Styrofoam, Cup",
+           "item_category": "CUP",
+           "carbon": 0.0328,
+           "price": 0.07,
+           "followers": "",
+           "lifespam": 0.033333,
+           "bio_time": -1,
+           "image_url": "https://m.media-amazon.com/images/I/61jU8kW92JL._AC_UL320_.jpg"
+        },
+        "5": {
+           "brand": "A",
+           "is_generic": true,
+           "item_tags": "Plastic, Bottle",
+           "item_category": "BOTTLE",
+           "carbon": 0.0828,
+           "price": 0.00001,
+           "followers": "",
+           "lifespam": 0.033333,
+           "bio_time": -1,
+           "image_url": "https://cdn.shortpixel.ai/client/q_glossy,ret_img/https://www.innovationnaturally.org/wp-content/uploads/2021/01/BottlesBlend_2_RT.png"
+        },
+        "6": {
+           "brand": "B",
+           "is_generic": false,
+           "item_tags": "Metal, Bottle",
+           "item_category": "BOTTLE",
+           "carbon": 5.705,
+           "price": 15,
+           "followers": "",
+           "lifespam": 144,
+           "bio_time": 500,
+           "image_url": "https://m.media-amazon.com/images/I/71wFyZlg58L._AC_UL320_.jpg"
+        },
+        "7": {
+           "brand": "C",
+           "is_generic": false,
+           "item_tags": "Glass, Bottle",
+           "item_category": "BOTTLE",
+           "carbon": 600,
+           "price": 20,
+           "followers": "",
+           "lifespam": 180,
+           "bio_time": 1000000,
+           "image_url": "https://p2d7x8x2.stackpathcdn.com/content/uploads/2020/07/3qsmallfrugalpac-269x640.jpg"
+        },
+        "8": {
+           "brand": "A",
+           "is_generic": true,
+           "item_tags": "Plastic, Bag",
+           "item_category": "BAG",
+           "carbon": 0.03,
+           "price": 0.04,
+           "followers": "",
+           "lifespam": 0.033333,
+           "bio_time": -1,
+           "image_url": "https://m.media-amazon.com/images/I/816IHACLtKL._AC_UY218_.jpg"
+        },
+        "9": {
+           "brand": "B",
+           "is_generic": false,
+           "item_tags": "Paper, Bag",
+           "item_category": "BAG",
+           "carbon": 0.042,
+           "price": 0.06,
+           "followers": "",
+           "lifespam": 0.03,
+           "bio_time": 10,
+           "image_url": "https://m.media-amazon.com/images/I/81p+wb8muaL._AC_UL320_.jpg"
+        },
+        "10": {
+           "brand": "C",
+           "is_generic": false,
+           "item_tags": "Cotton, Bag",
+           "item_category": "BAG",
+           "carbon": 0.0002,
+           "price": 12,
+           "followers": "",
+           "lifespam": 2,
+           "bio_time": 0.5,
+           "image_url": "https://m.media-amazon.com/images/I/613nnka+ELL._AC_UL320_.jpg"
+        },
+        "11": {
+           "brand": "D",
+           "is_generic": false,
+           "item_tags": "Polyester, Bag",
+           "item_category": "BAG",
+           "carbon": 0.03,
+           "price": 1,
+           "followers": "",
+           "lifespam": 48,
+           "bio_time": 150,
+           "image_url": "https://images-na.ssl-images-amazon.com/images/I/61nJewVAH1L._AC_SL1200_.jpg"
+        },
+        "12": {
+           "brand": "A",
+           "is_generic": true,
+           "item_tags": "Plastic, Cutlery",
+           "item_category": "CUTLERY",
+           "carbon": 0.1,
+           "price": 0.05,
+           "followers": "",
+           "lifespam": 0.03,
+           "bio_time": -1,
+           "image_url": "https://m.media-amazon.com/images/I/61wuXfKOUIL._AC_UL320_.jpg"
+        },
+        "13": {
+           "brand": "B",
+           "is_generic": false,
+           "item_tags": "Metal, Cutlery",
+           "item_category": "CUTLERY",
+           "carbon": 0.34,
+           "price": 0.76,
+           "followers": "",
+           "lifespam": 360,
+           "bio_time": 500,
+           "image_url": "https://m.media-amazon.com/images/I/61QqLPZGONL._AC_UL320_.jpg"
+        },
+        "14": {
+           "brand": "A",
+           "is_generic": true,
+           "item_tags": "Plastic, Straw",
+           "item_category": "STRAW",
+           "carbon": 0.00146,
+           "price": 0.03,
+           "followers": "",
+           "lifespam": 0.03,
+           "bio_time": -1,
+           "image_url": "https://m.media-amazon.com/images/I/61S02SUFL5L._AC_UL320_.jpg"
+        },
+        "15": {
+           "brand": "B",
+           "is_generic": false,
+           "item_tags": "Metal, Straw",
+           "item_category": "STRAW",
+           "carbon": 0.217,
+           "price": 7,
+           "followers": "",
+           "lifespam": 360,
+           "bio_time": 500,
+           "image_url": "https://m.media-amazon.com/images/I/61lvcPBJINL._AC_UL320_.jpg"
+        },
+        "16": {
+           "brand": "C",
+           "is_generic": false,
+           "item_tags": "Paper, Straw",
+           "item_category": "STRAW",
+           "carbon": 0.00138,
+           "price": 0.03,
+           "followers": "",
+           "lifespam": 0.03,
+           "bio_time": 0.1666666667,
+           "image_url": "https://m.media-amazon.com/images/I/81ZtoT-xI1L._AC_UL320_.jpg"
+        },
+        "17": {
+           "brand": "D",
+           "is_generic": false,
+           "item_tags": "Glass, Straw",
+           "item_category": "STRAW",
+           "carbon": 0.0652,
+           "price": 7,
+           "followers": "",
+           "lifespam": 360,
+           "bio_time": 1000000,
+           "image_url": "https://m.media-amazon.com/images/I/61WQ2g3tlJL._AC_UL320_.jpg"
+        },
+        "18": {
+           "brand": "F",
+           "is_generic": false,
+           "item_tags": "Bamboo, Straw",
+           "item_category": "STRAW",
+           "carbon": 0.0388,
+           "price": 0.5,
+           "followers": "",
+           "lifespam": 24,
+           "bio_time": 3,
+           "image_url": "https://m.media-amazon.com/images/I/81LX-AvK4XL._AC_UL320_.jpg"
+        },
+        "19": {
+           "brand": "A",
+           "is_generic": true,
+           "item_tags": "Styrofoam, Food Container",
+           "item_category": "CONTAINER",
+           "carbon": 0.1,
+           "price": 0.5,
+           "followers": "",
+           "lifespam": 0.03,
+           "bio_time": -1,
+           "image_url": "https://m.media-amazon.com/images/I/61ta4mZOx3L._AC_UY218_.jpg"
+        },
+        "20": {
+           "brand": "B",
+           "is_generic": false,
+           "item_tags": "Cardboard, Food Container",
+           "item_category": "CONTAINER",
+           "carbon": 3.138,
+           "price": 0.77,
+           "followers": "",
+           "lifespam": 0.03,
+           "bio_time": 0.25,
+           "image_url": "https://m.media-amazon.com/images/I/71hVsRrvKKL._AC_UL320_.jpg"
+        },
+        "21": {
+           "brand": "A",
+           "is_generic": true,
+           "item_tags": "Paper, Towel",
+           "item_category": "TOWEL",
+           "carbon": 0.007,
+           "price": 0.0151,
+           "followers": "",
+           "lifespam": 0.003,
+           "bio_time": 0.08,
+           "image_url": "https://m.media-amazon.com/images/I/71sLQ5t8hsL._AC_UL320_.jpg"
+        },
+        "22": {
+           "brand": "B",
+           "is_generic": false,
+           "item_tags": "Cloth, Towel",
+           "item_category": "TOWEL",
+           "carbon": 0.0002,
+           "price": 0.58,
+           "followers": "",
+           "lifespam": 36,
+           "bio_time": 3,
+           "image_url": "https://m.media-amazon.com/images/I/719rXGWE10L._AC_UL320_.jpg"
+        }
+     },
+    "orders": {
+      "-MY3FQVh4t_Vg1_dr3oM": {
+        "amount": 144,
+        "dateTime": "2021-04-12T00:05:43.823913",
+        "products": [
+          {
+            "id": "2021-04-12 00:05:40.732216",
+            "price": 99,
+            "quantity": 1,
+            "title": "Test Product Red"
+          },
+          {
+            "id": "2021-04-12 00:05:41.446919",
+            "price": 22,
+            "quantity": 1,
+            "title": "blue bottle 3 "
+          },
+          {
+            "id": "2021-04-12 00:05:42.214477",
+            "price": 23,
+            "quantity": 1,
+            "title": "test"
+          }
+        ]
+      },
+      "-MY3KgF_KXe2o2n43fVf": {
+        "amount": 121,
+        "dateTime": "2021-04-12T00:28:43.108319",
+        "products": [
+          {
+            "id": "2021-04-12 00:28:40.729722",
+            "price": 99,
+            "quantity": 1,
+            "title": "Test Product Red"
+          },
+          {
+            "id": "2021-04-12 00:28:41.516481",
+            "price": 22,
+            "quantity": 1,
+            "title": "blue bottle 3 "
+          }
+        ]
+      },
+      "-MY3LLCBsK1O4YKLP1kk": {
+        "amount": 45,
+        "dateTime": "2021-04-12T00:31:34.601560",
+        "products": [
+          {
+            "id": "2021-04-12 00:31:32.507732",
+            "price": 22,
+            "quantity": 1,
+            "title": "blue bottle 3 "
+          },
+          {
+            "id": "2021-04-12 00:31:33.002645",
+            "price": 23,
+            "quantity": 1,
+            "title": "test"
+          }
+        ]
+      },
+      "-MY3LSyhSOJ839RP-SgP": {
+        "amount": 45,
+        "dateTime": "2021-04-12T00:32:06.777735",
+        "products": [
+          {
+            "id": "2021-04-12 00:32:04.634447",
+            "price": 22,
+            "quantity": 1,
+            "title": "blue bottle 3 "
+          },
+          {
+            "id": "2021-04-12 00:32:05.251060",
+            "price": 23,
+            "quantity": 1,
+            "title": "test"
+          }
+        ]
+      },
+      "-MY3LbKJftVoKrEsD6JW": {
+        "amount": 121,
+        "dateTime": "2021-04-12T00:32:45.114225",
+        "products": [
+          {
+            "id": "2021-04-12 00:32:41.914020",
+            "price": 99,
+            "quantity": 1,
+            "title": "Test Product Red"
+          },
+          {
+            "id": "2021-04-12 00:32:42.722537",
+            "price": 22,
+            "quantity": 1,
+            "title": "blue bottle 3 "
+          }
+        ]
+      },
+      "-MY3P1gMQr-2ofOREu1J": {
+        "amount": 145,
+        "dateTime": "2021-04-12T00:47:43.596057",
+        "products": [
+          {
+            "id": "2021-04-12 00:47:39.628794",
+            "price": 23,
+            "quantity": 1,
+            "title": "Test"
+          },
+          {
+            "id": "2021-04-12 00:47:40.156038",
+            "price": 99,
+            "quantity": 1,
+            "title": "Test Product Red"
+          },
+          {
+            "id": "2021-04-12 00:47:40.772216",
+            "price": 23,
+            "quantity": 1,
+            "title": "test cute "
+          }
+        ]
+      },
+      "-MYXuAGym3S13NozwrYj": {
+        "amount": 45,
+        "dateTime": "2021-04-17T22:56:43.146926",
+        "products": [
+          {
+            "id": "2021-04-17 22:56:40.489534",
+            "price": 22,
+            "quantity": 1,
+            "title": "blue bottle 3 "
+          },
+          {
+            "id": "2021-04-17 22:56:41.407179",
+            "price": 23,
+            "quantity": 1,
+            "title": "test"
+          }
+        ]
+      },
+      "nkXHP6MotWZ8JV3z9KqlABZzcZ23": {
+        "-MYYwSnl67ZYc3Rx9i2K": {
+          "amount": 56.99,
+          "dateTime": "2021-04-18T03:46:20.562296",
+          "products": [
+            {
+              "id": "2021-04-18 03:46:13.471739",
+              "price": 22,
+              "quantity": 1,
+              "title": "blue bottle 3 "
+            },
+            {
+              "id": "2021-04-18 03:46:14.130616",
+              "price": 23,
+              "quantity": 1,
+              "title": "test"
+            },
+            {
+              "id": "2021-04-18 03:46:14.890415",
+              "price": 11.99,
+              "quantity": 1,
+              "title": "Book Some Book"
+            }
+          ]
+        },
+        "-MYqLWEjg8UJeq-s24-l": {
+          "amount": 34.99,
+          "dateTime": "2021-04-21T17:33:20.861313",
+          "products": [
+            {
+              "id": "2021-04-21 17:33:17.332199",
+              "price": 23,
+              "quantity": 1,
+              "title": "test"
+            },
+            {
+              "id": "2021-04-21 17:33:18.123641",
+              "price": 11.99,
+              "quantity": 1,
+              "title": "Book Some Book"
+            }
+          ]
+        }
+      }
+    },
+    "products": {
+      "-MXwRZrFDY6aQKnzJtYz": {
+        "creatorId": "abdc",
+        "description": "https://bluebottlecoffee.com/assets/fb-og-image-default-1c81ddb4bcb02ad6edba3bea1f198ae69821c8825a76f8fb98bddf66a2efc912.jpg",
+        "imageUrl": "https://bluebottlecoffee.com/assets/fb-og-image-default-1c81ddb4bcb02ad6edba3bea1f198ae69821c8825a76f8fb98bddf66a2efc912.jpg",
+        "isFavorite": true,
+        "price": 22,
+        "title": "blue bottle 3 "
+      },
+      "-MXwXRf5gYbfHUq30Upc": {
+        "creatoriId": "nkXHP6MotWZ8JV3z9KqlABZzcZ23",
+        "description": "Description",
+        "imageUrl": "https://www.apple.com/newsroom/images/product/ipad/standard/apple_ipados14_widgets_062220_big.jpg.large.jpg",
+        "isFavorite": false,
+        "price": 23,
+        "title": "test"
+      },
+      "-MXwY44oueJFl2YIusUF": {
+        "creatorId": "nkXHP6MotWZ8JV3z9KqlABZzcZ23",
+        "description": "test panda 232",
+        "imageUrl": "https://ctl.s6img.com/society6/img/OgrLZArP9r4AFJMRdo_PoHOmc-E/w_1500/prints/~artwork/s6-original-art-uploads/society6/uploads/misc/d70c336b45d54fce96cda8723280d69e/~~/cute-kawaii-panda-with-heart-prints.jpg",
+        "isFavorite": false,
+        "price": 23,
+        "title": "test cute "
+      },
+      "-MYXuVOC9gb8z69reLss": {
+        "creatorId": "nkXHP6MotWZ8JV3z9KqlABZzcZ2https://descartable-server-default-rtdb.firebaseio.com/products.json3",
+        "description": "Some random ancient book",
+        "imageUrl": "https://ff-65a4.kxcdn.com/assets/uploads/OriginalDocs_old/342/codex-ixtlilxochitl-facsimile-edition-01.jpg",
+        "isFavorite": false,
+        "price": 11.99,
+        "title": "Book Some Book"
+      },
+      "-MYYiT75BoD1U9916VIm": {
+        "creatorId": "nkXHP6MotWZ8JV3z9KqlABZzcZ23",
+        "description": "Emergency food.",
+        "imageUrl": "https://pbs.twimg.com/media/EopAv6TVEAgOxpY.jpg",
+        "price": 1.99,
+        "title": "Paimon"
+      }
+    },
+    "userFavorites": {
+      "nkXHP6MotWZ8JV3z9KqlABZzcZ23": {
+        "-MXwRZrFDY6aQKnzJtYz": true,
+        "-MXwXRf5gYbfHUq30Upc": false,
+        "-MYXuVOC9gb8z69reLss": true
+      }
+    },
+    "usersFavorites": {
+      "nkXHP6MotWZ8JV3z9KqlABZzcZ23": {
+        "-MXwRZrFDY6aQKnzJtYz": true,
+        "-MXwXRf5gYbfHUq30Upc": false,
+        "-MXwY44oueJFl2YIusUF": true,
+        "-MYXuVOC9gb8z69reLss": true
+      }
+    }
+  }

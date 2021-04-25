@@ -12,6 +12,7 @@ class Auth with ChangeNotifier {
   DateTime _expiryDate;
   String _userId;
   Timer _authTimer;
+  String email;
 
   bool get isAuth {
     return token != null;
@@ -32,6 +33,7 @@ class Auth with ChangeNotifier {
 
   Future<void> _authenticate(
       String email, String password, String urlSegment) async {
+    this.email = email;
     final url = Uri.parse(
         'https://www.googleapis.com/identitytoolkit/v3/relyingparty/$urlSegment?key=AIzaSyBaufITJhEiUWntUZLwxfFQwlN9bixHhWc');
     try {

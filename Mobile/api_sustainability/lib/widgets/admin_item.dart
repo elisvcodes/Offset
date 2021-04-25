@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/edit_product_screen.dart';
+import '../screens/edit_item_screen.dart';
 import '../providers/products.dart';
 
 class UserProductItem extends StatelessWidget {
@@ -24,14 +24,6 @@ class UserProductItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.edit),
-              onPressed: () {
-                Navigator.of(context)
-                    .pushNamed(EditProductScreen.routeName, arguments: id);
-              },
-              color: Theme.of(context).primaryColor,
-            ),
-            IconButton(
               icon: Icon(Icons.delete),
               onPressed: () async {
                 try {
@@ -49,6 +41,14 @@ class UserProductItem extends StatelessWidget {
                 }
               },
               color: Theme.of(context).errorColor,
+            ),
+            IconButton(
+              icon: Icon(Icons.edit),
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed(EditProductScreen.routeName, arguments: id);
+              },
+              color: Theme.of(context).primaryColor,
             ),
           ],
         ),
