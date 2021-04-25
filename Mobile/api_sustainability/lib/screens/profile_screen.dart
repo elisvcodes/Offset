@@ -14,6 +14,9 @@ import '../widgets/products_grid.dart';
 import '../providers/products.dart';
 
 import '../providers/auth.dart';
+import '../data/rank.dart';
+
+int dayCount = 0;
 
 class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile-screen';
@@ -28,6 +31,8 @@ class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final authData = Provider.of<Auth>(context, listen: false);
+    final productsData = Provider.of<Products>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -36,29 +41,31 @@ class ProfileScreenState extends State<ProfileScreen> {
       drawer: AppDrawer(),
       floatingActionButton: FloatingActionButton(
         heroTag: "fab3",
-        backgroundColor: Colors.pink[600],
+        backgroundColor: Theme.of(context).accentColor,
         elevation: 3,
         child: Icon(
-          Icons.star,
+          Icons.plus_one,
           color: Colors.white,
         ),
         onPressed: () {
-          print('Clicked');
+          setState(() {
+            dayCount++;
+          });
         },
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(height: 35),
-            Text("Demo User",
+            Text("Rank ##",
                 style: MyText.title(context).copyWith(color: MyColors.grey_90)),
             Container(height: 5),
-            Text("< Little Seed >",
+            Text("< Demo User >",
                 style: MyText.body1(context).copyWith(color: MyColors.grey_60)),
             Container(height: 15),
             CircleAvatar(
               radius: 53,
-              backgroundColor: Colors.pink[600],
+              backgroundColor: Theme.of(context).accentColor,
               child: CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage(Img.get("photo_male_7.jpg")),
@@ -116,7 +123,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("Recent Activity",
+                  Text("Details",
                       style: MyText.subhead(context).copyWith(
                           color: MyColors.grey_90,
                           fontWeight: FontWeight.bold)),
@@ -124,14 +131,18 @@ class ProfileScreenState extends State<ProfileScreen> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Image.asset(Img.get('photo_male_7.jpg'),
-                          width: 40, height: 40),
                       Container(width: 10),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("James Pratterson liked Marry's photo",
+                            Text("grams of CO2 saved in total",
+                                style: MyText.body1(context)
+                                    .copyWith(color: MyColors.grey_90)),
+                            Text("grams of CO2 saved in per day",
+                                style: MyText.body1(context)
+                                    .copyWith(color: MyColors.grey_90)),
+                            Text("$dayCount days in the app",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
                           ],
