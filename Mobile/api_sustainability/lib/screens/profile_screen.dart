@@ -107,7 +107,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                         ),
                         onPressed: () {
                           // This should bring you to open the menus thing
-                          print('Clicked');
+                          showDialog(
+                              context: context,
+                              builder: (_) => CustomCongratDialog());
                         },
                       ),
                       Container(width: 20, height: 90),
@@ -127,118 +129,6 @@ class ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ],
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  GestureDetector(
-                      onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (_) => CustomCongratDialog());
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: MyColors.grey_40,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(13.0),
-                            child: Text("CONGRAT",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: MyColors.grey_40,
-                                )),
-                          ),
-                        ),
-                      )),
-                  GestureDetector(
-                      onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (_) => CustomChampionDialog());
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: MyColors.grey_40,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(13.0),
-                            child: Text("CHAMPION",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: MyColors.grey_40,
-                                )),
-                          ),
-                        ),
-                      )),
-                  GestureDetector(
-                      onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (_) => CustomLevelDialog());
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: MyColors.grey_40,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(13.0),
-                            child: Text("LEVEL",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: MyColors.grey_40,
-                                )),
-                          ),
-                        ),
-                      )),
-                  GestureDetector(
-                      onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (_) => CustomRunningDialog());
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: MyColors.grey_40,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(13.0),
-                            child: Text("RUNNING",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: MyColors.grey_40,
-                                )),
-                          ),
-                        ),
-                      )),
-                ],
-              ),
             ),
             Container(
               width: double.infinity,
