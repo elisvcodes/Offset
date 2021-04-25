@@ -24,16 +24,6 @@ class AppDrawer extends StatelessWidget {
             automaticallyImplyLeading: false,
           ),
           ListTile(
-            leading: Icon(FontAwesomeIcons.solidUser),
-            title: Text('Profile'),
-            onTap: () {
-              // Navigator.of(context)
-              //     .pushReplacementNamed(OrdersScreen.routeName);
-              Navigator.of(context)
-                  .pushReplacementNamed(ProfileScreen.routeName);
-            },
-          ),
-          ListTile(
             leading: Icon(MdiIcons.storefront),
             title: Text('Marketplace'),
             onTap: () {
@@ -50,6 +40,16 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           Divider(),
+          ListTile(
+            leading: Icon(FontAwesomeIcons.solidUser),
+            title: Text('Profile'),
+            onTap: () {
+              // Navigator.of(context)
+              //     .pushReplacementNamed(OrdersScreen.routeName);
+              Navigator.of(context)
+                  .pushReplacementNamed(ProfileScreen.routeName);
+            },
+          ),
           ListTile(
             leading: Icon(Icons.edit),
             title: Text('Manage Products'),
