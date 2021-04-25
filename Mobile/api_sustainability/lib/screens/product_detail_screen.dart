@@ -280,6 +280,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 label: _lifeTimeValue.round().toString(),
                 onChanged: (double value) {
                   setState(() {
+                    updateGraph();
                     _lifeTimeValue = value;
                   });
                 },

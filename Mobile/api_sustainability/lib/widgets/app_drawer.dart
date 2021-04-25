@@ -17,10 +17,22 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           AppBar(
-            title: Text('offset'),
+            title: Text(
+              '          Offset 🌼',
+              textAlign: TextAlign.center,
+            ),
             automaticallyImplyLeading: false,
           ),
-          Divider(),
+          ListTile(
+            leading: Icon(Icons.assignment_turned_in),
+            title: Text('Profile'),
+            onTap: () {
+              // Navigator.of(context)
+              //     .pushReplacementNamed(OrdersScreen.routeName);
+              Navigator.of(context)
+                  .pushReplacementNamed(TrackerScreen.routeName);
+            },
+          ),
           ListTile(
             leading: Icon(MdiIcons.storefront),
             title: Text('Marketplace'),
