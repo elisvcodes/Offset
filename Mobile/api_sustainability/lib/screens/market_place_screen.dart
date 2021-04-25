@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:api_sustainability/data/my_colors.dart';
-import 'package:api_sustainability/widgets/my_text.dart';
 import '../widgets/app_drawer.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -9,9 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/products_grid.dart';
-import '../widgets/badge.dart';
-import '../providers/cart.dart';
-import './cart_screen.dart';
 import '../providers/products.dart';
 
 class MarketPlaceScreen extends StatefulWidget {
