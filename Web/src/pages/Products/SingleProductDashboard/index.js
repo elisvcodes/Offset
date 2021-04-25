@@ -13,6 +13,7 @@ export default function SingleProductDashboard(props) {
     dispatch(getSingleProduct(id));
     dispatch(getProducts());
   }, [dispatch]);
+
   const product = useSelector((state) => state.product);
   const products = useSelector((state) => state.products);
   console.log(product);
