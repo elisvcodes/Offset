@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products.dart';
+
+import '../providers/product.dart';
 import './product_item.dart';
 
 class ProductsListCost extends StatefulWidget {
@@ -14,6 +16,18 @@ class ProductsListCost extends StatefulWidget {
 }
 
 class _ProductsListCostState extends State<ProductsListCost> {
+  List<double> _generateCarbonData(int count, List<Product> trackedProducts) {
+    List<double> result = <double>[];
+    for (int i = 0; i < count; i++) {
+      double sum = 0;
+      trackedProducts.forEach((element) {
+        sum += element.carbon * (i / element.lifespam).round();
+      });
+      result.add(sum);
+    }
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
@@ -22,6 +36,8 @@ class _ProductsListCostState extends State<ProductsListCost> {
 
     var _totalConsumptionCostsPerYear =
         productsData.trackedTotalEmissionPerYear;
+
+    var co2EmissionData = _generateCarbonData(12, productsData.favoriteItems);
 // TODO: Untrack items and update the costs
     void untracker() {}
 

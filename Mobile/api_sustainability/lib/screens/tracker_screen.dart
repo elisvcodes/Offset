@@ -5,8 +5,6 @@ import '../widgets/app_drawer.dart';
 import '../widgets/products_list_cost.dart';
 import '../providers/products.dart';
 
-import '../providers/meta.dart';
-
 enum FilterOptions {
   Favorites,
   All,

@@ -18,13 +18,13 @@ class Products with ChangeNotifier {
     return [..._items];
   }
 
-  List<Product> get favoriteItems {
+  List<Product> get trackedItems {
     return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
   double get trackedEmission {
     var total = 0.0;
-    favoriteItems.forEach((prodItem) {
+    trackedItems.forEach((prodItem) {
       // print("Addint ${prodItem.carbon}");
       total += prodItem.carbon;
     });
@@ -33,7 +33,7 @@ class Products with ChangeNotifier {
 
   double get trackedTotalEmissionPerYear {
     var total = 0.0;
-    favoriteItems.forEach((prodItem) {
+    trackedItems.forEach((prodItem) {
       // print(
       //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
       total += prodItem.carbonPerYear;
@@ -43,7 +43,7 @@ class Products with ChangeNotifier {
 
   double get trackedTotalEmissionPerMonth {
     var total = 0.0;
-    favoriteItems.forEach((prodItem) {
+    trackedItems.forEach((prodItem) {
       // print(
       //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
       total += prodItem.carbonPerMonth;
@@ -53,7 +53,7 @@ class Products with ChangeNotifier {
 
   double get trackedTotalEmissionPerDay {
     var total = 0.0;
-    favoriteItems.forEach((prodItem) {
+    trackedItems.forEach((prodItem) {
       // print(
       //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
       total += prodItem.carbonPerDay;
@@ -63,7 +63,7 @@ class Products with ChangeNotifier {
 
   List<String> get trackedCategories {
     List<String> trackedList = [];
-    favoriteItems.forEach((prodItem) {
+    trackedItems.forEach((prodItem) {
       // print(
       //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
       trackedList

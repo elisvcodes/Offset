@@ -24,7 +24,7 @@ class ProductsGrid extends StatelessWidget {
         break;
       case ShowOptions.ShowFavs:
         {
-          products = productsData.favoriteItems;
+          products = productsData.trackedItems;
         }
         break;
 
