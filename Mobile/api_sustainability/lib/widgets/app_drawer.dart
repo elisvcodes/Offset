@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 // import 'package:shop/helpers/custom_route.dart';
 //
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../screens/orders_screen.dart';
 import '../screens/user_products_screen.dart';
@@ -24,7 +25,7 @@ class AppDrawer extends StatelessWidget {
             automaticallyImplyLeading: false,
           ),
           ListTile(
-            leading: Icon(Icons.assignment_turned_in),
+            leading: Icon(FontAwesomeIcons.solidUser),
             title: Text('Profile'),
             onTap: () {
               // Navigator.of(context)
