@@ -16,6 +16,21 @@ class _EditProductScreenState extends State<EditProductScreen> {
   final _descriptionFocusNode = FocusNode();
   final _imageUrlController = TextEditingController();
   final _imageUrlFocusNode = FocusNode();
+
+  final _bioTimeFocusNode = FocusNode();
+
+  final _brandFocusNode = FocusNode();
+
+  final _carbonFocusNode = FocusNode();
+
+  final _followersFocusNode = FocusNode();
+  final _isGenericFocusNode = FocusNode();
+  final _isReusableFocusNode = FocusNode();
+  final _isGreenFocusNode = FocusNode();
+  final _itemCategoryFocusNode = FocusNode();
+  final _itemTagsFocusNode = FocusNode();
+  final _lifepamFocusNode = FocusNode();
+
   final _form = GlobalKey<FormState>();
   var _editedProduct = Product(
     id: null,
@@ -25,9 +40,19 @@ class _EditProductScreenState extends State<EditProductScreen> {
   );
   var _initValues = {
     'title': '',
-    'description': '',
     'price': '',
     'imageUrl': '',
+    'isFavorite': '',
+    'bioTime': '',
+    'brand': '',
+    'carbon': '',
+    'isGeneric': '',
+    'isReusable': '',
+    'isGreen': '',
+    'itemCategory': '',
+    'itemTags': '',
+    'lifespam': '',
+    'description': '',
   };
   var _isInit = true;
   var _isLoading = false;
@@ -48,9 +73,18 @@ class _EditProductScreenState extends State<EditProductScreen> {
         _initValues = {
           'title': _editedProduct.title,
           'price': _editedProduct.price.toString(),
-          // 'imageUrl': _editedProduct.imageUrl,
+          'imageUrl': _editedProduct.imageUrl,
+          'isFavorite': _editedProduct.isFavorite.toString(),
+          'bioTime': _editedProduct.bioTime.toString(),
+          'brand': _editedProduct.brand,
+          'carbon': _editedProduct.carbon.toString(),
+          'isGeneric': _editedProduct.isGeneric.toString(),
+          'isReusable': _editedProduct.isReusable.toString(),
+          'isGreen': _editedProduct.isGreen.toString(),
+          'itemCategory': _editedProduct.itemCategory.toString(),
+          'itemTags': _editedProduct.itemTags,
+          'lifespam': _editedProduct.lifespam.toString(),
           'description': _editedProduct.description,
-          'imageUrl': '',
         };
         _imageUrlController.text = _editedProduct.imageUrl;
       }
@@ -229,6 +263,157 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         );
                       },
                     ),
+                    TextFormField(
+                      initialValue: _initValues['bioTime'],
+                      decoration: InputDecoration(labelText: 'bioTime'),
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.number,
+                      focusNode: _bioTimeFocusNode,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context)
+                            .requestFocus(_descriptionFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter a bioTime.';
+                        }
+                        if (double.tryParse(value) == null) {
+                          return 'Please enter a valid number.';
+                        }
+                        if (double.parse(value) <= 0) {
+                          return 'Please enter a number greater than zero.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedProduct = Product(
+                            title: _editedProduct.title,
+                            bioTime: double.parse(value),
+                            imageUrl: _editedProduct.imageUrl,
+                            id: _editedProduct.id,
+                            isFavorite: _editedProduct.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['lifespam'],
+                      decoration: InputDecoration(labelText: 'lifespam'),
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.number,
+                      focusNode: _lifepamFocusNode,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context)
+                            .requestFocus(_descriptionFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter a lifespam.';
+                        }
+                        if (double.tryParse(value) == null) {
+                          return 'Please enter a valid number.';
+                        }
+                        if (double.parse(value) <= 0) {
+                          return 'Please enter a number greater than zero.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedProduct = Product(
+                            title: _editedProduct.title,
+                            lifespam: double.parse(value),
+                            imageUrl: _editedProduct.imageUrl,
+                            id: _editedProduct.id,
+                            isFavorite: _editedProduct.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['brand'],
+                      decoration: InputDecoration(labelText: 'brand'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a value.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedProduct = Product(
+                            brand: value,
+                            price: _editedProduct.price,
+                            imageUrl: _editedProduct.imageUrl,
+                            id: _editedProduct.id,
+                            isFavorite: _editedProduct.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['itemCategory'],
+                      decoration: InputDecoration(labelText: 'itemCategory'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a value.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedProduct = Product(
+                            itemCategory: value,
+                            price: _editedProduct.price,
+                            imageUrl: _editedProduct.imageUrl,
+                            id: _editedProduct.id,
+                            isFavorite: _editedProduct.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['itemTags'],
+                      decoration: InputDecoration(labelText: 'itemTags'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a value.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedProduct = Product(
+                            itemTags: value,
+                            price: _editedProduct.price,
+                            imageUrl: _editedProduct.imageUrl,
+                            id: _editedProduct.id,
+                            isFavorite: _editedProduct.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['description'],
+                      decoration: InputDecoration(labelText: 'description'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a value.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedProduct = Product(
+                            description: value,
+                            price: _editedProduct.price,
+                            imageUrl: _editedProduct.imageUrl,
+                            id: _editedProduct.id,
+                            isFavorite: _editedProduct.isFavorite);
+                      },
+                    ),
+                    // ENDPOINT
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
