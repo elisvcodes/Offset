@@ -18,3 +18,10 @@ exports.getSingleUser = async (req, res) => {
     return res.status(200).json(result);
   });
 };
+
+exports.getUserProfile = (req, res) => {
+  User.findOne({ _id: req.user._id }).exec((err, user) => {
+    if (err) return res.status(404).json({ msg: 'user was not found' });
+    return res.status(200).json(user);
+  });
+};

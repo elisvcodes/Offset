@@ -19,6 +19,11 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
+    savedItems: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+      },
+    ],
     tokens: [
       {
         token: {
