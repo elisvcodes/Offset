@@ -33,7 +33,9 @@ class ProfileScreenState extends State<ProfileScreen> {
     final authData = Provider.of<Auth>(context, listen: false);
     final productsData = Provider.of<Products>(context);
 
-    var savedPerDay = productsData.emissionSavedPerDay;
+    var _savedPerDay = productsData.emissionSavedPerDay;
+
+    var _totalSaved = _savedPerDay * dayCount;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -138,11 +140,11 @@ class ProfileScreenState extends State<ProfileScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("grams of CO2 saved in total",
+                            Text("$_totalSaved grams of CO2 saved in total",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
                             Text(
-                                "${savedPerDay.toStringAsFixed(3)} grams of CO2 saved in per day",
+                                "${_savedPerDay.toStringAsFixed(3)} grams of CO2 saved per day",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
                             Text("$dayCount days in the app",
