@@ -18,6 +18,7 @@ class ProductsListCost extends StatefulWidget {
 }
 
 class _ProductsListCostState extends State<ProductsListCost> {
+  var isFirstBuild = true;
   final marginLeftOnly = EdgeInsets.only(left: 20, right: 20);
   final marginLeftDouble = EdgeInsets.only(left: 40, right: 40);
   List<double> _generateCarbonData(int count, List<Product> trackedProducts) {
@@ -37,8 +38,8 @@ class _ProductsListCostState extends State<ProductsListCost> {
 
   @override
   void initState() {
-    tagChips.add(Chip(label: Text('black')));
-    tagChips.add(Chip(label: Text('city')));
+    // tagChips.add(Chip(label: Text('city')));
+    //
     super.initState();
   }
 
@@ -55,12 +56,42 @@ class _ProductsListCostState extends State<ProductsListCost> {
 // TODO: Untrack items and update the costs
     void untracker() {}
 
+    void calledFirstBuild() {
+      productsData.trackedCategories.forEach((cateogry) {
+        setState(() {
+          tagChips.add(Chip(label: Text(cateogry)));
+        });
+      });
+    }
+
+    if (isFirstBuild) {
+      calledFirstBuild();
+      setState(() {
+        isFirstBuild = false;
+      });
+    }
+
     return ListView(children: <Widget>[
       VerticalSpace(),
       Text(
         'Tracked Items',
         style: MyText.display3(context),
         textAlign: TextAlign.center,
+      ),
+
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Wrap(
+                spacing: 10,
+                children: tagChips,
+              ),
+            ),
+          ],
+        ),
       ),
       GridView.builder(
         shrinkWrap: true,
@@ -93,6 +124,15 @@ class _ProductsListCostState extends State<ProductsListCost> {
         textAlign: TextAlign.center,
       ),
       VerticalSpace(),
+      Text(
+        "CO2 EMISSION",
+        style: MyText.subhead(context),
+        textAlign: TextAlign.center,
+      ),
+
+      VerticalSpace(
+        height: 5,
+      ),
       Padding(
         padding: marginLeftOnly,
         child: Text(
@@ -137,24 +177,12 @@ class _ProductsListCostState extends State<ProductsListCost> {
           ),
         ),
       ),
-      Container(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: Wrap(
-                spacing: 10,
-                children: tagChips,
-              ),
-            ),
-          ],
-        ),
+      VerticalSpace(),
+      Text(
+        "YOUR CHOICES vs GENERIC",
+        style: MyText.subhead(context),
+        textAlign: TextAlign.center,
       ),
-      Row(
-          children: productsData.trackedCategories
-              .map((item) => new Text(item))
-              .toList()),
       Row(
           children: productsData.trackedCategoriesGenerics
               .map((genericItem) => new Text(
