@@ -1,11 +1,7 @@
 import axios from 'axios';
 
 export const getProducts = () =>
-  axios.get(
-    'https://descartable-server-default-rtdb.firebaseio.com/items.json'
-  );
+  axios.get('https://hackathon-app.server.elisv.com/items/');
 
 export const getSingleProduct = (id) =>
-  axios.get(
-    `https://descartable-server-default-rtdb.firebaseio.com/items/${id}.json`
-  );
+  axios.get(`https://hackathon-app.server.elisv.com/items/${id}`);
