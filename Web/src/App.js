@@ -5,6 +5,7 @@ import Profile from './pages/Profile';
 import Home from './pages/Home/index';
 import Products from './pages/Products';
 import SingleProductDashboard from './pages/Products/SingleProductDashboard';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         path="/product/:id"
         render={(props) => <SingleProductDashboard {...props} />}
       />
+      <Route component={NotFound} />
     </Switch>
   );
 }
