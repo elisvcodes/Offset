@@ -12,12 +12,8 @@ import 'package:intl/intl.dart';
 import '../providers/auth.dart';
 
 import 'package:flutter/cupertino.dart';
-import 'package:api_sustainability/data/dummy.dart';
-import 'package:api_sustainability/data/my_colors.dart';
-import 'package:api_sustainability/models/shop_category.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
-import 'package:api_sustainability/widgets/badge.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
 math.Random random = new math.Random();
