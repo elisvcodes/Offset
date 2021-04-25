@@ -6,9 +6,6 @@ import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'dart:math' as math;
 import 'package:fl_chart/fl_chart.dart';
 import '../providers/products.dart';
-import '../providers/product.dart';
-
-import 'package:intl/intl.dart';
 import '../providers/auth.dart';
 
 import 'package:flutter/cupertino.dart';
