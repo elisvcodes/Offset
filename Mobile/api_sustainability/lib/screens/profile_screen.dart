@@ -109,7 +109,10 @@ class ProfileScreenState extends State<ProfileScreen> {
                           // This should bring you to open the menus thing
                           showDialog(
                               context: context,
-                              builder: (_) => CustomCongratDialog());
+                              builder: (_) => AccomplishmentDialog(
+                                    title: "Title",
+                                    description: "Description",
+                                  ));
                         },
                       ),
                       Container(width: 20, height: 90),

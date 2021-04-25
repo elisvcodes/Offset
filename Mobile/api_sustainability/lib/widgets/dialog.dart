@@ -4,16 +4,17 @@ import 'package:api_sustainability/data/img.dart';
 import 'package:api_sustainability/data/my_colors.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
-class CustomCongratDialog extends StatefulWidget {
+class AccomplishmentDialog extends StatefulWidget {
   String title;
-  String subTitle;
-  CustomCongratDialog({Key key, title, subtitle}) : super(key: key);
+  String description;
+  AccomplishmentDialog({Key key, this.title, this.description})
+      : super(key: key);
 
   @override
-  CustomCongratDialogState createState() => new CustomCongratDialogState();
+  AccomplishmentDialogState createState() => new AccomplishmentDialogState();
 }
 
-class CustomCongratDialogState extends State<CustomCongratDialog> {
+class AccomplishmentDialogState extends State<AccomplishmentDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -41,11 +42,11 @@ class CustomCongratDialogState extends State<CustomCongratDialog> {
                       width: 150,
                     ),
                     Container(height: 15),
-                    Text("Congratulation",
+                    Text("${widget.title}",
                         style: MyText.title(context)
                             .copyWith(color: Colors.black)),
                     Container(height: 20),
-                    Text("You just Unlocked New Level",
+                    Text("${widget.description}",
                         textAlign: TextAlign.center,
                         style: MyText.subhead(context)
                             .copyWith(color: MyColors.grey_40)),
