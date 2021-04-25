@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import '../widgets/app_drawer.dart';
-import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/products_grid.dart';
 import '../providers/products.dart';
 
 class MarketPlaceScreen extends StatefulWidget {
-  // @override
-  // MarketPlaceScreen();
-
   @override
   MarketPlaceScreenState createState() => new MarketPlaceScreenState();
 }
@@ -53,7 +48,6 @@ class MarketPlaceScreenState extends State<MarketPlaceScreen>
       });
       Provider.of<Products>(context).fetchAndSetProducts().then((_) {
         setState(() {
-          // print("Loading is false");
           _isLoading = false;
         });
       });
@@ -72,6 +66,7 @@ class MarketPlaceScreenState extends State<MarketPlaceScreen>
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
               setState(() {
+                // TODO: Switch Filter Options
                 switch (FilterOptions) {
                 }
                 // if (selectedValue == FilterOptions.Favorites) {

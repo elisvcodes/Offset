@@ -14,6 +14,7 @@ import './screens/splash_screen.dart';
 import './screens/auth_screen.dart';
 import './screens/tracker_screen.dart';
 import './screens/market_place_screen.dart';
+import './screens/profile_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
                 UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
                 EditProductScreen.routeName: (ctx) => EditProductScreen(),
                 TrackerScreen.routeName: (ctx) => TrackerScreen(),
+                ProfileScreen.routeName: (ctx) => ProfileScreen(),
               }),
         ));
   }

@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/app_drawer.dart';
-// import '../widgets/products_grid.dart';
 import '../widgets/products_list_cost.dart';
-import '../widgets/badge.dart';
-import '../providers/cart.dart';
 import '../providers/products.dart';
 
 enum FilterOptions {
@@ -14,7 +11,6 @@ enum FilterOptions {
 }
 
 class TrackerScreen extends StatefulWidget {
-  // var _totalConsumptionCosts = 0;
   static const routeName = '/tracker';
   @override
   _TrackerScreenState createState() => _TrackerScreenState();

@@ -1,3 +1,4 @@
+import 'package:api_sustainability/screens/profile_screen.dart';
 import 'package:api_sustainability/screens/tracker_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class AppDrawer extends StatelessWidget {
               // Navigator.of(context)
               //     .pushReplacementNamed(OrdersScreen.routeName);
               Navigator.of(context)
-                  .pushReplacementNamed(TrackerScreen.routeName);
+                  .pushReplacementNamed(ProfileScreen.routeName);
             },
           ),
           ListTile(
@@ -44,8 +45,6 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.assignment_turned_in),
             title: Text('Tracker'),
             onTap: () {
-              // Navigator.of(context)
-              //     .pushReplacementNamed(OrdersScreen.routeName);
               Navigator.of(context)
                   .pushReplacementNamed(TrackerScreen.routeName);
             },
@@ -65,8 +64,6 @@ class AppDrawer extends StatelessWidget {
             title: Text('Logout'),
             onTap: () {
               Navigator.of(context).pop();
-              // Navigator.of(context)
-              //     .pushReplacementNamed(UserProductsScreen.routeName);
               Provider.of<Auth>(context, listen: false).logout();
             },
           ),

@@ -5,14 +5,15 @@ import 'package:api_sustainability/data/my_colors.dart';
 import 'package:api_sustainability/data/my_strings.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
-class ProfileRedRoute extends StatefulWidget {
-  ProfileRedRoute();
+class ProfileScreen extends StatefulWidget {
+  static const routeName = '/profile-screen';
+  ProfileScreen();
 
   @override
-  ProfileRedRouteState createState() => new ProfileRedRouteState();
+  ProfileScreenState createState() => new ProfileScreenState();
 }
 
-class ProfileRedRouteState extends State<ProfileRedRoute> {
+class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
