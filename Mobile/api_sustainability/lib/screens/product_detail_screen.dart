@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:provider/provider.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'dart:math' as math;
@@ -30,10 +32,37 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  static var chartDisplay;
+
+  void initState() {
+    setState(() {
+      var data = [
+        addcharts("val 1", 10),
+        addcharts("val 2", 50),
+        addcharts("val 3", 40),
+        addcharts("val 4", 30),
+        addcharts("val 5", 20),
+      ];
+      var series = [
+        charts.Series(
+          domainFn: (addcharts addcharts, _) => addcharts.label,
+          measureFn: (addcharts addcharts, _) => addcharts.value,
+          id: 'addcharts',
+          data: data,
+        )
+      ];
+
+      chartDisplay = charts.BarChart(
+        series,
+        animate: false,
+      );
+    });
+  }
+
   double _lifeTimeValue = _initLifeTimeValue;
   double _carbonUsage = _initCarbonUsage;
   double _estimatedPerYear = 1;
-
+  final marginLeftOnly = EdgeInsets.only(left: 20, right: 20);
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   List<double> _generateRandomData(int count) {
     List<double> result = <double>[];
@@ -85,18 +114,37 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            // leading: IconButton(
+            //   icon: Icon(
+            //     Icons.menu,
+            //     size: 90,
+            //   ),
+            //   onPressed: () => {},
+            // ),
+            backgroundColor: Colors.white,
             iconTheme: IconThemeData(
-              color: Theme.of(context).primaryColor,
-              size: 90,
+              // color: Theme.of(context).primaryColor,
+              opacity: 1,
+              color: Colors.lightGreen,
+              size: 100,
             ),
-            expandedHeight: 300,
+            expandedHeight: 250,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: Hero(
                 tag: loadedProduct.id,
-                child: Image.network(
-                  loadedProduct.imageUrl,
-                  fit: BoxFit.cover,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(19),
+                  child: Container(
+                    color: Colors.black,
+                    child: Opacity(
+                      opacity: .7,
+                      child: Image.network(
+                        loadedProduct.imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -118,37 +166,53 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               SizedBox(
                 height: 10,
               ),
-              FlatButton(
-                child: Text(
-                  'Add Product to Tracking',
-                  style: TextStyle(fontSize: 20),
+              Container(
+                margin: marginLeftOnly,
+                child: FlatButton(
+                  child: RichText(
+                    text: TextSpan(
+                      style: Theme.of(context).textTheme.body1,
+                      children: [
+                        TextSpan(
+                            text: loadedProduct.isFavorite
+                                ? "I am using this "
+                                : 'Start using this ',
+                            style: MyText.headline(context).copyWith(
+                                color: Theme.of(context).accentColor)),
+                        WidgetSpan(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 2.0),
+                            child: Icon(
+                              loadedProduct.isFavorite
+                                  ? Icons.assignment_turned_in
+                                  : Icons.assignment_turned_in_outlined,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  onPressed: () {
+                    loadedProduct.toggleFavoriteStatus(
+                        authData.token, authData.userId);
+                    setState(() {});
+                  },
+                  textColor: Theme.of(context).primaryColor,
                 ),
-                onPressed: () {
-                  loadedProduct.toggleFavoriteStatus(
-                      authData.token, authData.userId);
-                  final snackBar = SnackBar(
-                    content: Text(
-                      'Item is being Tracked!',
-                    ),
-                    duration: Duration(seconds: 2),
-                    action: SnackBarAction(
-                      label: 'UNDO',
-                      onPressed: () {
-                        loadedProduct.toggleFavoriteStatus(
-                            authData.token, authData.userId);
-                      },
-                    ),
-                  );
-
-                  _scaffoldKey.currentState.showSnackBar(snackBar);
-                },
-                textColor: Theme.of(context).primaryColor,
               ),
-              Text("Carbon cost per unit: ${_carbonUsage.toStringAsFixed(3)}",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  )),
+              VerticalSpace(
+                height: 40,
+              ),
+              Padding(
+                padding: marginLeftOnly,
+                child: Text(
+                    "Carbon cost per unit: ${_carbonUsage.toStringAsFixed(3)}",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    )),
+              ),
               Slider(
                 value: _carbonUsage,
                 min: 0.001 > _carbonUsage ? _carbonUsage * 0.1 : 0.01,
@@ -162,11 +226,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   });
                 },
               ),
-              Text("Lifespam: ${_lifeTimeValue.toStringAsFixed(3)} (months)",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  )),
+              VerticalSpace(),
+              Padding(
+                padding: marginLeftOnly,
+                child: Text(
+                    "Lifespan: ${_lifeTimeValue.toStringAsFixed(3)} (months)",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    )),
+              ),
               Slider(
                 value: _lifeTimeValue,
                 min: 1 > _lifeTimeValue ? 0.1 * _lifeTimeValue : 1,
@@ -179,77 +248,95 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   });
                 },
               ),
-              Text(
-                  "Estimated purchase per year: ${_estimatedPerYear.toStringAsFixed(3)} times",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  )),
-              Container(
-                width: 300.0,
-                height: 100.0,
-                child: new Sparkline(
-                  data: data,
-                  lineColor: Colors.lightGreen[500],
-                  fillMode: FillMode.below,
-                  fillColor: Colors.lightGreen[200],
-                  pointsMode: PointsMode.all,
-                  pointSize: 5.0,
-                  pointColor: Colors.amber,
+              VerticalSpace(),
+              Padding(
+                padding: marginLeftOnly,
+                child: Text(
+                    "Estimated purchase per year: ${_estimatedPerYear.toStringAsFixed(3)} times",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    )),
+              ),
+              Padding(
+                padding: marginLeftOnly,
+                child: Container(
+                  width: 300.0,
+                  height: 100.0,
+                  child: new Sparkline(
+                    data: data,
+                    lineColor: Colors.lightGreen[500],
+                    fillMode: FillMode.below,
+                    fillColor: Colors.lightGreen[200],
+                    pointsMode: PointsMode.all,
+                    pointSize: 5.0,
+                    pointColor: Colors.amber,
+                  ),
+                ),
+              ),
+              VerticalSpace(),
+              Padding(
+                padding: marginLeftOnly,
+                child: Text(
+                  "Alternatives",
+                  style: MyText.display1(context),
+                ),
+              ),
+              Padding(
+                padding: marginLeftOnly,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Row(
+                          children: productsData
+                              .getAlternatives(loadedProduct)
+                              .map((item) {
+                        return Container(
+                          // height: 100,
+                          margin: const EdgeInsets.only(
+                              left: 20, right: 20, top: 20, bottom: 20),
+                          child: GestureDetector(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Container(
+                                    width: 120,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xff7c94b6),
+
+                                      // color: Colors.black,
+                                      image: DecorationImage(
+                                          colorFilter: new ColorFilter.mode(
+                                              Colors.white.withOpacity(.84),
+                                              BlendMode.dstATop),
+                                          image: NetworkImage(item.imageUrl),
+                                          fit: BoxFit.cover),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        item.title,
+                                        style: MyText.body2(context),
+                                      ),
+                                    )),
+                              ),
+                              onTap: () {
+                                Navigator.of(context).pushNamed(
+                                  ProductDetailScreen.routeName,
+                                  arguments: item.id,
+                                );
+                              }),
+                        );
+                      }).toList()),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
-                height: 80,
-              ),
-              Text(
-                "Alternatives",
-                style: MyText.display1(context),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Row(
-                        children: productsData
-                            .getAlternatives(loadedProduct)
-                            .map((item) {
-                      return Container(
-                        // height: 100,
-                        margin: const EdgeInsets.only(
-                            left: 20, right: 20, top: 20, bottom: 20),
-                        child: GestureDetector(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Container(
-                                  width: 120,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xff7c94b6),
-
-                                    // color: Colors.black,
-                                    image: DecorationImage(
-                                        colorFilter: new ColorFilter.mode(
-                                            Colors.white.withOpacity(.84),
-                                            BlendMode.dstATop),
-                                        image: NetworkImage(item.imageUrl),
-                                        fit: BoxFit.cover),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      item.title,
-                                      style: MyText.body2(context),
-                                    ),
-                                  )),
-                            ),
-                            onTap: () {
-                              print("you clicked me");
-                            }),
-                      );
-                    }).toList()),
-                  ],
-                ),
-              ),
+                height: 400,
+                child: chartDisplay,
+              )
             ]),
           ),
         ],
