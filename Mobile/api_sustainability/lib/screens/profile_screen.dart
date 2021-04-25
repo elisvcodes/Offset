@@ -104,6 +104,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           color: Colors.white,
                         ),
                         onPressed: () {
+                          // This should bring you to open the menus thing
                           print('Clicked');
                         },
                       ),
