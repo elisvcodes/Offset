@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/products.dart';
 
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import '../providers/product.dart';
 import './product_item.dart';
@@ -19,6 +20,8 @@ class ProductsListCost extends StatefulWidget {
 
 class _ProductsListCostState extends State<ProductsListCost> {
   var isFirstBuild = true;
+  static var chartDisplayEmissions;
+
   final marginLeftOnly = EdgeInsets.only(left: 20, right: 20);
   final marginLeftDouble = EdgeInsets.only(left: 40, right: 40);
   List<double> _generateCarbonData(int count, List<Product> trackedProducts) {
@@ -56,7 +59,46 @@ class _ProductsListCostState extends State<ProductsListCost> {
 // TODO: Untrack items and update the costs
     void untracker() {}
 
+    void updateGraph() {
+      List<addcharts> chartsEmissionsData = [];
+
+      // productsData.getAlternatives(loadedProduct).toList().forEach((prod) {
+      //   // print("added ${prod.title} ca: ${prod.carbon}");
+      //   chartsEmissionsData.add(addcharts(prod.title, prod.carbon.toInt()));
+      // });
+
+      chartsEmissionsData.add(
+          addcharts("yours", productsData.trackedTotalEmissionPerYear.toInt()));
+
+      chartsEmissionsData.add(addcharts("Generic",
+          productsData.trackedCategoriesGenericsEmissionPerYear.toInt()));
+
+      chartsEmissionsData.add(addcharts(
+          "Saved",
+          productsData.trackedCategoriesGenericsEmissionPerYear.toInt() -
+              productsData.trackedTotalEmissionPerYear.toInt()));
+
+      setState(() {
+        var seriesEmissions = [
+          charts.Series(
+            domainFn: (addcharts addcharts, _) => addcharts.label,
+            measureFn: (addcharts addcharts, _) => addcharts.value,
+            colorFn: (_, __) => charts.MaterialPalette.gray.shadeDefault,
+            id: 'addcharts',
+            data: chartsEmissionsData,
+          )
+        ];
+
+        chartDisplayEmissions = charts.BarChart(
+          seriesEmissions,
+          // animationDuration: Duration(microseconds: 5000),
+          animate: false,
+        );
+      });
+    }
+
     void calledFirstBuild() {
+      updateGraph();
       productsData.trackedCategories.forEach((cateogry) {
         setState(() {
           tagChips.add(Chip(label: Text(cateogry)));
@@ -146,7 +188,7 @@ class _ProductsListCostState extends State<ProductsListCost> {
       Padding(
         padding: marginLeftDouble,
         child: Text(
-            "Per Year: ${_totalConsumptionCostsPerYear.toStringAsFixed(2)},",
+            "Per year: ${_totalConsumptionCostsPerYear.toStringAsFixed(2)},",
             style: MyText.body1(context)),
       ),
       Padding(
@@ -177,23 +219,53 @@ class _ProductsListCostState extends State<ProductsListCost> {
           ),
         ),
       ),
-      VerticalSpace(),
+      VerticalSpace(
+        height: 40,
+      ),
       Text(
-        "YOUR CHOICES vs GENERIC",
+        "YOUR CHOICES vs GENERIC ",
         style: MyText.subhead(context),
         textAlign: TextAlign.center,
       ),
-      Row(
-          children: productsData.trackedCategoriesGenerics
-              .map((genericItem) => new Text(
-                  "${genericItem.brand} | ${genericItem.itemTags} | ${genericItem.carbon} | ${genericItem.carbonPerYear}"))
-              .toList()),
-      Text(
-          "Generics are ${productsData.trackedCategoriesGenericsEmissionPerYear}"),
-      productsData.emissionSavedPerYear > 0
-          ? Text(
-              "Congratulations!, The earth thanks you for saving ${productsData.emissionSavedPerYear} every year!")
-          : Container(),
+      VerticalSpace(
+        height: 5,
+      ),
+      Padding(
+        padding: marginLeftOnly,
+        child: Text(
+          "CO2 (g/year)",
+          style: MyText.body1(context),
+        ),
+      ),
+      Padding(
+        padding: marginLeftDouble,
+        child: Text(
+            "Yours: ${_totalConsumptionCostsPerYear.toStringAsFixed(2)}",
+            style: MyText.body1(context)),
+      ),
+      Padding(
+        padding: marginLeftDouble,
+        child: Text(
+            "Generic: ${productsData.trackedCategoriesGenericsEmissionPerYear.toStringAsFixed(2)}",
+            style: MyText.body1(context)),
+      ),
+      Padding(
+        padding: marginLeftDouble,
+        child: Text(
+            "Saved: ${(productsData.trackedCategoriesGenericsEmissionPerYear - _totalConsumptionCostsPerYear).toStringAsFixed(2)}",
+            style: MyText.body1(context)),
+      ),
+
+      Padding(
+        padding: marginLeftOnly,
+        child: SizedBox(
+          height: 150,
+          child: chartDisplayEmissions,
+        ),
+      ),
+      VerticalSpace(
+        height: 40,
+      )
     ]);
   }
 }

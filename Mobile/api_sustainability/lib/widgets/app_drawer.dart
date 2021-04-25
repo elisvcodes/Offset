@@ -18,7 +18,7 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           AppBar(
             title: Text(
-              '          Offset 🌼',
+              '🌳 Offset ',
               textAlign: TextAlign.center,
             ),
             automaticallyImplyLeading: false,

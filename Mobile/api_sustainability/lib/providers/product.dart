@@ -57,6 +57,10 @@ class Product with ChangeNotifier {
     return carbonPerMonth * 12;
   }
 
+  double get categoriesAsList {
+    final split = this.itemCategory.split(',');
+  }
+
 // optimistic approach
   void toggleFavoriteStatus(String authToken, String userId) async {
     final oldStatus = isFavorite;

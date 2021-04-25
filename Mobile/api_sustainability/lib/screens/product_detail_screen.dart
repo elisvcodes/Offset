@@ -25,8 +25,11 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  var isFirstBuild = true;
   static var chartDisplayEmissions;
   static var chartDisplayLifeSpan;
+  List<Widget> isTags = [];
+  List<Widget> categoryTags = [];
 
   // void initState() {
   //   updateGraph();
@@ -126,6 +129,44 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           // animationDuration: Duration(microseconds: 5000),
           animate: false,
         );
+      });
+    }
+
+    void calledFirstBuild() {
+      // updateGraph();
+      setState(() {
+        if (loadedProduct.isGeneric) {
+          isTags.add(Chip(
+            label: Text("Generic 📃"),
+            backgroundColor: Colors.cyan[50],
+          ));
+        }
+
+        if (loadedProduct.isGreen) {
+          isTags.add(Chip(
+            label: Text("Green 🌱"),
+            backgroundColor: Colors.green[50],
+          ));
+        }
+
+        if (loadedProduct.isReusable) {
+          isTags.add(Chip(
+            label: Text("Reusable 🔁"),
+            backgroundColor: Colors.blue[50],
+          ));
+        }
+
+        isTags.add(Chip(
+          label: Text(loadedProduct.itemCategory),
+          backgroundColor: Colors.amber[50],
+        ));
+      });
+    }
+
+    if (isFirstBuild) {
+      calledFirstBuild();
+      setState(() {
+        isFirstBuild = false;
       });
     }
 
@@ -233,6 +274,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   textColor: Theme.of(context).primaryColor,
                 ),
               ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: Wrap(
+                        spacing: 10,
+                        children: isTags,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               VerticalSpace(
                 height: 40,
               ),
@@ -331,6 +386,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   child: chartDisplayLifeSpan,
                 ),
               ),
+              VerticalSpace(),
               Padding(
                 padding: marginLeftOnly,
                 child: Text(
@@ -390,6 +446,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                 ),
               ),
+              VerticalSpace(),
             ]),
           ),
         ],
