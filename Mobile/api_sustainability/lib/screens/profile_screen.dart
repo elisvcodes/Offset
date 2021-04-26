@@ -76,7 +76,8 @@ class ProfileScreenState extends State<ProfileScreen> {
               backgroundColor: Theme.of(context).accentColor,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: NetworkImage(metaData.rankFile),
+                backgroundImage: AssetImage(metaData.rankFile),
+                // backgroundImage: AssetImage('assets/images/seed.PNG'),
               ),
             ),
             Container(
