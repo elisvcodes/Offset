@@ -171,6 +171,10 @@ class Products with ChangeNotifier {
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
       final List<Product> loadedProducts = [];
+      print(favoriteData);
+      print("this is a dates Counted test");
+      print(favoriteData['ID1']);
+      print(favoriteData['ID1']['isFavorite']);
 
       extractedData.forEach((prodId, prodData) {
         // print(prodData);
@@ -179,8 +183,12 @@ class Products with ChangeNotifier {
             // title: "${prodData['brand']} | ${prodData['item_category']}",
             title: prodData['title'],
             price: prodData['price'].toDouble(),
-            isFavorite:
-                favoriteData == null ? false : favoriteData[prodId] ?? false,
+            isFavorite: favoriteData[prodId] == null
+                ? false
+                : favoriteData[prodId]['isFavorite'] ?? false,
+            datesCounted: favoriteData[prodId] == null
+                ? 0
+                : favoriteData[prodId]['datesCounted'] ?? 0,
             imageUrl: prodData['image_url'],
             bioTime: prodData['bio_time'].toDouble(),
             brand: prodData['brand'],

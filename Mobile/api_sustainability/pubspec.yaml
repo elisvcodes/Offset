@@ -58,6 +58,14 @@ flutter:
   assets:
     - assets/images/product-placeholder.png
     - assets/images/badge_trophy.png
+    - assets/images/mature_tree.PNG
+    - assets/images/seed.PNG
+    - assets/images/seed_2.PNG
+    - assets/images/smalltree.PNG
+    - assets/images/sprout.PNG
+    - assets/images/sprout_2.PNG
+    - assets/images/tree.PNG
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
