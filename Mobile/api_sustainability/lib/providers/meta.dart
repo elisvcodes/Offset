@@ -34,7 +34,8 @@ class Meta with ChangeNotifier {
 
   void addDay(double carbonSavedThatDay) {
     this.dayCount++;
-    
+    //for each product add if they are there
+
 
 
     this.totalCarbonSaved += carbonSavedThatDay;

@@ -210,6 +210,13 @@ class Products with ChangeNotifier {
     }
   }
 
+  void addTrackedProductsADay(String authToken, String userId) {
+//if they are being tracked add a day
+    trackedItems.forEach((prodItem) {
+      prodItem.addDate(authToken, userId);
+    });
+  }
+
   Future<void> addProduct(Product product) async {
     final url = Uri.parse(
         'https://descartable-server-default-rtdb.firebaseio.com/items.json');

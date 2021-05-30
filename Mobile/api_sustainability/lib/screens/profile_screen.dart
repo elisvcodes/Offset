@@ -55,11 +55,12 @@ class ProfileScreenState extends State<ProfileScreen> {
           color: Colors.white,
         ),
         onPressed: () {
-setState(() {
-  metaData.addDay(_savedPerDay);
-  // dayCount++;
-});
-},
+          setState(() {
+            metaData.addDay(_savedPerDay);
+            productsData.addTrackedProductsADay(authData.token, authData.userId);
+            // dayCount++;
+          });
+        },
       ),
       body: SingleChildScrollView(
         child: Column(

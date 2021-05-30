@@ -83,7 +83,6 @@ class Product with ChangeNotifier {
     notifyListeners();
     final url = Uri.parse(
         'https://descartable-server-default-rtdb.firebaseio.com/userTracking/$userId/$id.json');
-    datesCounted = 0;
     try {
       final response = await http.put(
         url,
@@ -100,13 +99,12 @@ class Product with ChangeNotifier {
   }
 
 
-  void addDate() async {
+  void addDate(String authToken, String userId) async {
     _addDateValues(1);
 
     notifyListeners();
     final url = Uri.parse(
         'https://descartable-server-default-rtdb.firebaseio.com/userTracking/$userId/$id.json');
-    datesCounted = 0;
     try {
       final response = await http.put(
         url,
