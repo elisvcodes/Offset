@@ -25,7 +25,7 @@ class Meta with ChangeNotifier {
   int dayCount;
   double totalCarbonSaved;
   List<Rank> ranks;
-    
+
   DateTime lastDateSync = DateTime.parse('2021-04-12 00:05:41.446919');
 
   Meta({
@@ -39,6 +39,16 @@ class Meta with ChangeNotifier {
     //for each product add if they are there
 
     this.totalCarbonSaved += carbonSavedThatDay;
+    notifyListeners();
+  }
+
+  int getDatesLastNowDifference() {
+    return lastDateSync.difference(DateTime.now()).inDays;
+  }
+
+  void updateLastDateAsToday() {
+    this.lastDateSync = DateTime.now();
+
     notifyListeners();
   }
 

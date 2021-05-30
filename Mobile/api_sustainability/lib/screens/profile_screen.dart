@@ -41,6 +41,8 @@ class ProfileScreenState extends State<ProfileScreen> {
     var _savedPerDay = productsData.emissionSavedPerDay;
     var _totalSaved = metaData.totalCarbonSaved;
 
+    print(metaData.getDatesLastNowDifference());
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -52,13 +54,15 @@ class ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Theme.of(context).accentColor,
         elevation: 3,
         child: Icon(
-          Icons.plus_one,
+          Icons.replay_outlined,
           color: Colors.white,
         ),
         onPressed: () {
           setState(() {
             metaData.addDay(_savedPerDay);
-            productsData.addTrackedProductsADay(authData.token, authData.userId);
+            productsData.addTrackedProductsADay(
+                authData.token, authData.userId);
+            metaData.updateLastDateAsToday();
             // dayCount++;
           });
         },
@@ -164,7 +168,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                             Text("${metaData.dayCount} days in the app",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
-                                    Text(DateFormat('dd/MM/yyyy hh:mm').format(metaData.lastDateSync )),
+                            Text(DateFormat('dd/MM/yyyy hh:mm')
+                                .format(metaData.lastDateSync)),
                           ],
                         ),
                       )
