@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import '../models/http_exception.dart';
+// import '../models/http_exception.dart';
 import '../data/rank.dart';
 
 class Rank {
@@ -34,6 +34,9 @@ class Meta with ChangeNotifier {
 
   void addDay(double carbonSavedThatDay) {
     this.dayCount++;
+    
+
+
     this.totalCarbonSaved += carbonSavedThatDay;
     notifyListeners();
   }

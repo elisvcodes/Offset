@@ -30,7 +30,7 @@ class Product with ChangeNotifier {
     @required this.price,
     @required this.imageUrl,
     this.isFavorite = false,
-    this.datesCounted =0 ,
+    this.datesCounted = 0,
     this.bioTime = 0,
     this.brand = "Generic",
     this.carbon = 0,
@@ -46,6 +46,10 @@ class Product with ChangeNotifier {
 
   void _setFavValue(bool newValue) {
     isFavorite = newValue;
+    notifyListeners();
+  }
+  void _addDateValues(int count) {
+    datesCounted += count;
     notifyListeners();
   }
 
@@ -92,6 +96,29 @@ class Product with ChangeNotifier {
     } catch (error) {
       // If the attempts fails
       _setFavValue(oldStatus);
+    }
+  }
+
+
+  void addDate() async {
+    _addDateValues(1);
+
+    notifyListeners();
+    final url = Uri.parse(
+        'https://descartable-server-default-rtdb.firebaseio.com/userTracking/$userId/$id.json');
+    datesCounted = 0;
+    try {
+      final response = await http.put(
+        url,
+        body: json.encode({'isFavorite': isFavorite, 'count': datesCounted}),
+      );
+      // If there is an error but theconnection works
+      if (response.statusCode >= 400) {
+        _addDateValues(-1);
+      }
+    } catch (error) {
+      // If the attempts fails
+      _addDateValues(-1);
     }
   }
 }
