@@ -89,7 +89,7 @@ class Product with ChangeNotifier {
     try {
       final response = await http.put(
         url,
-        body: json.encode({'isFavorite': isFavorite, 'count': datesCounted}),
+        body: json.encode({'isFavorite': isFavorite, 'datesCounted': datesCounted}),
       );
       // If there is an error but theconnection works
       if (response.statusCode >= 400) {
@@ -111,7 +111,7 @@ class Product with ChangeNotifier {
     try {
       final response = await http.put(
         url,
-        body: json.encode({'isFavorite': isFavorite, 'count': datesCounted}),
+        body: json.encode({'isFavorite': isFavorite, 'datesCounted': datesCounted}),
       );
       // If there is an error but theconnection works
       if (response.statusCode >= 400) {

@@ -172,12 +172,13 @@ class Products with ChangeNotifier {
       final favoriteData = json.decode(favoriteResponse.body);
       final List<Product> loadedProducts = [];
       print(favoriteData);
-      print("this is a dates Counted test");
-      print(favoriteData['ID1']);
-      print(favoriteData['ID1']['isFavorite']);
-
+      
+// 
+      // print(favoriteData['ID1']['isFavorite']);
       extractedData.forEach((prodId, prodData) {
-        // print(prodData);
+        
+        print("this is a dates Counted test");
+      print(favoriteData[prodId]);
         loadedProducts.add(Product(
             id: prodId,
             // title: "${prodData['brand']} | ${prodData['item_category']}",
@@ -185,10 +186,14 @@ class Products with ChangeNotifier {
             price: prodData['price'].toDouble(),
             isFavorite: favoriteData[prodId] == null
                 ? false
-                : favoriteData[prodId]['isFavorite'] ,
+                : favoriteData[prodId]['isFavorite']  == null? false:favoriteData[prodId]['isFavorite'] ,
+
+
+
+
             datesCounted: favoriteData[prodId] == null
                 ? 0
-                : favoriteData[prodId]['datesCounted'],
+                : favoriteData[prodId]['datesCounted'] == null ? 0: favoriteData[prodId]['datesCounted'],
             imageUrl: prodData['image_url'],
             bioTime: prodData['bio_time'].toDouble(),
             brand: prodData['brand'],
@@ -201,7 +206,11 @@ class Products with ChangeNotifier {
             description: prodData['description'],
             itemCategory: prodData['item_category'],
             itemTags: prodData["item_tags"]));
-      });
+
+      }
+      
+      
+      );
       _items = loadedProducts;
       notifyListeners();
     } catch (error) {
