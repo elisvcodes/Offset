@@ -9,6 +9,7 @@ class Product with ChangeNotifier {
 
   final String imageUrl;
   bool isFavorite;
+  int datesCounted;
 
   double bioTime;
   String brand;
