@@ -9,7 +9,6 @@ class Rank {
   final int carbon;
   final String file;
   final String name;
-
   Rank({this.carbon, this.file, this.name});
 
   factory Rank.fromJson(Map<String, dynamic> json) {
@@ -26,6 +25,9 @@ class Meta with ChangeNotifier {
   int dayCount;
   double totalCarbonSaved;
   List<Rank> ranks;
+    
+  DateTime lastDateSync = DateTime.parse('2021-04-12 00:05:41.446919');
+
   Meta({
     @required this.name,
     @required this.dayCount,
@@ -35,8 +37,6 @@ class Meta with ChangeNotifier {
   void addDay(double carbonSavedThatDay) {
     this.dayCount++;
     //for each product add if they are there
-
-
 
     this.totalCarbonSaved += carbonSavedThatDay;
     notifyListeners();

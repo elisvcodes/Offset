@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:api_sustainability/data/my_colors.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
+import 'package:intl/intl.dart';
 import '../widgets/app_drawer.dart';
 
 import 'package:provider/provider.dart';
@@ -163,6 +164,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             Text("${metaData.dayCount} days in the app",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
+                                    Text(DateFormat('dd/MM/yyyy hh:mm').format(metaData.lastDateSync )),
                           ],
                         ),
                       )
