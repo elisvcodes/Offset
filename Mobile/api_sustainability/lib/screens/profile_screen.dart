@@ -61,7 +61,7 @@ class ProfileScreenState extends State<ProfileScreen> {
           setState(() {
             metaData.addDay(_savedPerDay);
             productsData.addTrackedProductsADay(
-                authData.token, authData.userId);
+                authData.token, authData.userId, metaData.getDatesLastNowDifference());
             metaData.updateLastDateAsToday();
             // dayCount++;
           });

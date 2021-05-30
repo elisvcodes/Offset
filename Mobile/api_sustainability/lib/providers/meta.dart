@@ -43,7 +43,7 @@ class Meta with ChangeNotifier {
   }
 
   int getDatesLastNowDifference() {
-    return lastDateSync.difference(DateTime.now()).inDays;
+    return DateTime.now().difference(lastDateSync).inDays;
   }
 
   void updateLastDateAsToday() {

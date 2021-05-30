@@ -48,9 +48,12 @@ class Product with ChangeNotifier {
     isFavorite = newValue;
     notifyListeners();
   }
-  void _addDateValues(int count) {
-    datesCounted += count;
+
+  void addDateValues(int count) {
+    print("Counted before adding: ${datesCounted}");
+    this.datesCounted += count;
     notifyListeners();
+    print("Counted afteradding: ${datesCounted}");
   }
 
   double get carbonPerMonth {
@@ -98,9 +101,9 @@ class Product with ChangeNotifier {
     }
   }
 
-
-  void addDate(String authToken, String userId) async {
-    _addDateValues(1);
+  void syncDate(String authToken, String userId) async {
+    // _addDateValues(1);
+    // Instead add the dates according to well the dates
 
     notifyListeners();
     final url = Uri.parse(
@@ -112,11 +115,11 @@ class Product with ChangeNotifier {
       );
       // If there is an error but theconnection works
       if (response.statusCode >= 400) {
-        _addDateValues(-1);
+        addDateValues(-1);
       }
     } catch (error) {
       // If the attempts fails
-      _addDateValues(-1);
+      addDateValues(-1);
     }
   }
 }

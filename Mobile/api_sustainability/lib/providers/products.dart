@@ -185,10 +185,10 @@ class Products with ChangeNotifier {
             price: prodData['price'].toDouble(),
             isFavorite: favoriteData[prodId] == null
                 ? false
-                : favoriteData[prodId]['isFavorite'] ?? false,
+                : favoriteData[prodId]['isFavorite'] ,
             datesCounted: favoriteData[prodId] == null
                 ? 0
-                : favoriteData[prodId]['datesCounted'] ?? 0,
+                : favoriteData[prodId]['datesCounted'],
             imageUrl: prodData['image_url'],
             bioTime: prodData['bio_time'].toDouble(),
             brand: prodData['brand'],
@@ -210,10 +210,11 @@ class Products with ChangeNotifier {
     }
   }
 
-  void addTrackedProductsADay(String authToken, String userId) {
+  void addTrackedProductsADay(String authToken, String userId, int daysToAdd) {
 //if they are being tracked add a day
     trackedItems.forEach((prodItem) {
-      prodItem.addDate(authToken, userId);
+      prodItem.addDateValues(daysToAdd);
+      prodItem.syncDate(authToken, userId);
     });
   }
 
