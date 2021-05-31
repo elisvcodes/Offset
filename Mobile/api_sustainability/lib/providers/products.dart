@@ -51,12 +51,22 @@ class Products with ChangeNotifier {
     return total;
   }
 
+  double get totalTrackedEmissions {
+    var total = 0.0;
+    items.forEach((element) {
+      total += element.carbonPerDay * element.datesCounted;
+    });
+
+    return total;
+  }
+
   double get trackedTotalEmissionPerDay {
     var total = 0.0;
     trackedItems.forEach((prodItem) {
       // print(
       //     "AddING PRODUCT: ${prodItem.brand}:  ${prodItem.carbonPerYear} with a total of: ${total}");
-      total += prodItem.carbonPerDay;
+      // total += prodItem.carbonPerDay;
+      // total += prodItem.carbonPerDay +
     });
     return total;
   }
@@ -81,6 +91,23 @@ class Products with ChangeNotifier {
         .toList();
     trackedList = Set.of(trackedList).toList();
     return trackedList;
+  }
+
+  double genericItemCarbonCumsumptionPerDay(String targetCategory) {
+    return genericItems
+        .firstWhere((element) => element.itemCategory == targetCategory)
+        .carbonPerDay;
+  }
+
+  double get getTotalSavedUsingEachProductTracking {
+    //go through all objects and add ups the tracking multiplayed by the consumption per day
+    double totalSaved = 0.0;
+    items.forEach((element) {
+      totalSaved += (element.carbonPerDay * element.datesCounted -
+          genericItemCarbonCumsumptionPerDay(element.itemCategory));
+    });
+
+    return totalSaved;
   }
 
   double get trackedCategoriesGenericsEmissionPerYear {
@@ -172,13 +199,12 @@ class Products with ChangeNotifier {
       final favoriteData = json.decode(favoriteResponse.body);
       final List<Product> loadedProducts = [];
       print(favoriteData);
-      
-// 
+
+//
       // print(favoriteData['ID1']['isFavorite']);
       extractedData.forEach((prodId, prodData) {
-        
         print("this is a dates Counted test");
-      print(favoriteData[prodId]);
+        print(favoriteData[prodId]);
         loadedProducts.add(Product(
             id: prodId,
             // title: "${prodData['brand']} | ${prodData['item_category']}",
@@ -186,14 +212,14 @@ class Products with ChangeNotifier {
             price: prodData['price'].toDouble(),
             isFavorite: favoriteData[prodId] == null
                 ? false
-                : favoriteData[prodId]['isFavorite']  == null? false:favoriteData[prodId]['isFavorite'] ,
-
-
-
-
+                : favoriteData[prodId]['isFavorite'] == null
+                    ? false
+                    : favoriteData[prodId]['isFavorite'],
             datesCounted: favoriteData[prodId] == null
                 ? 0
-                : favoriteData[prodId]['datesCounted'] == null ? 0: favoriteData[prodId]['datesCounted'],
+                : favoriteData[prodId]['datesCounted'] == null
+                    ? 0
+                    : favoriteData[prodId]['datesCounted'],
             imageUrl: prodData['image_url'],
             bioTime: prodData['bio_time'].toDouble(),
             brand: prodData['brand'],
@@ -206,11 +232,7 @@ class Products with ChangeNotifier {
             description: prodData['description'],
             itemCategory: prodData['item_category'],
             itemTags: prodData["item_tags"]));
-
-      }
-      
-      
-      );
+      });
       _items = loadedProducts;
       notifyListeners();
     } catch (error) {
@@ -225,6 +247,8 @@ class Products with ChangeNotifier {
       prodItem.addDateValues(daysToAdd);
       prodItem.syncDate(authToken, userId);
     });
+
+    // Get all products carbon footprint by themselves
   }
 
   Future<void> addProduct(Product product) async {

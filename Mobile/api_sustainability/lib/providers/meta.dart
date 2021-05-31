@@ -41,7 +41,7 @@ class Meta with ChangeNotifier {
     this.dayCount++;
     //for each product add if they are there
 
-    this.totalCarbonSaved += carbonSavedThatDay;
+    // this.totalCarbonSaved += carbonSavedThatDay;
     notifyListeners();
   }
 
@@ -61,6 +61,17 @@ class Meta with ChangeNotifier {
 
     final metaResponse = await http.get(url);
     final metaData = json.decode(metaResponse.body);
+    this.dayCount = metaData["dayCount"] == null ? 0 : metaData["dayCount"];
+    
+    this.name = metaData["name"] == null ? 0 : metaData["name"];
+    // this.totalCarbonSaved = metaData["totalCarbonSaved"] == null ? 0 : metaData["totalCarbonSaved"];
+    this.dayCount = metaData["dayCount"] == null ? 0 : metaData["dayCount"];
+    // this.dayCount = metaData["dayCount"] == null ? 0 : metaData["dayCount"];
+this.lastDateSync = metaData["lastDateSync"] == null ? 0 : DateTime.parse(metaData["lastDateSync"]);
+
+    // this.lastDateSync = metaData.lastDateSync
+
+    notifyListeners();
     print(metaData);
   }
 
@@ -76,7 +87,7 @@ class Meta with ChangeNotifier {
           'user_id': userId,
           'name': name,
           'dayCount': dayCount,
-          'totalCarbonsaved': totalCarbonSaved,
+          'totalCarbonSaved': totalCarbonSaved,
           'ranks': ranks,
           'lastDateSync': lastDateSync.toIso8601String()
         }),

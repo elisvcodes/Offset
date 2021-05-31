@@ -16,9 +16,10 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 int dayCount = 0;
 
+bool firstTimeRendered = false;
+
 class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile-screen';
-
   ProfileScreen();
 
   @override
@@ -34,6 +35,12 @@ class ProfileScreenState extends State<ProfileScreen> {
     final metaData = Provider.of<Meta>(context);
     var _savedPerDay = productsData.emissionSavedPerDay;
     var _totalSaved = metaData.totalCarbonSaved;
+
+    if (!firstTimeRendered) {
+      firstTimeRendered = true;
+
+    metaData.fetchAndSetMeta(authData.userId);
+    }
 
     // print(metaData.getDatesLastNowDifference());
 
@@ -53,6 +60,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         ),
         onPressed: () {
           setState(() {
+            // #TODO the following code is deprecated
             metaData.addDay(_savedPerDay);
             productsData.addTrackedProductsADay(authData.token, authData.userId,
                 metaData.getDatesLastNowDifference());
