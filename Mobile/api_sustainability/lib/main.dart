@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider.value(
             // value: Cart(),
-            value: Meta(name: "Demo User", dayCount: 1),
+            value: Meta(name: "Demo User", dayCount: 1, lastDateSync: DateTime.parse('2021-04-12 00:05:41.446919')),
           ),
         ],
         child: Consumer<Auth>(

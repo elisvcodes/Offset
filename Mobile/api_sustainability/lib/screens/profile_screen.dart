@@ -6,18 +6,12 @@ import 'package:api_sustainability/widgets/my_text.dart';
 
 import 'package:intl/intl.dart';
 import '../widgets/app_drawer.dart';
-
 import 'package:provider/provider.dart';
 import '../providers/products.dart';
-
 import '../providers/auth.dart';
-
 import '../providers/meta.dart';
-
 import '../data/achievements.dart';
-
 import '../widgets/dialog.dart';
-
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 int dayCount = 0;
@@ -41,7 +35,7 @@ class ProfileScreenState extends State<ProfileScreen> {
     var _savedPerDay = productsData.emissionSavedPerDay;
     var _totalSaved = metaData.totalCarbonSaved;
 
-    print(metaData.getDatesLastNowDifference());
+    // print(metaData.getDatesLastNowDifference());
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -60,9 +54,10 @@ class ProfileScreenState extends State<ProfileScreen> {
         onPressed: () {
           setState(() {
             metaData.addDay(_savedPerDay);
-            productsData.addTrackedProductsADay(
-                authData.token, authData.userId, metaData.getDatesLastNowDifference());
+            productsData.addTrackedProductsADay(authData.token, authData.userId,
+                metaData.getDatesLastNowDifference());
             metaData.updateLastDateAsToday();
+            metaData.postMeta(authData.token, authData.userId);
             // dayCount++;
           });
         },

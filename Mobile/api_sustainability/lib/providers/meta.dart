@@ -26,7 +26,8 @@ class Meta with ChangeNotifier {
   double totalCarbonSaved;
   List<Rank> ranks;
 
-  DateTime lastDateSync = DateTime.parse('2021-04-12 00:05:41.446919');
+  DateTime lastDateSync;
+  final DateTime defaultDate = DateTime.parse('2021-04-12 00:05:41.446919');
 
   Meta({
     @required this.name,
@@ -52,6 +53,43 @@ class Meta with ChangeNotifier {
     this.lastDateSync = DateTime.now();
 
     notifyListeners();
+  }
+
+  void fetchAndSetMeta(String userId) async {
+    var url = Uri.parse(
+        'https://descartable-server-default-rtdb.firebaseio.com/userMeta/$userId.json');
+
+    final metaResponse = await http.get(url);
+    final metaData = json.decode(metaResponse.body);
+    print(metaData);
+  }
+
+  // optimistic approach
+  void postMeta(String authToken, String userId) async {
+    notifyListeners();
+    final url = Uri.parse(
+        'https://descartable-server-default-rtdb.firebaseio.com/userMeta/$userId.json');
+    try {
+      final response = await http.put(
+        url,
+        body: json.encode({
+          'user_id': userId,
+          'name': name,
+          'dayCount': dayCount,
+          'totalCarbonsaved': totalCarbonSaved,
+          'ranks': ranks,
+          'lastDateSync': lastDateSync.toIso8601String()
+        }),
+      );
+      // If there is an error but theconnection works
+
+    } catch (error) {
+      // If the attempts fails
+      print(error);
+      // _setFavValue(oldStatus);
+    }
+
+    print('Successfully uipdated?');
   }
 
   void fetchRanks() async {
