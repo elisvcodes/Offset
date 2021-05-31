@@ -32,6 +32,8 @@ class Meta with ChangeNotifier {
     @required this.name,
     @required this.dayCount,
     this.totalCarbonSaved = 0,
+    this.lastDateSync,
+    this.ranks,
   });
 
   void addDay(double carbonSavedThatDay) {
