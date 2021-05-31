@@ -62,17 +62,23 @@ class Meta with ChangeNotifier {
     final metaResponse = await http.get(url);
     final metaData = json.decode(metaResponse.body);
     this.dayCount = metaData["dayCount"] == null ? 0 : metaData["dayCount"];
-    
+
     this.name = metaData["name"] == null ? 0 : metaData["name"];
     // this.totalCarbonSaved = metaData["totalCarbonSaved"] == null ? 0 : metaData["totalCarbonSaved"];
     this.dayCount = metaData["dayCount"] == null ? 0 : metaData["dayCount"];
     // this.dayCount = metaData["dayCount"] == null ? 0 : metaData["dayCount"];
-this.lastDateSync = metaData["lastDateSync"] == null ? 0 : DateTime.parse(metaData["lastDateSync"]);
+    this.lastDateSync = metaData["lastDateSync"] == null
+        ? 0
+        : DateTime.parse(metaData["lastDateSync"]);
 
     // this.lastDateSync = metaData.lastDateSync
 
     notifyListeners();
     print(metaData);
+  }
+
+  void setTotalCarbonSaved(double newCarbonData) {
+    this.totalCarbonSaved = newCarbonData;
   }
 
   // optimistic approach

@@ -39,7 +39,8 @@ class ProfileScreenState extends State<ProfileScreen> {
     if (!firstTimeRendered) {
       firstTimeRendered = true;
 
-    metaData.fetchAndSetMeta(authData.userId);
+      metaData.fetchAndSetMeta(authData.userId);metaData.setTotalCarbonSaved(
+                productsData.getTotalSavedUsingEachProductTracking);
     }
 
     // print(metaData.getDatesLastNowDifference());
@@ -66,6 +67,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 metaData.getDatesLastNowDifference());
             metaData.updateLastDateAsToday();
             metaData.postMeta(authData.token, authData.userId);
+            
             // dayCount++;
           });
         },
