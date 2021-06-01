@@ -18,7 +18,6 @@ import '../widgets/my_text.dart';
 
 int dayCount = 0;
 
-bool firstTimeRendered = false;
 
 class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile-screen';
@@ -29,6 +28,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class ProfileScreenState extends State<ProfileScreen> {
+bool firstTimeRendered = false;
   @override
   Widget build(BuildContext context) {
     final authData = Provider.of<Auth>(context, listen: false);
@@ -37,13 +37,17 @@ class ProfileScreenState extends State<ProfileScreen> {
     final metaData = Provider.of<Meta>(context);
     var _savedPerDay = productsData.emissionSavedPerDay;
     var _totalSaved = metaData.totalCarbonSaved;
-
+    // print("Total Saved 1");
+    print(firstTimeRendered);
     if (!firstTimeRendered) {
       firstTimeRendered = true;
-
+      // print("Total Saved 2");
       metaData.fetchAndSetMeta(authData.userId);
       metaData.setTotalCarbonSaved(
           productsData.getTotalSavedUsingEachProductTracking);
+
+      _totalSaved = metaData.totalCarbonSaved;
+      // print("Total Saved 3");
     }
 
     // print(metaData.getDatesLastNowDifference());
@@ -176,8 +180,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                             Text("${metaData.dayCount} days in the app",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
-                            Text(DateFormat('dd/MM/yyyy hh:mm')
-                                .format(metaData.lastDateSync)),
+                            Text('Last time updated: ' +
+                                DateFormat('dd/MM/yyyy hh:mm')
+                                    .format(metaData.lastDateSync)),
                           ],
                         ),
                       )

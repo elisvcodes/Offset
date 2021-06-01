@@ -9,9 +9,6 @@ import '../data/my_colors.dart';
 import './contact_us_screen.dart';
 import './credits_screen.dart';
 
-int dayCount = 0;
-
-bool firstTimeRendered = false;
 
 class AboutScreen extends StatefulWidget {
   static const routeName = '/about-screes';

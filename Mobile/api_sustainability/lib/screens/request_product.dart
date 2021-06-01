@@ -8,7 +8,6 @@ import '../data/my_colors.dart';
 
 int dayCount = 0;
 
-bool firstTimeRendered = false;
 
 class RequestFeatureScreen extends StatefulWidget {
   static const routeName = '/feature-screen';

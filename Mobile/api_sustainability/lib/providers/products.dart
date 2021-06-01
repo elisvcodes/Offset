@@ -203,8 +203,8 @@ class Products with ChangeNotifier {
 //
       // print(favoriteData['ID1']['isFavorite']);
       extractedData.forEach((prodId, prodData) {
-        print("this is a dates Counted test");
-        print(favoriteData[prodId]);
+        // print("this is a dates Counted test");
+        // print(favoriteData[prodId]);
         loadedProducts.add(Product(
             id: prodId,
             // title: "${prodData['brand']} | ${prodData['item_category']}",

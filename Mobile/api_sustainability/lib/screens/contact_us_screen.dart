@@ -6,9 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../widgets/my_text.dart';
 import '../data/my_colors.dart';
 
-int dayCount = 0;
-
-bool firstTimeRendered = false;
 
 class ContactUsScreen extends StatefulWidget {
   static const routeName = '/contact-screen';
