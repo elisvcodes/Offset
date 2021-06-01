@@ -11,7 +11,7 @@ int dayCount = 0;
 bool firstTimeRendered = false;
 
 class AboutScreen extends StatefulWidget {
-  static const routeName = '/about-screen';
+  static const routeName = '/about-screes';
   AboutScreen();
 
   @override
