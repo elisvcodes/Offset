@@ -10,15 +10,15 @@ int dayCount = 0;
 
 bool firstTimeRendered = false;
 
-class RequestFeatureScreen extends StatefulWidget {
-  static const routeName = '/feature-screen';
-  RequestFeatureScreen();
+class ContactUsScreen extends StatefulWidget {
+  static const routeName = '/contact-screen';
+  ContactUsScreen();
 
   @override
-  RequestFeatureScreenState createState() => new RequestFeatureScreenState();
+  ContactUsScreenState createState() => new ContactUsScreenState();
 }
 
-class RequestFeatureScreenState extends State<RequestFeatureScreen> {
+class ContactUsScreenState extends State<ContactUsScreen> {
   @override
   Widget build(BuildContext context) {
 

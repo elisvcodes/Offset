@@ -10,15 +10,15 @@ int dayCount = 0;
 
 bool firstTimeRendered = false;
 
-class RequestFeatureScreen extends StatefulWidget {
-  static const routeName = '/feature-screen';
-  RequestFeatureScreen();
+class CreditsScreen extends StatefulWidget {
+  static const routeName = '/credits-screen';
+  CreditsScreen();
 
   @override
-  RequestFeatureScreenState createState() => new RequestFeatureScreenState();
+  CreditsScreenState createState() => new CreditsScreenState();
 }
 
-class RequestFeatureScreenState extends State<RequestFeatureScreen> {
+class CreditsScreenState extends State<CreditsScreen> {
   @override
   Widget build(BuildContext context) {
 

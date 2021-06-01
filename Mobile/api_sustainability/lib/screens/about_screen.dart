@@ -6,6 +6,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../widgets/my_text.dart';
 import '../data/my_colors.dart';
 
+import './contact_us_screen.dart';
+import './credits_screen.dart';
+
 int dayCount = 0;
 
 bool firstTimeRendered = false;
@@ -32,20 +35,17 @@ class AboutScreenState extends State<AboutScreen> {
         child: Column(
           children: <Widget>[
             Container(height: 35),
-          Padding(padding:  const EdgeInsets.only(left: 20, right: 20), child: Column(children: [ Text('Complete the following form in order to request for a product to be added to the marketplace'),
-            
-          ],), ),
-            Container(height: 35),
 
-           
-          Center(
-          child: new InkWell(
-              child: new Text('Open Form in your browser', style: MyText.subhead(context).copyWith(
-                          color: MyColors.primary,
-                          fontWeight: FontWeight.bold),),
-              onTap: () => launch('https://docs.google.com/forms/d/e/1FAIpQLSd_YcWll_zvjlw5TEKPTstfEuQWuEqt1Beb0TRWphQDVZRIXA/viewform?usp=sf_link')
-          ),
-        ),
+           Container(  
+              margin: EdgeInsets.all(25),  
+              child: FlatButton(  
+                child: Text('Contact', style: TextStyle(fontSize: 20.0),),  
+                onPressed: () {
+                  Navigator.of(context).pushNamed(ContactUsScreen.routeName,
+                                );
+                },  
+              ),  
+            ), 
           ],
         ),
       ),
