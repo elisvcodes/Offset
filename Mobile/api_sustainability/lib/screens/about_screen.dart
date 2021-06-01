@@ -36,12 +36,19 @@ class AboutScreenState extends State<AboutScreen> {
           children: <Widget>[
             Container(height: 35),
 
-           Container(  
-              margin: EdgeInsets.all(25),  
+           Container(    
               child: FlatButton(  
                 child: Text('Contact', style: TextStyle(fontSize: 20.0),),  
                 onPressed: () {
                   Navigator.of(context).pushNamed(ContactUsScreen.routeName,
+                                );
+                },  
+              ),  
+            ), Container(  
+              child: FlatButton(  
+                child: Text('Credits', style: TextStyle(fontSize: 20.0),),  
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CreditsScreen.routeName,
                                 );
                 },  
               ),  

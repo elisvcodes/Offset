@@ -25,9 +25,9 @@ class ContactUsScreenState extends State<ContactUsScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Request a Product'),
+        title: const Text('Contact Us'),
       ),
-      drawer: AppDrawer(),
+      // drawer: AppDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -40,10 +40,10 @@ class ContactUsScreenState extends State<ContactUsScreen> {
            
           Center(
           child: new InkWell(
-              child: new Text('Open Form in your browser', style: MyText.subhead(context).copyWith(
+              child: new Text('hahahaevilbusiness@gmail.com', style: MyText.subhead(context).copyWith(
                           color: MyColors.primary,
                           fontWeight: FontWeight.bold),),
-              onTap: () => launch('https://docs.google.com/forms/d/e/1FAIpQLSd_YcWll_zvjlw5TEKPTstfEuQWuEqt1Beb0TRWphQDVZRIXA/viewform?usp=sf_link')
+              onTap: () => launch('mailto:hahahaevilbusiness@gmail.com')
           ),
         ),
           ],

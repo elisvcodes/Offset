@@ -25,9 +25,9 @@ class CreditsScreenState extends State<CreditsScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Request a Product'),
+        title: const Text('Credits'),
       ),
-      drawer: AppDrawer(),
+      // drawer: AppDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
