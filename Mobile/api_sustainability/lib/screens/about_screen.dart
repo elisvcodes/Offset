@@ -28,7 +28,7 @@ class AboutScreenState extends State<AboutScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('About Screen'),
+        title: const Text('About'),
       ),
       drawer: AppDrawer(),
       body: SingleChildScrollView(
