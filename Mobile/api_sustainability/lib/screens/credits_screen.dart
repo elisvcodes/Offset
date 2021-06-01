@@ -41,8 +41,8 @@ class CreditsScreenState extends State<CreditsScreen> {
           Text('Artwork - Eric Ma'),
           Text('Concept Design - Eli Sultanov, Eric Ma, Karl Zhu'),
           Text('Engineering - Eli Sultanov, Nelson Wang'),
-          Text('Environmental Advisor - Federico Yang'),
-          Text('Research - Eric Ma, Federico Yang'),
+          Text('Environmental Advisor - Federico Liu Yang'),
+          Text('Research - Eric Ma, Federico Liu Yang'),
             
           ],), ),
             Container(height: 35),Padding(padding:  const EdgeInsets.only(left: 20, right: 20), child: Column(children: 

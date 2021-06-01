@@ -52,7 +52,15 @@ class AboutScreenState extends State<AboutScreen> {
                                 );
                 },  
               ),  
-            ), 
+              
+            ),
+            Container(height: 10,)
+            , InkWell(
+              child: new Text('Privacy Policy', style: MyText.subhead(context).copyWith(
+                          color: MyColors.primary,
+                          fontSize: 20.0),),
+              onTap: () => launch('https://theevilcorp.org/offset/policy.html')
+          ),
           ],
         ),
       ),
