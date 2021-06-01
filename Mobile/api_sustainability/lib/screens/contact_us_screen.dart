@@ -32,7 +32,8 @@ class ContactUsScreenState extends State<ContactUsScreen> {
         child: Column(
           children: <Widget>[
             Container(height: 35),
-          Padding(padding:  const EdgeInsets.only(left: 20, right: 20), child: Column(children: [ Text('Complete the following form in order to request for a product to be added to the marketplace'),
+          Padding(padding:  const EdgeInsets.only(left: 20, right: 20), child: Column(children: [ 
+            Text('You can contact us in our very serious mail for anything:  ( Even if you have like a question about why your dog or something)'),
             
           ],), ),
             Container(height: 35),
