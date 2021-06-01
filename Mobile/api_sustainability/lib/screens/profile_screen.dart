@@ -14,6 +14,8 @@ import '../data/achievements.dart';
 import '../widgets/dialog.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../widgets/my_text.dart';
+
 int dayCount = 0;
 
 bool firstTimeRendered = false;
@@ -39,8 +41,9 @@ class ProfileScreenState extends State<ProfileScreen> {
     if (!firstTimeRendered) {
       firstTimeRendered = true;
 
-      metaData.fetchAndSetMeta(authData.userId);metaData.setTotalCarbonSaved(
-                productsData.getTotalSavedUsingEachProductTracking);
+      metaData.fetchAndSetMeta(authData.userId);
+      metaData.setTotalCarbonSaved(
+          productsData.getTotalSavedUsingEachProductTracking);
     }
 
     // print(metaData.getDatesLastNowDifference());
@@ -67,7 +70,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 metaData.getDatesLastNowDifference());
             metaData.updateLastDateAsToday();
             metaData.postMeta(authData.token, authData.userId);
-            
+
             // dayCount++;
           });
         },
