@@ -4,26 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:api_sustainability/data/my_colors.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
+import 'package:intl/intl.dart';
 import '../widgets/app_drawer.dart';
-
 import 'package:provider/provider.dart';
 import '../providers/products.dart';
-
 import '../providers/auth.dart';
-
 import '../providers/meta.dart';
-
 import '../data/achievements.dart';
-
 import '../widgets/dialog.dart';
-
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import '../widgets/my_text.dart';
 
 int dayCount = 0;
 
+bool firstTimeRendered = false;
+
 class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile-screen';
-
   ProfileScreen();
 
   @override
@@ -40,6 +38,16 @@ class ProfileScreenState extends State<ProfileScreen> {
     var _savedPerDay = productsData.emissionSavedPerDay;
     var _totalSaved = metaData.totalCarbonSaved;
 
+    if (!firstTimeRendered) {
+      firstTimeRendered = true;
+
+      metaData.fetchAndSetMeta(authData.userId);
+      metaData.setTotalCarbonSaved(
+          productsData.getTotalSavedUsingEachProductTracking);
+    }
+
+    // print(metaData.getDatesLastNowDifference());
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -51,12 +59,18 @@ class ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Theme.of(context).accentColor,
         elevation: 3,
         child: Icon(
-          Icons.plus_one,
+          Icons.replay_outlined,
           color: Colors.white,
         ),
         onPressed: () {
           setState(() {
+            // #TODO the following code is deprecated
             metaData.addDay(_savedPerDay);
+            productsData.addTrackedProductsADay(authData.token, authData.userId,
+                metaData.getDatesLastNowDifference());
+            metaData.updateLastDateAsToday();
+            metaData.postMeta(authData.token, authData.userId);
+
             // dayCount++;
           });
         },
@@ -162,6 +176,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                             Text("${metaData.dayCount} days in the app",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
+                            Text(DateFormat('dd/MM/yyyy hh:mm')
+                                .format(metaData.lastDateSync)),
                           ],
                         ),
                       )

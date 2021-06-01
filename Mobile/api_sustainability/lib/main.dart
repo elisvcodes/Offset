@@ -15,6 +15,9 @@ import './screens/auth_screen.dart';
 import './screens/tracker_screen.dart';
 import './screens/market_place_screen.dart';
 import './screens/profile_screen.dart';
+import './screens/request_product.dart';
+
+import './screens/about_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,7 +38,10 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider.value(
             // value: Cart(),
-            value: Meta(name: "Demo User", dayCount: 1),
+            value: Meta(
+                name: "Demo User",
+                dayCount: 1,
+                lastDateSync: DateTime.parse('2021-04-12 00:05:41.446919')),
           ),
         ],
         child: Consumer<Auth>(
@@ -66,6 +72,8 @@ class MyApp extends StatelessWidget {
                 EditProductScreen.routeName: (ctx) => EditProductScreen(),
                 TrackerScreen.routeName: (ctx) => TrackerScreen(),
                 ProfileScreen.routeName: (ctx) => ProfileScreen(),
+                RequestFeatureScreen.routeName: (ctx) => RequestFeatureScreen(),
+                AboutScreen.routeName: (ctx) => AboutScreen(),
               }),
         ));
   }

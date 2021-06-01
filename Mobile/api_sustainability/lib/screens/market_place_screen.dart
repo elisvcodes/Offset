@@ -57,55 +57,6 @@ class MarketPlaceScreenState extends State<MarketPlaceScreen>
       drawer: AppDrawer(),
       appBar: AppBar(
         title: Text('Market Place'),
-        // actions: <Widget>[
-        //   PopupMenuButton(
-        //     onSelected: (FilterOptions selectedValue) {
-        //       setState(() {
-        //         // TODO: Switch Filter Options
-        //         switch (FilterOptions) {
-        //         }
-        //         // if (selectedValue == FilterOptions.Favorites) {
-        //         //   _showOnlyFavorites = true;
-        //         // } else {
-        //         //   _showOnlyFavorites = false;
-        //         // }
-        //       });
-        //     },
-        //     icon: Icon(
-        //       Icons.filter_alt_sharp,
-        //     ),
-        //     itemBuilder: (_) => [
-        //       PopupMenuItem(
-        //         child: Text('CUP'),
-        //         value: FilterOptions.Favorites,
-        //       ),
-        //       PopupMenuItem(
-        //         child: Text('BOTTLE'),
-        //         value: FilterOptions.All,
-        //       ),
-        //       PopupMenuItem(
-        //         child: Text('BAG'),
-        //         value: FilterOptions.All,
-        //       ),
-        //       PopupMenuItem(
-        //         child: Text('CUTLERY'),
-        //         value: FilterOptions.All,
-        //       ),
-        //       PopupMenuItem(
-        //         child: Text('STRAW'),
-        //         value: FilterOptions.All,
-        //       ),
-        //       PopupMenuItem(
-        //         child: Text('CONTAINER'),
-        //         value: FilterOptions.All,
-        //       ),
-        //       PopupMenuItem(
-        //         child: Text('TOWEL'),
-        //         value: FilterOptions.All,
-        //       ),
-        //     ],
-        //   ),
-        // ],
         bottom: TabBar(
           indicatorColor: Colors.white,
           indicatorSize: TabBarIndicatorSize.tab,
