@@ -18,6 +18,9 @@ import './screens/profile_screen.dart';
 import './screens/request_product.dart';
 
 import './screens/about_screen.dart';
+import './screens/credits_screen.dart';
+
+import './screens/contact_us_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -74,6 +77,8 @@ class MyApp extends StatelessWidget {
                 ProfileScreen.routeName: (ctx) => ProfileScreen(),
                 RequestFeatureScreen.routeName: (ctx) => RequestFeatureScreen(),
                 AboutScreen.routeName: (ctx) => AboutScreen(),
+                ContactUsScreen.routeName: (ctx) => ContactUsScreen(),
+                CreditsScreen.routeName: (ctx) => CreditsScreen(),
               }),
         ));
   }

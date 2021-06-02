@@ -6,9 +6,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../widgets/my_text.dart';
 import '../data/my_colors.dart';
 
-int dayCount = 0;
+import './contact_us_screen.dart';
+import './credits_screen.dart';
 
-bool firstTimeRendered = false;
 
 class AboutScreen extends StatefulWidget {
   static const routeName = '/about-screes';
@@ -25,27 +25,39 @@ class AboutScreenState extends State<AboutScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('About Screen'),
+        title: const Text('About'),
       ),
       drawer: AppDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(height: 35),
-          Padding(padding:  const EdgeInsets.only(left: 20, right: 20), child: Column(children: [ Text('Complete the following form in order to request for a product to be added to the marketplace'),
-            
-          ],), ),
-            Container(height: 35),
 
-           
-          Center(
-          child: new InkWell(
-              child: new Text('Open Form in your browser', style: MyText.subhead(context).copyWith(
+           Container(    
+              child: FlatButton(  
+                child: Text('Contact', style: TextStyle(fontSize: 20.0),),  
+                onPressed: () {
+                  Navigator.of(context).pushNamed(ContactUsScreen.routeName,
+                                );
+                },  
+              ),  
+            ), Container(  
+              child: FlatButton(  
+                child: Text('Credits', style: TextStyle(fontSize: 20.0),),  
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CreditsScreen.routeName,
+                                );
+                },  
+              ),  
+              
+            ),
+            Container(height: 10,)
+            , InkWell(
+              child: new Text('Privacy Policy', style: MyText.subhead(context).copyWith(
                           color: MyColors.primary,
-                          fontWeight: FontWeight.bold),),
-              onTap: () => launch('https://docs.google.com/forms/d/e/1FAIpQLSd_YcWll_zvjlw5TEKPTstfEuQWuEqt1Beb0TRWphQDVZRIXA/viewform?usp=sf_link')
+                          fontSize: 20.0),),
+              onTap: () => launch('https://theevilcorp.org/offset/policy.html')
           ),
-        ),
           ],
         ),
       ),

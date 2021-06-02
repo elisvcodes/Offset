@@ -10,6 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../screens/admin_screen.dart';
 import '../screens/request_product.dart';
 import '../providers/auth.dart';
+import '../screens/auth_screen.dart';
 
 import '../screens/about_screen.dart';
 
@@ -60,12 +61,12 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context)
                   .pushReplacementNamed(RequestFeatureScreen.routeName);
             },
-          ),ListTile(
+          ),
+          ListTile(
             leading: Icon(Icons.info),
             title: Text('About'),
             onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(AboutScreen.routeName);
+              Navigator.of(context).pushReplacementNamed(AboutScreen.routeName);
             },
           ),
           Divider(),
@@ -73,8 +74,8 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
             onTap: () {
-              Navigator.of(context).pop();
-              Provider.of<Auth>(context, listen: false).logout();
+              Provider.of<Auth>(context, listen: false).logout();Navigator.of(context).pop();
+              Navigator.of(context).pushReplacementNamed('/');
             },
           ),
         ],
