@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const { auth } = require('../middleware/auth');
+
 const {
   getAllItems,
   getSingleItem,
   getSavedItems,
+  saveItem,
 } = require('../controller/items');
-const auth = require('../middleware/auth');
 
 router.get('/', getAllItems);
-router.get('/:id', getSingleItem);
 router.get('/saved', auth, getSavedItems);
+router.post('/save/:id', auth, saveItem);
+router.get('/:id', getSingleItem);
 module.exports = router;
