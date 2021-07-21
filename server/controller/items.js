@@ -1,5 +1,6 @@
 const Item = require('../models/item');
 const User = require('../models/user');
+const savedItems = require('../models/savedItems');
 
 exports.getAllItems = (req, res) => {
   Item.find({}).exec((err, result) => {
@@ -11,7 +12,6 @@ exports.getAllItems = (req, res) => {
 };
 
 exports.getSingleItem = (req, res) => {
-  console.log(req.params);
   Item.findOne({ id: req.params.id }).exec((err, result) => {
     if (err) {
       return res.status(400).json(err);
@@ -25,7 +25,21 @@ exports.getSavedItems = (req, res) => {
     if (err) {
       return res.status(400).json(err);
     }
-    res.json(user.savedItems);
+    savedItems
+      .find({ owner: user._id })
+      .select('item')
+      .exec((err, result) => {
+        if (err) {
+          return res.status(400).json(err);
+        }
+        const ids = result.map((item) => item.item);
+        Item.find({ _id: { $in: ids } }).exec((err, items) => {
+          if (err) {
+            return res.status(400).json(err);
+          }
+          res.status(200).json(items);
+        });
+      });
   });
 };
 
@@ -34,15 +48,24 @@ exports.saveItem = (req, res) => {
     if (err) {
       return res.status(400).json(err);
     }
-    Item.findOne({ _id: req.body.productId }).exec((err, id) => {
+    Item.findOne({ _id: req.params.id }).exec(async (err, item) => {
       if (err) {
         return res.status(400).json(err);
       }
-
-      const savedItem = user.savedItems.find((item) => (item.id = id));
-      console.log(savedItem);
-      // user.savedItems = user.savedItems.concat({ item });
-      // user.save();
+      const savedItem = await savedItems.findOne({ item: item._id });
+      if (savedItem === null) {
+        const itemToSave = new savedItems({
+          owner: req.user._id,
+          item: req.params.id,
+        });
+        itemToSave.save();
+      } else {
+        savedItems.findOneAndDelete({ item: item._id }).exec((err) => {
+          if (err) {
+            return res.status(400).json(err);
+          }
+        });
+      }
     });
     res.json(user);
   });
