@@ -12,7 +12,7 @@ export default function Layout(props) {
   return (
     <>
       <Navigation user={user} setUser={setUser} />
-      {props.children}
+      {React.cloneElement(props.children, { user: user })}
     </>
   );
 }
