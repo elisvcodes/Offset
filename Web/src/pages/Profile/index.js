@@ -1,50 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Card, Table } from 'react-bootstrap';
 import Layout from '../../components/Layout/index';
-import profilePic from '../../media/1_PgIo7r6qQXem8BmWd-vksQ.jpeg';
-export default function Profile() {
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+export default function Profile(props) {
+  const savedItems = useSelector((state) => state.savedProducts);
   return (
     <>
       <Layout>
-        <Container className="mt-5">
+        <Container className='mt-5'>
           <Row>
-            <Col sm={4}>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={profilePic} />
-                <Card.Body>
-                  <Card.Title>Susen Reid</Card.Title>
-                  <Card.Text>
-                    LEVEL: Gold
-                    <br /> Some quick example text to build on the card title
-                    and make up the bulk of the card's content.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col sm={8}>
+            <Col sm={12}>
+              <h1> Saved Items</h1>
+
               <Table striped bordered hover>
                 <thead>
                   <tr>
-                    <th>Item</th>
-                    <th>Tracking Since</th>
-                    <th>CO2 Preserved</th>
+                    <th>Title</th>
+                    <th>description</th>
+                    <th>Green?</th>
+                    <th>Resuable?</th>
+                    <th>Lifespan(Months)</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <td colSpan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  {savedItems.length !== 0
+                    ? savedItems.map((item) => {
+                        return (
+                          <tr key={item._id}>
+                            <td>
+                              <Link to={`/product/${item.id}`}>
+                                {item.title}
+                              </Link>
+                            </td>
+                            <td>{item.description}</td>
+                            <td>{item.is_green === true ? 'Yes' : 'No'}</td>
+                            <td>{item.is_reusable === true ? 'Yes' : 'No'}</td>
+                            <td>{item.lifespam}</td>
+                          </tr>
+                        );
+                      })
+                    : 'loading'}
                 </tbody>
               </Table>
             </Col>
