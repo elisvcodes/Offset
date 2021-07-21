@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema(
     savedItems: [
       {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Item',
       },
     ],
     tokens: [
