@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Layout from '../../../components/Layout';
+import Layout from '../../../components/Layout/index';
 import { getSingleProduct, getProducts } from '../../../_Actions/products';
 import SingleProduct from '../SingleProduct';
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,11 +31,6 @@ export default function SingleProductDashboard(props) {
       carbonReleased.push(products[pro].carbon);
     }
   });
-  console.log(itemTitle);
-  console.log(itemPrice);
-  console.log(itemLifespan);
-  console.log(bioTime);
-  console.log(carbonReleased);
 
   const data = {
     labels: itemTitle,
@@ -72,11 +67,11 @@ export default function SingleProductDashboard(props) {
   return (
     <>
       <Layout>
-        <Container className="mt-5">
+        <Container className='mt-5'>
           <Link to={`/products`}> Go Back</Link>
 
           <Row>
-            <Col sm={4} className="mr-5">
+            <Col sm={4} className='mr-5'>
               {Object.keys(product).length > 0 ? (
                 <SingleProduct product={product} />
               ) : (
@@ -91,12 +86,12 @@ export default function SingleProductDashboard(props) {
             </Col>
           </Row>
         </Container>
-        <Container className="mt-5">
+        <Container className='mt-5'>
           <h3> Alternatives</h3>
           <Row>
             {Object.keys(products).map((pro) => {
               return products[pro].item_category === product.item_category ? (
-                <Col xs={12} sm={3} key={product}>
+                <Col xs={12} sm={3} key={pro}>
                   <SingleProduct product={products[pro]} />
                 </Col>
               ) : (
