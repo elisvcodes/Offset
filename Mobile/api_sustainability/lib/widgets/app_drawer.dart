@@ -8,7 +8,11 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../screens/admin_screen.dart';
+import '../screens/request_product.dart';
 import '../providers/auth.dart';
+import '../screens/auth_screen.dart';
+
+import '../screens/about_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -51,11 +55,18 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(MdiIcons.shieldAccount),
-            title: Text('Admin'),
+            leading: Icon(Icons.add_comment),
+            title: Text('Request a Product'),
             onTap: () {
               Navigator.of(context)
-                  .pushReplacementNamed(UserProductsScreen.routeName);
+                  .pushReplacementNamed(RequestFeatureScreen.routeName);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.info),
+            title: Text('About'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(AboutScreen.routeName);
             },
           ),
           Divider(),
@@ -63,8 +74,8 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
             onTap: () {
-              Navigator.of(context).pop();
-              Provider.of<Auth>(context, listen: false).logout();
+              Provider.of<Auth>(context, listen: false).logout();Navigator.of(context).pop();
+              Navigator.of(context).pushReplacementNamed('/');
             },
           ),
         ],

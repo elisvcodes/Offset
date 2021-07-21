@@ -4,26 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:api_sustainability/data/my_colors.dart';
 import 'package:api_sustainability/widgets/my_text.dart';
 
+import 'package:intl/intl.dart';
 import '../widgets/app_drawer.dart';
-
 import 'package:provider/provider.dart';
 import '../providers/products.dart';
-
 import '../providers/auth.dart';
-
 import '../providers/meta.dart';
-
 import '../data/achievements.dart';
-
 import '../widgets/dialog.dart';
-
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import '../widgets/my_text.dart';
 
 int dayCount = 0;
 
+
 class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile-screen';
-
   ProfileScreen();
 
   @override
@@ -31,6 +28,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class ProfileScreenState extends State<ProfileScreen> {
+bool firstTimeRendered = false;
   @override
   Widget build(BuildContext context) {
     final authData = Provider.of<Auth>(context, listen: false);
@@ -39,6 +37,20 @@ class ProfileScreenState extends State<ProfileScreen> {
     final metaData = Provider.of<Meta>(context);
     var _savedPerDay = productsData.emissionSavedPerDay;
     var _totalSaved = metaData.totalCarbonSaved;
+    // print("Total Saved 1");
+    print(firstTimeRendered);
+    if (!firstTimeRendered) {
+      firstTimeRendered = true;
+      // print("Total Saved 2");
+      metaData.fetchAndSetMeta(authData.userId);
+      metaData.setTotalCarbonSaved(
+          productsData.getTotalSavedUsingEachProductTracking);
+
+      _totalSaved = metaData.totalCarbonSaved;
+      // print("Total Saved 3");
+    }
+
+    // print(metaData.getDatesLastNowDifference());
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -51,12 +63,18 @@ class ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Theme.of(context).accentColor,
         elevation: 3,
         child: Icon(
-          Icons.plus_one,
+          Icons.replay_outlined,
           color: Colors.white,
         ),
         onPressed: () {
           setState(() {
+            // #TODO the following code is deprecated
             metaData.addDay(_savedPerDay);
+            productsData.addTrackedProductsADay(authData.token, authData.userId,
+                metaData.getDatesLastNowDifference());
+            metaData.updateLastDateAsToday();
+            metaData.postMeta(authData.token, authData.userId);
+
             // dayCount++;
           });
         },
@@ -76,7 +94,8 @@ class ProfileScreenState extends State<ProfileScreen> {
               backgroundColor: Theme.of(context).accentColor,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: NetworkImage(metaData.rankFile),
+                backgroundImage: AssetImage(metaData.rankFile),
+                // backgroundImage: AssetImage('assets/images/seed.PNG'),
               ),
             ),
             Container(
@@ -161,6 +180,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                             Text("${metaData.dayCount} days in the app",
                                 style: MyText.body1(context)
                                     .copyWith(color: MyColors.grey_90)),
+                            Text('Last time updated: ' +
+                                DateFormat('dd/MM/yyyy hh:mm')
+                                    .format(metaData.lastDateSync)),
                           ],
                         ),
                       )

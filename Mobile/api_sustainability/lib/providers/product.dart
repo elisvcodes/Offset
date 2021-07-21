@@ -9,6 +9,7 @@ class Product with ChangeNotifier {
 
   final String imageUrl;
   bool isFavorite;
+  int datesCounted;
 
   double bioTime;
   String brand;
@@ -29,6 +30,7 @@ class Product with ChangeNotifier {
     @required this.price,
     @required this.imageUrl,
     this.isFavorite = false,
+    this.datesCounted = 0,
     this.bioTime = 0,
     this.brand = "Generic",
     this.carbon = 0,
@@ -45,6 +47,13 @@ class Product with ChangeNotifier {
   void _setFavValue(bool newValue) {
     isFavorite = newValue;
     notifyListeners();
+  }
+
+  void addDateValues(int count) {
+    print("Counted before adding: ${datesCounted}");
+    this.datesCounted += count;
+    notifyListeners();
+    print("Counted afteradding: ${datesCounted}");
   }
 
   double get carbonPerMonth {
@@ -80,9 +89,7 @@ class Product with ChangeNotifier {
     try {
       final response = await http.put(
         url,
-        body: json.encode(
-          isFavorite,
-        ),
+        body: json.encode({'isFavorite': isFavorite, 'datesCounted': datesCounted}),
       );
       // If there is an error but theconnection works
       if (response.statusCode >= 400) {
@@ -91,6 +98,28 @@ class Product with ChangeNotifier {
     } catch (error) {
       // If the attempts fails
       _setFavValue(oldStatus);
+    }
+  }
+
+  void syncDate(String authToken, String userId) async {
+    // _addDateValues(1);
+    // Instead add the dates according to well the dates
+
+    notifyListeners();
+    final url = Uri.parse(
+        'https://descartable-server-default-rtdb.firebaseio.com/userTracking/$userId/$id.json');
+    try {
+      final response = await http.put(
+        url,
+        body: json.encode({'isFavorite': isFavorite, 'datesCounted': datesCounted}),
+      );
+      // If there is an error but theconnection works
+      if (response.statusCode >= 400) {
+        addDateValues(-1);
+      }
+    } catch (error) {
+      // If the attempts fails
+      addDateValues(-1);
     }
   }
 }

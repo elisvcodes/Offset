@@ -2,14 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import '../models/http_exception.dart';
+// import '../models/http_exception.dart';
 import '../data/rank.dart';
 
 class Rank {
   final int carbon;
   final String file;
   final String name;
-
   Rank({this.carbon, this.file, this.name});
 
   factory Rank.fromJson(Map<String, dynamic> json) {
@@ -26,16 +25,88 @@ class Meta with ChangeNotifier {
   int dayCount;
   double totalCarbonSaved;
   List<Rank> ranks;
+
+  DateTime lastDateSync;
+  final DateTime defaultDate = DateTime.parse('2021-04-12 00:05:41.446919');
+
   Meta({
     @required this.name,
     @required this.dayCount,
     this.totalCarbonSaved = 0,
+    this.lastDateSync,
+    this.ranks,
   });
 
   void addDay(double carbonSavedThatDay) {
     this.dayCount++;
-    this.totalCarbonSaved += carbonSavedThatDay;
+    //for each product add if they are there
+
+    // this.totalCarbonSaved += carbonSavedThatDay;
     notifyListeners();
+  }
+
+  int getDatesLastNowDifference() {
+    return DateTime.now().difference(lastDateSync).inDays;
+  }
+
+  void updateLastDateAsToday() {
+    this.lastDateSync = DateTime.now();
+
+    notifyListeners();
+  }
+
+  void fetchAndSetMeta(String userId) async {
+    var url = Uri.parse(
+        'https://descartable-server-default-rtdb.firebaseio.com/userMeta/$userId.json');
+
+    final metaResponse = await http.get(url);
+    final metaData = json.decode(metaResponse.body);
+    this.dayCount = metaData["dayCount"] == null ? 0 : metaData["dayCount"];
+
+    this.name = metaData["name"] == null ? 0 : metaData["name"];
+    // this.totalCarbonSaved = metaData["totalCarbonSaved"] == null ? 0 : metaData["totalCarbonSaved"];
+    this.dayCount = metaData["dayCount"] == null ? 0 : metaData["dayCount"];
+    // this.dayCount = metaData["dayCount"] == null ? 0 : metaData["dayCount"];
+    this.lastDateSync = metaData["lastDateSync"] == null
+        ? 0
+        : DateTime.parse(metaData["lastDateSync"]);
+
+    // this.lastDateSync = metaData.lastDateSync
+
+    notifyListeners();
+    print(metaData);
+  }
+
+  void setTotalCarbonSaved(double newCarbonData) {
+    this.totalCarbonSaved = newCarbonData;
+  }
+
+  // optimistic approach
+  void postMeta(String authToken, String userId) async {
+    notifyListeners();
+    final url = Uri.parse(
+        'https://descartable-server-default-rtdb.firebaseio.com/userMeta/$userId.json');
+    try {
+      final response = await http.put(
+        url,
+        body: json.encode({
+          'user_id': userId,
+          'name': name,
+          'dayCount': dayCount,
+          'totalCarbonSaved': totalCarbonSaved,
+          'ranks': ranks,
+          'lastDateSync': lastDateSync.toIso8601String()
+        }),
+      );
+      // If there is an error but theconnection works
+
+    } catch (error) {
+      // If the attempts fails
+      print(error);
+      // _setFavValue(oldStatus);
+    }
+
+    print('Successfully uipdated?');
   }
 
   void fetchRanks() async {

@@ -1,7 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.api_sustainability">
+    
+<uses-permission android:name="android.permission.INTERNET" />
+ 
+
    <application
-        android:label="api_sustainability"
+        android:label="OffSet"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
