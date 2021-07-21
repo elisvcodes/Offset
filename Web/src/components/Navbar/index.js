@@ -11,9 +11,9 @@ export default function Navigation(props) {
     <>
       <Navbar style={{ background: '#5DB075', color: '#fff' }}>
         <Container>
-          <Navbar.Brand href="/">Offset</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="/products">Compare</Nav.Link>
+          <Navbar.Brand href='/'>Offset</Navbar.Brand>
+          <Nav className='mr-auto'>
+            <Nav.Link href='/products'>Compare</Nav.Link>
           </Nav>
           <Nav>
             {user?.result ? (
@@ -22,9 +22,8 @@ export default function Navigation(props) {
 
                 <Nav.Link
                   onClick={() => {
-                    dispatch(logout());
+                    dispatch(logout(history));
                     setUser(null);
-                    history.push('/login');
                   }}
                 >
                   Logout
@@ -32,9 +31,9 @@ export default function Navigation(props) {
               </>
             ) : (
               <>
-                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href='/login'>Login</Nav.Link>
 
-                <Nav.Link href="/signup">Sign Up</Nav.Link>
+                <Nav.Link href='/signup'>Sign Up</Nav.Link>
               </>
             )}
           </Nav>
