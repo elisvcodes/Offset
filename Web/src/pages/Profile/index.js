@@ -24,23 +24,25 @@ export default function Profile(props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {savedItems.length !== 0
-                    ? savedItems.map((item) => {
-                        return (
-                          <tr key={item._id}>
-                            <td>
-                              <Link to={`/product/${item.id}`}>
-                                {item.title}
-                              </Link>
-                            </td>
-                            <td>{item.description}</td>
-                            <td>{item.is_green === true ? 'Yes' : 'No'}</td>
-                            <td>{item.is_reusable === true ? 'Yes' : 'No'}</td>
-                            <td>{item.lifespam}</td>
-                          </tr>
-                        );
-                      })
-                    : 'loading'}
+                  {savedItems.length !== 0 ? (
+                    savedItems.map((item) => {
+                      return (
+                        <tr key={item._id}>
+                          <td>
+                            <Link to={`/product/${item.id}`}>{item.title}</Link>
+                          </td>
+                          <td>{item.description}</td>
+                          <td>{item.is_green === true ? 'Yes' : 'No'}</td>
+                          <td>{item.is_reusable === true ? 'Yes' : 'No'}</td>
+                          <td>{item.lifespam}</td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr>
+                      <td>Nothing saved</td>
+                    </tr>
+                  )}
                 </tbody>
               </Table>
             </Col>
