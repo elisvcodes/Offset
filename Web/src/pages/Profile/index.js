@@ -41,6 +41,10 @@ export default function Profile(props) {
                   ) : (
                     <tr>
                       <td>Nothing saved</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                   )}
                 </tbody>
