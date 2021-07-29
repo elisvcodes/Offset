@@ -1,4 +1,4 @@
-##Demo Note
+## Demo Note
 The Flutter app is available as a web demo here: https://descartable-server.web.app/#
 However it wasn't designed for desktop browsers, but as a mobile app, therefore, it will appear stretched, to make it simulate like an app, you have to make your browser width the smallest as you can. The other alternative is cloning the repo go to mobile/api_sustainability and run the android/IOS emulator (https://github.com/elisvcodes/Offset/tree/master/Mobile/api_sustainability)
 
@@ -23,10 +23,10 @@ An average individual’s effort towards a cleaner and better world is as small 
 ## What it does
 The application compares the carbon footprint between reusable and non-reusable items. Because reusables release more emissions during production when compared to non-reusables, reusable items need to be used a certain amount of times before they offset their carbon footprint. Therefore, we have created an application with an aim to track how many times a reusable item needs to be used in order for its carbon footprint to be offset. 
 
-####Network
+#### Network
 [![NETWORK IMAGE](https://i.ibb.co/XkY2SmW/NETWORK-2.png "NETWORK IMAGE")](https://i.ibb.co/XkY2SmW/NETWORK-2.png "Capture")
 
-####Gamification
+#### Gamification
 [![tree growing](https://i.ibb.co/v3c0sdF/treegrw.png "tree growing")](https://i.ibb.co/v3c0sdF/treegrw.png"tree growing")
 [![tree growing](https://i.ibb.co/4Mqs3KF/achievements.png "Achievements")](https://i.ibb.co/4Mqs3KF/achievements.png "Achievements")
 
