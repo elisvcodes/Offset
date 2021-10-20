@@ -12,7 +12,7 @@ Requires to have installed flutter in your local machine:
 - [Mac](https://www.youtube.com/watch?v=9GuzMsZQUYs)
 
 1. Clone the repository
-2. Open the location of the mobile application project from your terminal (/Mobile/api_sustainability)
+2. Open the location of the mobile application project from your terminal (Offset/Mobile/api_sustainability)
 3. Install the application: ```flutter install```
 4. Run the application in your emulator: ```flutter run```
 
