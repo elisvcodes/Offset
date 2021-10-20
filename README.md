@@ -1,3 +1,10 @@
+## NOTE FOR TTP Residency Application
+Nelson Wang was responsible only for the Flutter Mobile App. (which you can review the demo on the desktop using the following link: https://descartable-server.web.app/#).
+
+Here is the video explaination of the project:
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/GGQmFToJz5o&t/0.jpg)](http://www.youtube.com/watch?v=GGQmFToJz5o&t"Offset Demo")
+This project is also available for download in Google Playstore: https://play.google.com/store/apps/details?id=com.theevilbusiness.offset
+
 ## Demo Note
 The Flutter app is available as a web demo here: https://descartable-server.web.app/#
 However it wasn't designed for desktop browsers, but as a mobile app, therefore, it will appear stretched, to make it simulate like an app, you have to make your browser width the smallest as you can. The other alternative is cloning the repo go to mobile/api_sustainability and run the android/IOS emulator (https://github.com/elisvcodes/Offset/tree/master/Mobile/api_sustainability)
