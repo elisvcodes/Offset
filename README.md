@@ -5,13 +5,16 @@ Nelson Wang was responsible only for the Flutter Mobile App. (which you can revi
 - This project is also available for [download in Google Playstore](https://play.google.com/store/apps/details?id=com.theevilbusiness.offset).
 - Desktop Browser [Quick Demo Link](https://descartable-server.web.app/#).
 
-### How to Install the flutter application remotly
+### How to Install the flutter application remotely
 
-Requires to have installed flutter in your local machine
+Requires to have installed flutter in your local machine:
+- [Windows](https://www.youtube.com/watch?v=tun0HUHaDuE)
+- [Mac](https://www.youtube.com/watch?v=9GuzMsZQUYs)
 
 1. Clone the repository
 2. Open the location of the mobile application project from your terminal (/Mobile/api_sustainability)
-3. Run: ```flutter build```
+3. Install the application: ```flutter install```
+4. Run the application in your emulator: ```flutter run```
 
 
 ## Demo Note
