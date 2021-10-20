@@ -1,9 +1,18 @@
 ## NOTE FOR TTP Residency Application
 Nelson Wang was responsible only for the Flutter Mobile App. (which you can review the demo on the desktop using the following link: https://descartable-server.web.app/#).
 
-Here is the video explaination of the project:
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/GGQmFToJz5o&t/0.jpg)](http://www.youtube.com/watch?v=GGQmFToJz5o&t"Offset Demo")
-This project is also available for download in Google Playstore: https://play.google.com/store/apps/details?id=com.theevilbusiness.offset
+- Here is the [video explaination of the project](https://play.google.com/store/apps/details?id=com.theevilbusiness.offset).
+- This project is also available for [download in Google Playstore](https://play.google.com/store/apps/details?id=com.theevilbusiness.offset).
+- Desktop Browser [Quick Demo Link](https://descartable-server.web.app/#).
+
+### How to Install the flutter application remotly
+
+Requires to have installed flutter in your local machine
+
+1. Clone the repository
+2. Open the location of the mobile application project from your terminal (/Mobile/api_sustainability)
+3. Run: ```flutter build```
+
 
 ## Demo Note
 The Flutter app is available as a web demo here: https://descartable-server.web.app/#
