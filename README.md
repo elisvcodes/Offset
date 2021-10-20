@@ -1,9 +1,9 @@
 ## NOTE FOR TTP Residency Application
-Nelson Wang was responsible only for the Flutter Mobile App. (which you can review the demo on the desktop using the following link: https://descartable-server.web.app/#).
+Nelson Wang was responsible only for the Flutter Mobile App. (which you can review the demo on the browser using the following link: https://descartable-server.web.app/#).
 
 - Here is the [video explaination of the project](https://play.google.com/store/apps/details?id=com.theevilbusiness.offset).
 - This project is also available for [download in Google Playstore](https://play.google.com/store/apps/details?id=com.theevilbusiness.offset).
-- Desktop Browser [Quick Demo Link](https://descartable-server.web.app/#).
+- Browser Demo [Quick Demo Link](https://descartable-server.web.app/#).
 
 ### How to Install the flutter application remotely
 
